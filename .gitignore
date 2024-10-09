@@ -1,0 +1,8 @@
+##Excluimos los ejecutables de C
+*.out
+
+#Extensión inventada para ignorar las soluciones temporalmente
+*.sol
+
+#vim
+*.swp
