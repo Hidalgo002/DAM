@@ -17,22 +17,22 @@ void es_vocal(char letra){
 //DOS. Función de FIGURA:
 void calcular_area_figura(){
 	char figura;
-	printf("¿Qué figura deseas calcular (círculo=1, cuadrado=2)?: ");
-        scanf(" %c", &figura);
+		printf("¿Qué figura deseas calcular (círculo=1, cuadrado=2)?: ");
+        	scanf(" %c", &figura); //Se pone un  espacio antes de %c porque si no, no coge el valor de figura.
 
 	if( figura=='1'){ //CÍRCULO RADIO
 		int radio;
-		printf("Introduce el radio del círculo: ");
-		scanf("%d", &radio);
+			printf("Introduce el radio del círculo: ");
+			scanf("%d", &radio);
         	float area = 3.1416 * radio * radio;
-		printf("El área del círculo con radio %d es %.2f. \n", radio, area);
+			printf("El área del círculo con radio %d es %.2f. \n", radio, area);
 	}
 	else if ( figura =='2'){ //CUADRADO LADO
 		int lado;
-                printf("Introduce el lado del cuadrado: ");
-                scanf("%d", &lado);
+                	printf("Introduce el lado del cuadrado: ");
+                	scanf("%d", &lado);
                 float area = lado * lado;
-                printf("El área del cuadrado con lado %d es %.2f. \n", lado, area);
+                	printf("El área del cuadrado con lado %d es %.2f. \n", lado, area);
 	}
 	else if ( figura != '1' || figura != '2'){
                 printf("Error en la función calcular_area_figura \n");}
@@ -47,36 +47,39 @@ double calcular_promedio_cuatro_num(double num1, double num2, double num3,double
 }
 void calcular_promedio(){
 	char promedio;                                        
-	printf("¿De cuántos números quiere hacer el promedio? (3 o 4) ");
-	scanf(" %c", &promedio);
+		printf("¿De cuántos números quiere hacer el promedio? (3 o 4) ");
+		scanf(" %c", &promedio);
 
 	if ( promedio =='3' ){
 	double num1, num2, num3;
-	printf("Introduce en número 1: ");
-	scanf("%lf", &num1);
-	printf("Introduce en número 2: ");
-	scanf("%lf", &num2);
-	printf("Introduce en número 3: ");
-	scanf("%lf", &num3);
+		printf("Introduce en número 1: ");
+		scanf("%lf", &num1);
+		printf("Introduce en número 2: ");
+		scanf("%lf", &num2);
+		printf("Introduce en número 3: ");
+		scanf("%lf", &num3);
 	double promedio1 = calcular_promedio_tres_num (num1, num2, num3);
-	printf("El promedio de %.2lf, %.2lf, %.2lf es %.2lf. \n", num1, num2, num3, promedio1);	
+		printf("El promedio de %.2lf, %.2lf, %.2lf es %.2lf. \n", num1, num2, num3, promedio1);	
 	}
 
 	else if ( promedio =='4' ){
 	double num1, num2, num3, num4;
-	printf("Introduce en número 1: ");
-        scanf("%lf", &num1);
-        printf("Introduce en número 2: ");
-        scanf("%lf", &num2);
-        printf("Introduce en número 3: ");
-        scanf("%lf", &num3);
-        printf("Introduce en número 4: ");
-        scanf("%lf", &num4);
+		printf("Introduce en número 1: ");
+        	scanf("%lf", &num1);
+        	printf("Introduce en número 2: ");
+        	scanf("%lf", &num2);
+        	printf("Introduce en número 3: ");
+        	scanf("%lf", &num3);
+        	printf("Introduce en número 4: ");
+        	scanf("%lf", &num4);
 	double promedio2 = calcular_promedio_cuatro_num (num1, num2, num3, num4);
-        printf("El promedio lf, %.2lf, %.2lf, %.2lf, %.2lf es %.2lf. \n", num1, num2, num3, num4, promedio2);
+        	printf("El promedio lf, %.2lf, %.2lf, %.2lf, %.2lf es %.2lf. \n", num1, num2, num3, num4, promedio2);
 	}
 }
-
+//CUATRO. Función horas:
+void convertir_hora_24_a_12(){
+	
+}
 
 
 
