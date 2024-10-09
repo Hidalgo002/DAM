@@ -77,10 +77,23 @@ void calcular_promedio(){
 	}
 }
 //CUATRO. Función horas:
-void convertir_hora_24_a_12(){
-	
-}
 
+void convertir_hora_24_a_12(){
+	int hora;
+	printf("Introduce la hora en formato 24 horas: ");
+	scanf("%d", &hora);
+
+	if (hora > 24 || hora < 0){
+		printf("Hora no válida. \n");}
+	else if (hora == 0){
+		printf("La hora en formato de 12 horas es PM: 12 AM.\n");}
+	else if (hora == 12){
+		printf("La hora en formato de 12 horas es PM: 12 PM.\n");}
+	else if (hora < 12){
+		printf("La hora en formato de 12 horas es PM: %d AM.\n", hora);}
+	else {
+		printf("La hora en formato de 12 horas es PM: %d PM.\n", hora - 12);}
+}
 
 
 int main(){
@@ -113,6 +126,7 @@ int main(){
                 break;
 
 		case 4:
+		convertir_hora_24_a_12();
                 break;
 
 		case 5:
