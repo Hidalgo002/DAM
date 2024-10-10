@@ -110,8 +110,27 @@ void es_primo(){
 
 //SEIS. Función de comparar números:
 
-void comparar_3_numeros();
+void comparar_3_numeros(){
+	float num1, num2, num3;	
 
+        printf("Introduce el número 1: ");
+        scanf(" %f", &num1);
+	printf("Introduce el número 2: ");
+        scanf(" %f", &num2);
+	printf("Introduce el número 3: ");
+        scanf(" %f", &num3);
+
+	if(num1 == num2 && num2 == num3){
+		printf("Los números son iguales.\n");
+	}
+	else if (num1 > num2 && num1 > num3){
+		printf("El número mayor es %.2f\n", num1);
+	}
+	else if (num2 > num1 && num2 > num3){
+                printf("El número mayor es %.2f\n", num2);
+        }
+	else {printf("El número mayor es %.2f\n", num3);}
+	}
 
 int main(){
 	printf("1. Verificar si una letra es una vocal. \n");
