@@ -1,23 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int main() {
+    char cara[26];
+    int numero;
+    char letra;
 
-int main(){
-	char cara[25];
-	int numero;
-	char letra;	
+    printf("Introduzca una palabra (máx. 25 caracteres): ");
+    scanf("%25s", cara);
 
-	printf("Introduza una palabra: ");
-	scanf("%s", cara);
+    printf("¿Qué posición desea modificar? (0 a 24): ");
+    scanf("%d", &numero);
 
-	printf("¿Qué posición desea modificar? ");
-	scanf("%d", &numero);
+    if (numero < 0 || numero >= 25) {
+        printf("La posición tiene que ser entre 0 y 24.\n");
+    } else {
+        printf("¿Qué carácter desea poner? ");
+        scanf(" %c", &letra);
+        cara[numero] = letra;
+        printf("La nueva palabra es: %s\n", cara);
+    }
 
-	printf("¿Qué caracter desea poner? ");
-	scanf("%s", &letra);
-
-	cara[numero]= letra;
-	printf("La nueva palabra es: %s\n", cara);
-
-return 0;
+    return 0;
 }
