@@ -23,5 +23,11 @@ int main(){
 	else{
 		printf("Opción no válida \n");}
 
+
+	//Bucles: Comparando caracter a caracter
+	
+	for(int i = 0; i<50; i++){
+		printf(palabra1[i] == palabra2[i]);
+/bin/bash: line 1: aa-remove-unknown::: command not found
 return 0;
 }
