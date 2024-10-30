@@ -12,7 +12,7 @@ int main(){
 	scanf("%49s", palabra2);
 
 	if (strlen(palabra1) >= 50 ||  strlen( palabra2) >= 50){
-		printf("La palabra introducida es demasiado larga.\n");}
+		printf("La palabra introducida es demasiado larga.\n");} //
 
 	else if (strlen(palabra1) == strlen( palabra2)){
 		printf("Las dos palabras tienen el mismo número de letras. \n");}
@@ -23,11 +23,5 @@ int main(){
 	else{
 		printf("Opción no válida \n");}
 
-
-	//Bucles: Comparando caracter a caracter
-	
-	for(int i = 0; i<50; i++){
-		printf(palabra1[i] == palabra2[i]);
-/bin/bash: line 1: aa-remove-unknown::: command not found
 return 0;
 }
