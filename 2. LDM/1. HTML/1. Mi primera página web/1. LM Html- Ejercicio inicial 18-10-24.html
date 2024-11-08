@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head> <!--Comentario, este texto no aparecerá una vez ejecutado-->
+        <title>Mi primera página web</title>
+        <meta charset="utf8" name="theme-color" content="red"> <!--Esta línea solo modifica a la anterior-->
+    </head>
+
+    <body>
+        <!-- Organización semántica de la web-->
+        <header> <!--Header para la cabecera-->
+        <h1>Bienvenido a mi página web</h1> <!--h1 Hace referencia al tamaño del texto, siendo h1 un título, h2 más pequeño y así...-->
+        </header>
+        <h2>Subtítulo</h2>
+    <section>
+        <h3>SubSubtítulo</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+            Excepturi quam porro voluptas deleniti ab maxime perferendis 
+            asperiores earum blanditiis vero fugit ratione odio, dolorem 
+            atque doloremque ullam eligendi odit illo!</p> 
+            <!--La eqiqueta p cuando se cierra hace un salto de línea-->
+        <p><strong>Lorem, ipsum <mark>dolor sit amet consectetur adipisicing 
+            elit.</mark> Soluta, aliquam maxime 
+            similique reprehenderit autem laboriosam qui enim aspernatur 
+            suscipit magnam nobis distinctio natus 
+            ratione aut est harum adipisci facilis eveniet?</strong></p>
+        <cite>Harry Potter y la Piedra Filosofal</cite>
+            <p>Harry Potter:<q>"Voldemort está aquí"</q></p>
+        <p>2<sup>2</sup></p>
+        <p>x<sub>1</sub></p>
+        <p>Esta es la clase de lenguaje de marcas <abbr>LM</abbr><small> Hola</small></p>
+    </section>
+
+    <section>
+    <h2>Listas:</h2> <!--Se definen en esta parte los tipos de listas-->
+        <h3>Lista no numera:</h3>
+        <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+        </ul>
+
+        <h3>Lista numerada:</h3>
+        <ol>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+        </ol>
+
+        <h3>Lista multinivel:</h3>
+        <ol type="I" start="3">
+            <li>item 1</li>
+            <li>
+                <ul>
+                    <li>item 1</li>
+                    <li>item 2</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>IMÁGENES</h2>
+        <img src="gato.jpg" alt="gato" width="200">
+        <img src="vince-mcmahon.gif" alt="mcmahon" width="269">
+        <img src="https://media.tenor.com/k5hYYCmfDyMAAAAM/dog-mask.gif" width="190">
+    </section>
+
+    <section>
+        <h2>ENLACES</h2>
+        <nav>
+            <a href="https://es.wikipedia.org/wiki/Vince_McMahon" alt ="McMahon" target="_blank"> McMahon </a> <br>
+            <a href=" https://youtu.be/3YxaaGgTQYM?si=u6TIPWD3AOauGVAg" alt="dog" target ="_blank">Perro Daredevil</a>
+        </nav>
+    </section>
+
+    <section>
+        <h2>MULTIMEDIA</h2>
+        <picture>
+            <source media="(width > 900px)" scrset ="https://i.scdn.co/image/ab67616d00001e02de1e293eb320c343d0434d12" >
+            <img src="https://i.pinimg.com/originals/55/19/b4/5519b493322c53a93855eec62716147a.jpg" alt="Joker" width="300">
+        </picture><br>
+   
+        <section>
+            <h2>Video</h2>
+            <video 
+                width="300" height="190" 
+                src="video.mp4#t=30" alt="video" autoplay muted loop controls playsinline>
+            </video>
+        </section>
+    
+        <section>
+            <h2>Video de YouTube</h2>
+            <iframe 
+                width="200" height="300" 
+                src="https://www.youtube.com/embed/Qj4ESmOaIoA?autoplay=1&mute=1&loop=1&playlist=Qj4ESmOaIoA"
+                frameborder="1" allow="autoplay; encrypted-media" 
+                allowfullscreen>
+            </iframe>
+        </section>
+    
+        <section>
+            <h2>Audio de Halloween</h2>
+            <audio src="Halloween.mp3" controls autoplay loop preload="metadata">
+            </audio>
+        </section>
+    
+        <section>
+            <h2>Tablas</h2>
+            <table border="1"> <!--El borde será 1-->
+                <thead>
+                <tr>
+                    <th scope="col">Columna A</th> 
+                    <th scope="col">Columna A</th>
+                </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>ColumnaB</td>
+                    <td>ColumnaB</td> <!-- Esto sería mi fila dos -->
+                </tr>
+                <tr>
+                   <td colspan ="2">Columna C</td> <!--Combinar dos filas-->
+                   </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Columna D</td> <!--Combinar dos columnas. ATENCIÓN, 
+                                                la celda que deberia haber abajo, se mueve, 
+                                                no se combina como en word-->
+                    <td>ColumnaD</td> 
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                        <td>ColumnaE</td>
+                        <td>ColumnaE</td> 
+                </tr>
+            </tfoot>
+            </table>
+        </section>
+    
+        <section>
+            <h2>Formularios</h2>
+            <form name="Formulario1" method="" action="">
+                <p>Nombre: <input type="text" name="nombre" required></p>
+                <p>Teléfono: <input type="tel" name="Teléfono"></p> 
+                <p>E-Mail: <input type="email" name="Correo"></p>
+                <p>Contraseña: <input type="password" name="Contraseña"></p> 
+                <p>Página Web: <input type="url" name="url" placeholder="Salesianos_Santo_Domingo_Savio.es"></p>    
+                <input type="hidden" name="oculto" value="12">
+                <p>Edad: <input type="range" name="edad" min="0" max="100"></p>
+                <p>Edad: <input type="number" name="edad" min="0" max="100"></p>  
+                <p>Fecha: <input type="date" name="fecha1" min="2024-01-01" max="2024-12-31"></p> 
+                    <p>Mes: <input type="month" name="fecha2"></p> 
+                    <p>Semana: <input type="week" name="fecha3"></p> 
+                    <p>Hora: <input type="time" name="fecha4"></p>  
+                    <p>Fecha y Hora: <input type="datetime-local" name="fecha5"></p>  
+                <input type="submit">
+
+                <p>Opciones (checkbox-varias opciones): ¿Qué te gusta más?</p>
+                <p><input type="checkbox" name="opcion1" value="Piscina">Piscina</p>
+                <p><input type="checkbox" name="opcion2" value="Campo">Campo</p>
+                <p><input type="checkbox" name="opcion3" value="Playa">Playa</p>
+         
+                <p>Opciones (radio-una opcion): ¿Qué te gusta más?</p>
+                <p><input type="radio" name="opcion" value="Piscina">Piscina</p>
+                <p><input type="radio" name="opcion" value="Campo">Campo</p>
+                <p><input type="radio" name="opcion" value="Playa">Playa</p>
+
+                <p>Opciones (lista desplegable): ¿Qué te gusta más?</p>
+                <select> Lista de una sola opción
+                    <optgroup label="Categoria 1">
+                        <option value="piscina">Piscina</option>
+                        <option value="campo">Campo</option>
+                        <option value="playa">Playa</option>
+                    </optgroup>
+                    <optgroup label="Categoria 2">
+                        <option value="parque">Parque</option>
+                        <option value="rio">Río</option>
+                    </optgroup>
+                </select>
+
+                <p>Opciones (lista desplegable): ¿Qué te gusta más?</p>
+                <p>
+                <select multiple> Lista de varias opciones. La primera normal y luego se selecciona con control.
+                    <optgroup label="Categoria 1">
+                        <option value="piscina">Piscina</option>
+                        <option value="campo">Campo</option>
+                        <option value="playa">Playa</option>
+                    </optgroup>
+                </select>
+                </p>
+                <p>
+                <select>
+                    <optgroup label="Categoria 2"> 
+                        <option value="parque">Parque</option> 
+                        <option value="rio">Río</option> 
+                    </optgroup>
+                </select>
+                </p>
+                <p>
+                <select>
+                    <input type="color" value="#FFFFFF"> <!--Seleccionar un color--> <br>
+                    <textarea name="texto" cols="10" rows="10" placeholder="Escribe aquí un texto breve"></textarea> <br>
+                    <meter min="0" max="50" value="10" low="10" high="40"></meter> <!--Barra de progreso--> <br>
+                    <progress min="0" max="50"></progress> <br>
+                    <input type="submit" value="Aceptar"> 
+                    <input type="reset" value="Borrar"> 
+                    <button>Botón Tonto</button>
+                </select>
+                </p>
+            </form>
+        </section>
+    
+    <footer>Pie de página</footer> <!-- Esto es un pie de página -->
+    </body>    
+    </html>
