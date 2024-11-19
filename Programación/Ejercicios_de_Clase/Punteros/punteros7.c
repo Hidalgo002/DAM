@@ -8,14 +8,14 @@
 //tipo indica el tipo de variable
 void printValor(void *ptr, char tipo){
 	switch(tipo){
-		case 'd':
+		case 'i':
 //NOTA: UN CASTING ES CONVERTIR UN TIPO DE VARIABLE A OTRO. TODOS MENOS LA CENVERSIÓN DE INT A CHAR Y CHAR A INT (QUE ES UN CASTING IMPLÍCITO) SON EXPLÍCITOS EN C
-		printf("Double %lf\n", *((double *)ptr)); //*ptr es la variable que 
+		printf("Valor entero: %d\n", *(int *)ptr)); //*ptr es la variable que 
 		break;			      		//quiero convertir. por lo que
 						      	//no podemos poner solo
 						      	//'printf("Double %lf\n", *ptr);'
-		case 'i':
-		printf("Entero %d\n", *((int *)ptr));
+		case 'f':
+		printf("Valor Flotante: %f\n", *((float *)ptr));
 		break;
 
 		default:
@@ -25,11 +25,11 @@ void printValor(void *ptr, char tipo){
 
 
 int main(){
-	double num = 2.1;
+	int num = 2;
+	float val = 3.14;
 
-	void * dir = &num;	
-	printValor(dir, 'd');
-        printValor(dir, 'i');
+	printValor(dir, 'i');
+        printValor(dir, 'f');
 
 
 
