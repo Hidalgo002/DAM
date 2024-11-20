@@ -31,6 +31,7 @@ int main(){
 	
 	//El resultado que se imprime en el terminal, el último digito de la dirección de             //memoria '%p', se irá sumando de 4 en 4.
 	
+	printf("SOBREESCRITO EL PUNTERO QUEDA: %d\n ", *punt);
 	printf("\n\n");
 
 	//¿Qué pasa cuando uso en lugar de un int (que son 4 bytes) un long (que son 8 bytes)?
