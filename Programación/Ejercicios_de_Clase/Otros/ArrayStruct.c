@@ -20,7 +20,14 @@ typedef struct{
 //ESTA SOLUCIÓN NO SIRVE PORQUE LAS VARIABLES INICIALIZADAS EN FUERA DEL MAIN NO SON VISIBLES DENTRO DE ESTE.
     //El problema es que este objeto local se destruye cuando la función termina, lo que lleva a un comportamiento indeterminado si se trata de usar el objeto fuera de la función. La solución correcta es usar un puntero, RESERVANDO MEMORIA QUE ES DINÁMICA PORQUE NOS METEMOS EN RESERVAS DE MÚLTIPLES MEMORIAS.
 
-void inicializar (Estudiante * estudiante_a_rellenar, char * nombre, int edad, float nota){}
+void inicializar (Estudiante * estudiante_a_rellenar, char * nombre, int edad, float nota){
+	estudiante_a_rellenar -> edad = edad;
+	estudiante_a_rellenar -> nota = nota; /*El operador flecha sirve para sustituir '(*estudiante_a_rellenar).nota
+						Para poder acceder al campo edad dentro de Estudiante*/
+	strcpy(estudiante_a_rellenar.nombre, nombre);/*Estudiante_a_rellenar.nombre = nombre no funciona
+						       porque se igualan las direcciones de memoria, no 
+						       el contenido. Para pasar el valor, hacemon un strcpy.*/
+}
 
 int main(){
 	int edad;
