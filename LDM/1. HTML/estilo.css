@@ -1,0 +1,84 @@
+
+ body{
+            background-color: rgb(132, 178, 216); /*El color del fondo del body será de un color determinado*/
+        } 
+        
+        h1{
+            color:blue; /*TODOS LOS TITULOS 'H1' SERÁN DE COLOR AZUL */
+            
+        }
+        
+        .titulo { 
+            color:yellow; /* Los elementos con la clase 'titulo' serán de color amarillo */
+        } 
+       
+        #titulo{
+            color:brown; /*Los elementos con ID 'titulo' serán marrores*/
+        } 
+      
+        /*CONTENEDORES*/
+        #contenedor1{
+            float: left; /*La etiqueta float alinea las cosas, en este caso a la derecha, si no 
+                        queremos esto, usamos display, que por defecto hace que ocupe todo.*/
+            background-color:aquamarine; /*Los elemenrtos de ID 'contenedor1' serán subrayados */
+            width: 200px;
+            height: 100px;
+        } 
+        #contenedor2{
+            display: inline-block ; /*Estará alineado automáticamente como un bloque en línea */
+            background-color:rgb(32, 134, 100); /*Los elemenrtos de ID 'contenedor2' serán subrayados */
+            width: 200px;
+            height: 100px;
+        } 
+        #contenedor3{
+            position: relative;
+            top:80px; /*Mueve la caja en relación el la parte superior de la pantalla
+            left: 10%; /*Position:relative + left: 10% -> hace que la caja se mueva con la pantalla
+                        en este caso, estará alejado 10% en todos los casos .*/
+
+            background-color:rgb(158, 113, 54); /*Los elemenrtos de ID 'contenedor3' serán subrayados */
+            width: 200px;
+            height: 100px;
+        } 
+
+        /*SUBCONTENEDORE*/
+        #subcontenedor1{
+            position: absolute;
+            top: 200px;
+            left: 80%;
+            z-index: 3; /*IGNORA LAS PROPIEDADES DE POSICIÓN DEL BODY. SE SOBREPONE ENCIMA DE OTRAS
+                        COSAS. POR LO QUE HAY QUE DIFINIR SU POSICIÓN CON TOP Y LEFT* -> 
+                        VA SIEMPRE ACOMPAÑAADO DE LA ETIQUETA 'position:absolute'*/
+            background-color:rgb(43, 58, 197); /*Los elemenrtos de ID 'subcontenedor1' serán subrayados */
+            width: 200px;
+            height: 100px;
+        } 
+
+        #subcontenedor2{
+            position: relative; /*SU POSICIÓN ES RELATIVA AL SUBCONTENEDOR1, QUE ES EL QUE ESTA PREVIO A ESTE EN EL CÓDIGO*/
+            top: 100px;
+            left: 80%;
+            background-color:rgb(154, 214, 216); /*Los elemenrtos de ID 'subcontenedor2' serán subrayados */
+            width: 200px;
+            height: 100px;
+        }
+
+        /*  SUBSUBCONTENEDORES*/
+        #CONTENEDOR_PADRE{
+            display: flex; /* Activar diseño flexbox */
+            flex-direction: row; /* Ordenar los elementos en fila 
+                                Otras etiquetas: row-reverse, column y column-reverse*/
+            flex-wrap: wrap; /* Permitir que los elementos pasen a una nueva fila si no hay espacio */
+                            /* nowrap (predeterminado): Todos los elementos se colocan en una sola línea.*/
+                            /*wrap-reverse: Igual que wrap, pero las líneas se colocan en orden inverso.*/
+        }
+        #subsubcontenedor1{
+            background-color:rgb(161, 46, 152);
+            width: 200px;
+            height: 100px;
+        }
+        #subsubcontenedor2{
+            background-color:rgb(62, 81, 189);
+            width: 200px;
+            height: 100px;
+        }

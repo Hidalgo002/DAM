@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* CÓMO FUNCIONAN LOS STRUCT */
 
@@ -24,10 +25,19 @@ void inicializar (Estudiante * estudiante_a_rellenar, char * nombre, int edad, f
 	estudiante_a_rellenar -> edad = edad;
 	estudiante_a_rellenar -> nota = nota; /*El operador flecha sirve para sustituir '(*estudiante_a_rellenar).nota
 						Para poder acceder al campo edad dentro de Estudiante*/
-	strcpy(estudiante_a_rellenar.nombre, nombre);/*Estudiante_a_rellenar.nombre = nombre no funciona
+	strcpy(estudiante_a_rellenar -> nombre, nombre);/*Estudiante_a_rellenar.nombre = nombre no funciona
 						       porque se igualan las direcciones de memoria, no 
 						       el contenido. Para pasar el valor, hacemon un strcpy.*/
 }
+//FUNCIÓN CUMPLEANIOS.
+
+//No necesito que esta variable devuleva nada asi que o. 
+void cumpleanios(Estudiante * cumpleanero){//Tiene que recibir un puntero a estudiante porque 
+				      //va a modifiar a variable que resiba como argumento. 
+				      //Mi función entra al la variable edad y la aumenta
+	cumpleanero->edad++;
+}
+
 
 int main(){
 	int edad;
@@ -69,6 +79,15 @@ int main(){
 						   	un puntero que referencia a Estudiante*/
 	
 
+	//FUNCION DE EDAD. VOID CUMPLEANIOS.
+		
+	printf("Edad antigua de %s: %d\n", listado[0].nombre, listado[0].edad);
+	cumpleanios(&listado[0]); //DIRECCIÓN DE MEMORIA 
+	printf("Edad nueva: %d\n", listado[0].edad);
 
+
+	
+	
+	
 return 0;
 }

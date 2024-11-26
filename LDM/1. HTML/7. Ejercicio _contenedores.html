@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+	<title>Ejercicio de contenedores</title>
+	<style>
+		#caja1{
+			display: inline-block;
+			position: relative;
+			float: left;
+			z-index: 3;
+			width: 30vw;
+			height: 30vh;
+			background-color: blue;
+		}
+		#caja2{
+			display: inline-flex;
+			flex-direction: row-reverse;
+			flex-wrap: wrap;
+			position: relative;
+			float: left;
+			z-index: 2;
+			width: 30vw;
+			height: 30vh;
+			background-color: yellow;
+		}
+		#caja3{
+			display: inline-block;
+			position: relative;
+			float: left;
+			width: 30vw;
+			height: 30vh;
+			background-color: cyan;
+		}
+		#caja4{
+			display: inline-block;
+			position: relative;
+			float: left;
+			width: 30vw;
+			height: 30vh;
+			background-color: magenta;
+		}
+		#cajaa{
+			background-color: pink;
+			width: 30%;
+			height: 30%;
+		}
+		#cajab{
+			background-color: green;
+			width: 30%;
+			height: 30%;
+		}
+
+	</style>
+</head>
+<body>
+<div id="caja1">A</div>
+<div id="caja2">
+	<div id="cajaa">C1</div>
+	<div id="cajab">D1</div>
+	<div id="cajaa">C2</div>
+	<div id="cajab">D2</div>
+	<div id="cajaa">C3</div>
+	<div id="cajab">D3</div>
+	<div id="cajaa">C4</div>
+	<div id="cajab">D4</div>
+</div>
+<div id="caja3">E</div>
+
+
+</body>
+</html>
