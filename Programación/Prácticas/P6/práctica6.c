@@ -24,9 +24,9 @@ typedef struct{
 	int stock;
 } Book;
 //CASE 1
-void imprimirTitulos (const Titulo* titulo_a_imprimir){
-	printf("Lista de todos los títulos: "
-		"\t %s \n.", titulo_a_imprimir->titulo);
+void imprimirLibro (const Libro * libro_a_imprimir){
+	printf("Lista de todos los libros: "
+		"\t %s \n.", libro_a_imprimir->books);
 }
 
 //CASE 2
@@ -81,7 +81,7 @@ int main(){
 //3.
 int eleccion;
 printf("Determine que quiere hacer: \n"
-       "\t 1. Mostrar todos los títulos.\n"
+       "\t 1. Mostrar todos los libros.\n"
        "\t 2. Buscar Libro por ID.\n"
        "\t 3. Modificar el stock de un libro.\n"
        "\t 4. Mostrar los libros según su categoría.\n"
@@ -93,7 +93,7 @@ scanf("%d", &eleccion);
 
 switch (eleccion){
 		case 1:
-
+            imprimirLibro(Libro*catalogo, int tamaño)
 		break;
 
 		case 2:
