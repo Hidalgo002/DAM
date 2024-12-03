@@ -16,7 +16,7 @@ typedef enum{
 } generos;
 
 typedef struct{
-	char id[MAX_ID];
+	int id[MAX_ID];
 	char titulo[MAX_TITULO];
 	char autor[MAX_AUTOR];
 	float precio;
@@ -24,12 +24,25 @@ typedef struct{
 	int stock;
 } Book;
 //CASE 1
-void imprimirLibro (const Libro * libro_a_imprimir){
-	printf("Lista de todos los libros: "
-		"\t %s \n.", libro_a_imprimir->books);
+//Imprime los datos del libro
+void imprimirLibro ( Book * library){
+	printf("Lista de todos los libros: \n ");
+    printf("\t ID: %d. \n", libro_a_imprimir->id); //También se puede poner *(libro_a_imprimir).id
+    printf("\t Título: %s. \n", libro_a_imprimir->titulo);
+    printf("\t Autor: %s. \n", libro_a_imprimir->autor);
+    printf("\t Precio: %f. \n", libro_a_imprimir->precio);
+    printf("\t Género: %d. \n", libro_a_imprimir->genero);
+    printf("\t Stock: %d. \n", libro_a_imprimir->stock);
 }
 
-//CASE 2
+//CASE 2 
+// void printAllBooks(Book * catalog){
+//    for(int i = 0; i<sizeof(catalog); i++){
+//        printfBook (solo un libro);
+//    }
+// }
+
+
 
 
 int main(){
@@ -82,7 +95,7 @@ int main(){
 int eleccion;
 printf("Determine que quiere hacer: \n"
        "\t 1. Mostrar todos los libros.\n"
-       "\t 2. Buscar Libro por ID.\n"
+       "\t 2. Buscar libro por su ID.\n"
        "\t 3. Modificar el stock de un libro.\n"
        "\t 4. Mostrar los libros según su categoría.\n"
        "\t 5. Mostrar los libros según su autor. \n"
@@ -93,7 +106,7 @@ scanf("%d", &eleccion);
 
 switch (eleccion){
 		case 1:
-            imprimirLibro(Libro*catalogo, int tamaño)
+            imprimirLibro (&books);
 		break;
 
 		case 2:
