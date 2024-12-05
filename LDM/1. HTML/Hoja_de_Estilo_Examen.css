@@ -1,0 +1,36 @@
+
+<style>
+    h1{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 28pt;
+        color: blue;
+    }
+    p{
+        font-family: "Century Gothic";
+        font-size: 11pt;
+    }
+    h2{
+        color: white;
+    }
+
+        #caja1AMARILLA{
+            background-color: yellow;
+        }
+
+        #cajaROSAINTER{
+            background-color: pink;
+        }
+        #cajaVERDEINTER{
+            background-color: green;
+        }
+
+        #caja2NARANJA{
+            background-color: orange;
+        }
+        .cajaNaranja{}
+
+        #caja3MORADO{
+            background-color: purple;
+        } 
+
+    </style>
