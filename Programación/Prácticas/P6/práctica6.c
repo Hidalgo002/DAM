@@ -154,7 +154,6 @@ void buscar_Cat(const Book * catalogo, int totalBooks){
 
 }//Fin del VOID
 
-
 int main(){
 
 //2.
