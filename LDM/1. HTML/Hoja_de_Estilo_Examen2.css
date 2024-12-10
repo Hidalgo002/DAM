@@ -1,0 +1,91 @@
+<style>
+    /* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    #cajaROJA {
+        color: white; /* Color del texto */
+        font-family: Helvetica, sans-serif; /* Fuente */
+        font-size: 12px; /* Tamaño de fuente ajustado */
+        position: relative; /* Contenedor relativo para posicionamiento absoluto */
+        width: 100vw; /* Ocupa todo el ancho de la ventana */
+        height: 40vh; /* Altura del 40% de la ventana */
+        background-color: red; /* Fondo rojo */
+    }
+
+    #cajaN {
+        position: absolute; /* Posición absoluta respecto a #cajaROJA */
+        top: 0%; /* Posicionado arriba */
+        left: 0%; /* Posicionado a la izquierda */
+        background-color: orange; /* Fondo naranja */
+        width: 50vw; /* Mitad del ancho de la ventana */
+        height: 20vh; /* Altura del 20% de la ventana */
+    }
+
+    #cajaA {
+        position: absolute; /* Posición absoluta respecto a #cajaROJA */
+        top: 10%; /* Posicionado un 10% desde arriba */
+        left: 10%; /* Posicionado un 10% desde la izquierda */
+        background-color: rgb(0, 4, 255); /* Fondo azul */
+        width: 50vw; /* Mitad del ancho de la ventana */
+        height: 20vh; /* Altura del 20% de la ventana */
+    }
+
+    #cajaROSA {
+        background-color: rgb(233, 28, 188); /* Fondo rosa */
+        width: 100vw; /* Todo el ancho de la ventana */
+        height: 20vh; /* Altura del 20% de la ventana */
+        display: flex; /* Flexbox para organización interna */
+        flex-wrap: wrap; /* Permitir que las cajas se envuelvan */
+        position: relative;
+    }
+
+
+    #caja1 {
+        width: 60%; /* Caja más ancha */
+        background-color: white; /* Fondo blanco */
+        height: 15%; /* Altura relativa */
+        margin: 1%;
+    }
+
+    #caja2 {
+        width: 30%; /* Caja más estrecha */
+        background-color: white; /* Fondo blanco */
+        height: 15%; /* Altura relativa */
+        margin: 1%;
+    }
+
+    #cajaTURQ {
+        font-family: Arial; /* Fuente Arial */
+        position: relative; /* Contenedor relativo */
+        width: 100vw; /* Todo el ancho de la ventana */
+        height: 40vh; /* Altura del 40% de la ventana */
+        background-color: turquoise; /* Fondo turquesa */
+    }
+
+    #cajaAMAR {
+        position: absolute; /* Posición absoluta respecto a #cajaTURQ */
+        background-color: gold; /* Fondo dorado */
+        width: 10%; /* 10% del ancho del contenedor */
+        height: 75%; /* 75% de la altura del contenedor */
+    }
+
+    #cajaVER {
+        position: absolute; /* Posición absoluta respecto a #cajaTURQ */
+        background-color: yellowgreen; /* Fondo verde amarillento */
+        top: 0%; /* Alineado en la parte superior */
+        right: 0%; /* Alineado en el borde derecho */
+        width: 70%; /* 75% del ancho del contenedor */
+        height: 90%; /* 90% de la altura del contenedor */
+        display: flex; 
+        justify-content: flex-end;
+    }
+    table{
+        width: 50%; /* Ancho completo */
+        border-collapse: collapse; /* Elimina los espacios entre bordes de las celdas */
+        border-color: black;
+        
+    }
+</style>
