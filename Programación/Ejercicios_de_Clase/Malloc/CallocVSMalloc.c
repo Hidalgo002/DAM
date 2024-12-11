@@ -32,6 +32,7 @@ int main() {
     }
 
 free(arr);
+free(arr2);
 return 0;
 }
 
