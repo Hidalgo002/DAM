@@ -249,7 +249,7 @@ switch (eleccion){
 }*/
 
 
-//10/12/24
+//10/12/24 LÍNEA DE COMANDOS
 printf("Lista de Argumentos: \n");
 for(int i = 0; i<argc; i++){
     printf("\t Argumento %d: %s\n",i, argv[i]);
@@ -270,6 +270,7 @@ RESUMEN: si ponemos ./practica6.out mostrar 15
     argv[1] -> "mostrar"
     argv[2] -> "15"
 */
+
 
 return 0;
 }
