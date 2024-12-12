@@ -1,16 +1,20 @@
 
 <style>
+    *{
+
+    }
     h1{
         font-family: Arial, Helvetica, sans-serif;
         font-size: 28pt;
         color: blue;
+        
+    }
+    h2{
+        color: white;
     }
     p{
         font-family: "Century Gothic";
         font-size: 11pt;
-    }
-    h2{
-        color: white;
     }
 
         #caja1AMARILLA{
@@ -19,18 +23,38 @@
 
         #cajaROSAINTER{
             background-color: pink;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
         }
+
         #cajaVERDEINTER{
             background-color: green;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto;
+            column-gap: 10px;
+            row-gap: 10px;
         }
 
         #caja2NARANJA{
             background-color: orange;
         }
-        .cajaNaranja{}
+        .cajaNaranja{
+            background-color: orange;
+        }
 
         #caja3MORADO{
             background-color: purple;
         } 
+        .cajaMorada{
+            background-color: purple;
+ 
+        } 
+
+        #cajaMoradaTABLA{
+            background-color: purple;
+            width: 90VW;
+        }
 
     </style>
