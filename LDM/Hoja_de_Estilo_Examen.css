@@ -54,7 +54,8 @@
 
         #cajaMoradaTABLA{
             background-color: purple;
-            width: 90VW;
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
 
     </style>
