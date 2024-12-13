@@ -2,6 +2,9 @@
 #include <stdlib.h>
 
 /*EJERCICIO: Crea un programa que pida por pantalla un número entero y cree un array de enteros de ese tamaño inicializando con número pares*/
+/*6. **Ingresar datos del usuario en memoria dinámica:**
+    
+    Reserva memoria para un arreglo de `int` según un tamaño dado por el usuario, solicita los valores y luego imprímelos.*/
 
 int main(){
 	int n;
