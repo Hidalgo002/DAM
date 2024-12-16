@@ -1,0 +1,276 @@
+/*EJERCICIO 1*/
+#CajaRoja_Ej1 {
+    background-color: red;
+    padding: 20pt;
+    border: 5pt solid black;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Dos columnas de igual tamaño */
+    grid-template-rows: 1fr 1fr; /* Dos filas de igual tamaño */
+    grid-template-areas: 
+        "verde morada"
+        "amarilla amarilla"; /* Caja amarilla ocupa ambas columnas */
+    width: 100vw;
+    height: 70vh;
+    row-gap: 10pt; /* Espacio entre filas */
+    column-gap: 10pt; /* Espacio entre columnas */
+    margin: 10px 10px;;
+}
+
+        .CajaVerde_Ej1 {
+            background-color: greenyellow;
+            grid-area: verde; /* Asignada al área 'verde' */
+            border: 5pt solid black;
+            width: 50vw; /* Se ajusta automáticamente al área */
+            height: 30vh; /* Se ajusta automáticamente al área */
+            justify-self: left;
+        }
+
+        .CajaMorada_Ej1 {
+            background-color: blueviolet;
+            grid-area: morada; /* Asignada al área 'morada' */
+            border: 5pt solid black;
+            width: 30vw; /* Se ajusta automáticamente al área */
+            height: 30vh; /* Se ajusta automáticamente al área */
+            justify-self: right;
+        }
+
+        .CajaAmarilla_Ej1 {
+            background-color: yellow;
+            grid-area: amarilla; /* Asignada al área 'amarilla' */
+            border: 5pt solid black;
+            width: 100%; /* Se ajusta automáticamente al área */
+            height: 30vh; /* Se ajusta automáticamente al área */
+            justify-self: center;
+        }
+
+
+/*EJERCICIO 2*/
+/* Contenedor principal */
+#CajaAmarilla_Ej2 {
+    background-color: rgb(240, 240, 109);
+    border: 3pt solid black;
+    padding: 20pt;
+    margin: 10pt;
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "verde"
+    "naranja";
+    width: 90vw;
+    height: 60vh;
+}
+
+        /* Caja verde */
+        #CajaVerde_Ej2 {
+            background-color: green;
+            border: 3pt solid black;
+            grid-area: verde;
+            width: 90vw;
+            height: 25vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+            /* Caja morada dentro de la verde */
+            .CajaMorada_Ej2 {
+                background-color: purple;
+                border: 3pt solid black;
+                width: 45vw;
+                height: 50vh;
+                flex: 1;
+                margin: 20pt;
+            }
+
+        /*Caja naranja*/ 
+        #CajaNaranja__Ej2 {
+            background-color: rgb(255, 123, 0);
+            border: 3pt solid black;
+            grid-area: naranja;
+            width: 90vw;
+            height: 25vh;
+            display: flex;
+            flex-direction: row;
+        }
+
+             /*Cajas internas de la naranja*/ 
+            .CajaRosa_Ej2 {
+                background-color: rgb(241, 115, 199);
+                border: 3pt solid black;
+                width: 20vw;
+                height: 20vh;
+                flex: 1;
+                margin: 10pt;
+            }
+
+            .CajaVerdeOs_Ej2 {
+                background-color: green;
+                border: 3pt solid black;
+                width: 20vw;
+                height: 20vh;
+                flex: 1;
+                margin: 10pt;
+            }
+
+            .CajaFucsia_Ej2 {
+                background-color: rgb(243, 1, 142);
+                border: 3pt solid black;
+                width: 20vw;
+                height: 18vh;
+                flex: 1;
+                margin: 10pt;
+            }
+            .CajaINV{
+                background-color: rgb(255, 123, 0);
+                flex: 1;
+                width: 20vw;
+                height: 18vh;
+                flex: 1;
+                margin: 10pt;
+            }
+
+/*EJERCICIO 3*/
+#CajaAmarilla_Ej3{
+    background-color: yellow;
+    border: 2pt solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 10pt;
+    padding: 10pt;
+    width: 100vw;
+    height: 100vh;
+    gap: 10pt;
+}
+        .CajaVerde_Ej3{
+            background-color: greenyellow;
+            border: 2pt solid black;
+            position: relative;
+            grid-column: 1/4;
+            grid-row: 1;
+        }
+        .CajaFucsia_Ej3{
+            background-color: fuchsia;
+            border: 2pt solid black;
+            position: relative;
+            grid-column: 4;
+            grid-row: 1;
+        }
+        .CajaVerdeOS_Ej3{
+            background-color: green;
+            border: 2pt solid black;
+            position: relative;
+            grid-column: 1/3;
+            grid-row: 2;
+        }
+        .CajaCeleste_Ej3{
+            background-color: aqua;
+            border: 2pt solid black;
+            position: relative;
+            grid-column: 3/5;
+            grid-row: 2;
+        }
+
+/*EJERCICIO 4*/
+#CajaMorada_Ej4{
+    background-color: rgb(45, 4, 83);
+    border: 5pt solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    width: 100vw;
+    height: 100vh;
+}
+        #CajaRosa_Ej4{
+            background-color: rgb(228, 103, 245);
+            border: 5pt solid black;
+            grid-column: 1/4;
+            grid-row: 1;
+            place-items: center;
+            margin: 10pt;
+        }
+            .CajaCeleste_Ej4{
+                background-color: rgb(0, 68, 255);
+                border: 5pt solid black;
+                width: 90vw;
+                height: 10vh;
+                margin: 10pt;
+
+            }
+            .CajaBlanca_Ej4{
+                background-color: white;
+                border: 5pt solid black;
+                width: 90vw;
+                height: 10vh;
+                margin: 10pt;
+                display: flex;
+                flex-direction: row;
+            }
+                .CajaVerdeOs_Ej4{
+                    background-color: green;
+                    border: 5pt solid black;
+                    width: 90vw;
+                    height: 5vh;
+                    margin: 10pt;
+                    flex: 1;
+                }
+
+        #CajaNaranja__Ej4{
+            background-color: rgb(230, 171, 62);
+            border: 5pt solid black;
+            grid-column: 1;
+            grid-row: 2;
+            margin: 10pt;
+            display: flex;
+            flex-direction: column;
+        }
+            .CajaAmarilla__Ej4{
+                background-color: rgb(238, 238, 86) ;
+                border: 5pt solid black;
+                width: 25vw;
+                height: 10vh;
+                margin: 10pt;
+                flex: 1;
+            }
+
+        #CajaYellowGreen_Ej4{
+            background-color: rgb(183, 226, 96);
+            border: 5pt solid black;
+            grid-column: 2/4;
+            grid-row: 2;
+            margin: 10pt;
+            display: grid;
+            grid-template-columns: 1fr 1fr ;
+            grid-template-rows: 1fr 1fr ;
+            padding: 10pt;
+        }
+            .CajaVerde_Ej4{
+                background-color: greenyellow;
+                border: 5pt solid black;
+                grid-column: 1;
+                grid-row: 1/3 ;
+                margin: 10pt;
+            }
+           .CajaCeleste2A_Ej4{
+                background-color: rgb(0, 204, 255);
+                border: 5pt solid black;
+                grid-column: 2;
+                grid-row: 1;
+                margin: 10pt;
+           }
+           .CajaCeleste2B_Ej4{
+            background-color: rgb(0, 204, 255);
+            border: 5pt solid black;
+            grid-column: 2;
+            grid-row: 2;
+            margin: 10pt;
+       }
+
+        #CajaRoja_Ej4{
+            background-color: rgb(240, 107, 107);
+            border: 5pt solid black;
+            grid-column: 1/4;
+            grid-row: 3;
+            margin: 10pt;
+        }
