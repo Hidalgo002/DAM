@@ -4,6 +4,7 @@
 
 #define MAX_TITULO 80
 #define MAX_AUTOR 50
+#define MAX_DE_LIBROS_PERMITIDOS 100
 
 //1.
 typedef enum{
@@ -24,34 +25,37 @@ typedef struct{
 } Book;
 
 //CASE 1
-//Imprime los datos del libro
+//Void para saber el género:
+void GENERO_LIBRO (const Book * genero_a_imprimir){
+    //Void específico para género. Cost Book proporciona los libros de uno en uno sin permitir modificación alguna. genero_a_imprimir genero a imprimir guarda los datos del libro que el comparado en mi función if else.
+    if(genero_a_imprimir->genero==0) //Accede al campo género del libro apuntado, si es 0, entonces imprimirá FICTION
+        {printf("FICCIÓN");}
+    else if(genero_a_imprimir->genero==1)
+        {printf("NO FICCIÓN");}
+    else if(genero_a_imprimir->genero==2)
+        {printf("POESÍA");}
+    else if(genero_a_imprimir->genero==3)
+        {printf("TEATRO");}
+    else if(genero_a_imprimir->genero==4)
+        {printf("ENSAYO");}
+}
+//PRINTF PARA LOS DATOS DEL LIBRO:
 void imprimirLibro ( const Book * libro_a_imprimir){
-    printf("\t ID: %d \n", libro_a_imprimir->id); //También se puede poner *(libro_a_imprimir).id
-    printf("\t Título: %s \n", libro_a_imprimir->titulo);
-    printf("\t Autor: %s \n", libro_a_imprimir->autor);
-    printf("\t Precio: %.2f$ \n", libro_a_imprimir->precio);
-    
-    //Para usar el enum, hago un if else en el que según el numero asignado de cada categoria, imprime una cosa u otra. De forma natural solo salen los números porque uso un %d + libro_a_imprimir->genero, con el if else le asigno nombres a esos numeros
-    if(libro_a_imprimir->genero==0)
-        {printf("\t Género: FICCIÓN \n");}
-    else if(libro_a_imprimir->genero==1)
-        {printf("\t Género: NO FICCIÓN \n");}
-    else if(libro_a_imprimir->genero==2)
-        {printf("\t Género: POESÍA \n");}
-    else if(libro_a_imprimir->genero==3)
-        {printf("\t Género: TEATRO \n");}
-    else if(libro_a_imprimir->genero==4)
-        {printf("\t Género: ENSAYO \n");}
-    
-    printf("\t Stock: %d \n", libro_a_imprimir->stock);
+    printf("\t ID: %d \n"
+            "\t Título: %s \n"
+            "\t Autor: %s \n"
+            "\t Precio: %.2f$ \n"
+            "\t Género: %d \n"
+            "\t Stock: %d \n", 
+            libro_a_imprimir->id, libro_a_imprimir->titulo, libro_a_imprimir->autor, libro_a_imprimir->precio, libro_a_imprimir->genero, libro_a_imprimir->stock);
 }
 
-//BUCLE PARA RECORRER EL ARRAY E IMPRIMIR LOS DATOS DE LOS LIBROS-> Llamamos al void de imprimirlibros, nuestro bucle for recorre el array y se imprimen los datos. 
+//BUCLE PARA RECORRER EL ARRAY E IMPRIMIR LOS DATOS DE LOS LIBROS-> Llamamos al void de imprimirlibro, nuestro bucle for recorre el array y se imprimen los datos ya que Book muestra los datos de los libros de forma individual
 void imprimirTodosLosLibros(const Book * catalogo, int totalBooks){
     printf("Lista de todos los libros:\n");
     for (int i = 0; i < totalBooks; i++){
         printf("Libro %d: \n ", i+1);
-        imprimirLibro(&catalogo[i]);}
+        imprimirLibro(&catalogo[i]);}//Llama al void de imprimirLibro e imprime los datos
 }
 
 //CASE 2
@@ -76,9 +80,8 @@ void buscarID(const Book * catalogo, int totalBooks){
 void modificar( Book * catalogo, int totalBooks){
     int cantidad_nueva;
     int encontrar_ID;
-
-    printf("Ingrese el ID del libro a reabastecer: ");
-    scanf(" %d", &encontrar_ID); //Buscamos el ID
+        printf("Ingrese el ID del libro a reabastecer: ");
+        scanf(" %d", &encontrar_ID); //Buscamos el ID
 
         if(encontrar_ID < 0 || encontrar_ID>40){
             printf("ERROR.\n");}
@@ -103,61 +106,34 @@ void modificar( Book * catalogo, int totalBooks){
     }//Final de Else
 }//Final del Void
 
-
 //CASE 4. buscar_Cat(books, totalBooks);
 void buscar_Cat(const Book * catalogo, int totalBooks){
     char respuesta[20]; //Respuesta del usuario para buscar categoría
-    int buscador_de_cat;
-    printf("Introduzca la categoría (FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO, ENSAYO): ");
-    scanf(" %s", respuesta);
-
-//El siguiente bloque compara la respuesta con las categorías, dependiendo del resultado, se mete en un género u otro. Si está fuera de los parámetros de género (==!0), entonces nos saca. Si está dentro, entraremos en un bucle que solo imprimirá por pantalla los libros que pertenezcan a esa categoría.
+    printf("Introduzca la categoría (FICTION, NON_FICTION, POETRY, THEATER, ESSAY): ");
+    scanf(" %s", respuesta); 
     printf("Categoría %s:\n", respuesta); 
 
-    if (strcmp(respuesta, "FICCIÓN") == 0){ //==0 -> Es verdadero o igual respuesta y mi valor
-        buscador_de_cat = FICTION; //Si la respuesta metida en el terminal por el usuario coincide, en la variable buscador_de_cat se guarda FICTION, después, en el bucle se imprime solo aquellos resultados que coincidan con FICTION.
-            for (int i = 0; i < totalBooks; i++){
-                if (catalogo[i].genero == buscador_de_cat){
-                        printf("Libro: %d \n", i+1); //Posición del libro el el array.
-                        imprimirLibro(&catalogo[i]);}}} //Impresión de datos
+    if (  (respuesta, "FICTION") == 0 || 
+    strcmp(respuesta, "NON_FICTION") == 0 || 
+    strcmp(respuesta, "POETRY") == 0 || 
+    strcmp(respuesta, "THEATER") == 0 || 
+    strcmp(respuesta, "ESSAY") == 0 &&) { 
+    // Respuesta válida, recorrer catálogo
+    for (int i = 0; i < totalBooks; i++){
+            if (catalogo[i].genero == respuesta) 
+            printf("Libro: %d \n", i + 1); // Posición del libro en el array
+            imprimirLibro(&catalogo[i]);  // Impresión de datos
+    }
+} else {
+    printf("No existe esa categoría.\n");
+}
 
-    else if(strcmp(respuesta, "NO_FICCIÓN") == 0){
-        buscador_de_cat = NON_FICTION;
-            for (int i = 0; i < totalBooks; i++){
-                if (catalogo[i].genero == buscador_de_cat){
-                        printf("Libro: %d \n", i+1);
-                        imprimirLibro(&catalogo[i]);}}}
 
-    else if(strcmp(respuesta, "POESÍA") == 0){
-        buscador_de_cat = POETRY;
-            for (int i = 0; i < totalBooks; i++){
-                if (catalogo[i].genero == buscador_de_cat){
-                        printf("Libro: %d \n", i+1);
-                        imprimirLibro(&catalogo[i]);}}}
-
-    else if(strcmp(respuesta, "TEATRO") == 0){
-        buscador_de_cat = THEATER;
-            for (int i = 0; i < totalBooks; i++){
-                if (catalogo[i].genero == buscador_de_cat){
-                        printf("Libro: %d \n", i+1);
-                        imprimirLibro(&catalogo[i]);}}}
-
-    else if(strcmp(respuesta, "ENSAYO") == 0){
-        buscador_de_cat = ESSAY;
-            for (int i = 0; i < totalBooks; i++){
-                if (catalogo[i].genero == buscador_de_cat){
-                        printf("Libro: %d \n", i+1);
-                        imprimirLibro(&catalogo[i]);}}}
-
-    else if(strcmp(respuesta, "FICCIÓN") || strcmp(respuesta, "NO_FICCIÓN") || strcmp(respuesta, "POESÍA") || strcmp(respuesta, "TEATRO") || strcmp(respuesta, "ENSAYO") != 0){
-        printf("No existe esa categoría.\n");}
-
-}//Fin del VOID
-
+}
 int main(){
 
 //2.
-    Book books[40] = {
+     Book books[40] = {
         {1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10},
         {2, "1984", "George Orwell", 12.49, FICTION, 5},
         {3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8},
@@ -198,7 +174,7 @@ int main(){
         {38, "The Communist Manifesto", "Karl Marx and Friedrich Engels", 5.99, ESSAY, 12},
         {39, "The Republic", "Plato", 16.00, ESSAY, 6},
         {40, "Thus Spoke Zarathustra", "Friedrich Nietzsche", 14.99, ESSAY, 10}
-    }; 
+    };
 
 //3.
 int eleccion;
