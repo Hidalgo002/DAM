@@ -109,27 +109,74 @@ void modificar( Book * catalogo, int totalBooks){
 //CASE 4. buscar_Cat(books, totalBooks);
 void buscar_Cat(const Book * catalogo, int totalBooks){
     char respuesta[20]; //Respuesta del usuario para buscar categoría
-    printf("Introduzca la categoría (FICTION, NON_FICTION, POETRY, THEATER, ESSAY): ");
-    scanf(" %s", respuesta); 
+    int buscador_de_cat;
+    printf("Introduzca la categoría (FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO, ENSAYO): ");
+    scanf(" %s", respuesta);
+
+//El siguiente bloque compara la respuesta con las categorías, dependiendo del resultado, se mete en un género u otro. Si está fuera de los parámetros de género (==!0), entonces nos saca. Si está dentro, entraremos en un bucle que solo imprimirá por pantalla los libros que pertenezcan a esa categoría.
     printf("Categoría %s:\n", respuesta); 
 
-    if (  (respuesta, "FICTION") == 0 || 
-    strcmp(respuesta, "NON_FICTION") == 0 || 
-    strcmp(respuesta, "POETRY") == 0 || 
-    strcmp(respuesta, "THEATER") == 0 || 
-    strcmp(respuesta, "ESSAY") == 0 &&) { 
-    // Respuesta válida, recorrer catálogo
-    for (int i = 0; i < totalBooks; i++){
-            if (catalogo[i].genero == respuesta) 
-            printf("Libro: %d \n", i + 1); // Posición del libro en el array
-            imprimirLibro(&catalogo[i]);  // Impresión de datos
+    if (strcmp(respuesta, "FICCIÓN") == 0){ //==0 -> Es verdadero o igual respuesta y mi valor
+        buscador_de_cat = FICTION; //Si la respuesta metida en el terminal por el usuario coincide, en la variable buscador_de_cat se guarda FICTION, después, en el bucle se imprime solo aquellos resultados que coincidan con FICTION.
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].genero == buscador_de_cat){
+                        printf("Libro: %d \n", i+1); //Posición del libro el el array.
+                        imprimirLibro(&catalogo[i]);}}} //Impresión de datos
+
+    else if(strcmp(respuesta, "NO_FICCIÓN") == 0){
+        buscador_de_cat = NON_FICTION;
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].genero == buscador_de_cat){
+                        printf("Libro: %d \n", i+1);
+                        imprimirLibro(&catalogo[i]);}}}
+
+    else if(strcmp(respuesta, "POESÍA") == 0){
+        buscador_de_cat = POETRY;
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].genero == buscador_de_cat){
+                        printf("Libro: %d \n", i+1);
+                        imprimirLibro(&catalogo[i]);}}}
+
+    else if(strcmp(respuesta, "TEATRO") == 0){
+        buscador_de_cat = THEATER;
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].genero == buscador_de_cat){
+                        printf("Libro: %d \n", i+1);
+                        imprimirLibro(&catalogo[i]);}}}
+
+    else if(strcmp(respuesta, "ENSAYO") == 0){
+        buscador_de_cat = ESSAY;
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].genero == buscador_de_cat){
+                        printf("Libro: %d \n", i+1);
+                        imprimirLibro(&catalogo[i]);}}}
+
+    else if(strcmp(respuesta, "FICCIÓN") || strcmp(respuesta, "NO_FICCIÓN") || strcmp(respuesta, "POESÍA") || strcmp(respuesta, "TEATRO") || strcmp(respuesta, "ENSAYO") != 0){
+        printf("No existe esa categoría.\n");}
+
+}//Fin del VOID
+
+//CASE 5. Bucar libro por autor mostrar_Autor(Book, totalBooks);
+void mostrar_Autor(const Book * catalogo, int totalBooks){
+    char NOMBRE_AUTOR[MAX_AUTOR]; //Respuesta del usuario para buscar el autor
+    
+    printf("Introduzca el nombre del autor: ");
+    fgets(NOMBRE_AUTOR, MAX_AUTOR, stdin);
+    
+    printf("Libros de autor '%s':\n", NOMBRE_AUTOR);
+    int encontrado = 0;
+    for (int i = 0; i < totalBooks; i++) {
+        if (strcmp(catalogo[i].autor, NOMBRE_AUTOR) == 0) {  // Comparamos el autor con el ingresado
+            printf("Libro encontrado: %s\n", catalogo[i].titulo);
+            encontrado = 1;
+        }
     }
-} else {
-    printf("No existe esa categoría.\n");
+    
+    if (!encontrado) {
+        printf("No se encontraron libros del autor '%s'.\n", NOMBRE_AUTOR);
+    }
 }
 
-
-}
 int main(){
 
 //2.
@@ -207,8 +254,8 @@ switch (eleccion){
             buscar_Cat(books, totalBooks);
         break;
             
-		case 5://Mostrar los libros del autor dado como argumento.
-		  //mostrar_Autor(books, totalBooks);
+		case 5:
+            mostrar_Autor(books, totalBooks);
         break;
 
 		case 6:
