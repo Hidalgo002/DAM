@@ -111,7 +111,7 @@
     }//Final del Void
 
 //CASE 4 -> buscar_Cat(books, totalBooks);
-    void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta, int buscador_de_cat){
+    void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta[20], int buscador_de_cat){
 
     //El siguiente bloque compara la respuesta con las categorías, dependiendo del resultado, se mete en un género u otro. Si está fuera de los parámetros de género (==!0), entonces nos saca. Si está dentro, entraremos en un bucle que solo imprimirá por pantalla los libros que pertenezcan a esa categoría.
         printf("Categoría %s:\n", respuesta); 
