@@ -265,8 +265,6 @@ int main(int argc, char*argv[]){
     			printf("ERROR\n");
     }
 
-    free (catalogo); //Liberamos el espacio que reservamos para Book * catalogo = (Book*) malloc(40*sizeof(Book)) -> Siendo catalogo el puntero central de la biblioteca.
-
     }//Cerramos el primer if (argc==1)
 
 //SEGUNDO CASO: DOS ARGUMENTOS -> ./practica6.2.0.out motrar y ./practica6.2.0.out añadir
@@ -279,7 +277,24 @@ int main(int argc, char*argv[]){
 
         }
     }
-    
+
+//TERCER CASO: TRES ARGUMENTOS -> ./practica6.2.0.out mostrar [ID] y ./practica6.2.0.out categoria [Category]
+    else if (argc==3){
+        if(strcmp(argv[1], "mostrar")==0){
+            int id = atoi(argv[2]); //Usamos el atoi porque el terminal no interpreta números como tal, todo son cadenas de caracteres por lo que el ATOI nos permite transformar esa tercera cadena en un número que asignamos a nuestra variable 'int id'. Despés la comparamos.
+                if (id > 0 && id<totalBooks) {
+                    buscarID(catalogo, totalBooks, id);
+                }
+                else{printf("Por favor, introduzca un ID válido.\n");}
+        }
+       /* else if(strcmp(argv[1], "categoria")==0){
+            char[20] respuesta2 = argv[2];
+            buscador_de_cat2 = respuesta2
+            buscar_Cat(catalogo, totalBooks, respuesta2, buscador_de_cat2);
+        }*/
+    }
+
+//CUARTO CASO: CUATRO ARGUMENTOS ->     
 //DEFAULT-> En el terminal se escribió ./practica6.2.0.out + una caracter cualquiera.
     else{
         printf("Uso de la línea de comandos: \n" 
@@ -288,11 +303,11 @@ int main(int argc, char*argv[]){
                 "\t Para aumentar el stock de un libro en concreto: './practica6.2.0.out stock [ID] [Cantidad]'\n"
                 "\t Para mostrar todos los libros de una categoría: './practica6.2.0.out categoria [Categoria]' \n"
                 "\t Para mostrar todos los libros de un autor en concreto: './practica6.2.0.out autor [nombre]'\n"
-                "\t Para añadir un libro nuevo: './practica6.2.0.out añadir'\n"
-                
-                );
+                "\t Para añadir un libro nuevo: './practica6.2.0.out añadir'\n");
     }
 
+
+free (catalogo); //Liberamos el espacio que reservamos para Book * catalogo = (Book*) malloc(40*sizeof(Book)) -> Siendo catalogo el puntero central de la biblioteca. Como la biblioteca está fuera de los casos, lo he colocado aquí.
 
 return 0;
 }
