@@ -86,33 +86,32 @@
     }//Final del Void
 
 //CASE 3 -> modificar(catalogo, totalBooks);
-    void modificar( Book * catalogo, int totalBooks, int cantidad_nueva, int encontrar_ID){
-            if(encontrar_ID < 0 || encontrar_ID>40){
-                printf("ERROR.\n");}
-            else{
+    void modificar( Book * catalogo, int totalBooks, int encontrar_ID, int cantidad_nueva){
+            if(encontrar_ID < 0 || encontrar_ID>totalBooks){
+                printf("ERROR: ID no escontrada.\n");
+                return;}//Si no encuentra la ID, sale de la función.
+
                 //La primera parte del bucle nos busca el libro.
                 for (int i = 0; i < totalBooks; i++){
-                    if (catalogo[i].id == encontrar_ID){//Bucle que recorre el catálogo en el ID,
-                        printf("Libro encontrado con el ID %d:\n", encontrar_ID);
-                        imprimirLibro(&catalogo[i]);
-                
+                    i++;
+                    catalogo[i].id = encontrar_ID;
+                    printf("Libro encontrado con el ID %d:\n", encontrar_ID);
+                    imprimirLibro(&catalogo[i]);
+                }
+
                 //La segunda parte del bucle almacena la cantidad nueva e imprime por pantalla los datos de nuevo con la alteración de la cantidad nueva        
-                printf("Cantidad a añadir: ");
-                    scanf(" %d", &cantidad_nueva);
-                    if (cantidad_nueva<0){
+                    if(cantidad_nueva<0){
                         printf("La cantidad ha de ser positiva. \n");
                     }else{
                     catalogo[i].stock = (cantidad_nueva + catalogo[i].stock);
+                    rintf("\n \t Libro + Stock: %d\n", encontrar_ID);
                     imprimirLibro(&catalogo[i]);}
-                    break;
-                } //Final de if
-            } //Final de For
-        }//Final de Else
+
     }//Final del Void
 
 //CASE 4 -> buscar_Cat(books, totalBooks);
-    void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta[20], int buscador_de_cat){
-
+    void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta[20]){
+            int buscador_de_cat;
     //El siguiente bloque compara la respuesta con las categorías, dependiendo del resultado, se mete en un género u otro. Si está fuera de los parámetros de género (==!0), entonces nos saca. Si está dentro, entraremos en un bucle que solo imprimirá por pantalla los libros que pertenezcan a esa categoría.
         printf("Categoría %s:\n", respuesta); 
 
@@ -137,6 +136,11 @@
     }//Fin del VOID
 
 //CASE 5 -> mostrar_Autor(books, totalBooks);
+    for (int i = 0; i < catalogo[MAX_DE_LIBROS_PERMITIDOS].autor; i++){
+        catalogo[i].autor =
+        i++
+        strcmp(autor[i].autor+j, autor a encontrar )//compara todo
+        strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)
 
 
 /***************************************************************************/
@@ -156,8 +160,8 @@ int main(int argc, char*argv[]){
 
 //MIS LIBROS:
      Book * catalogo = (Book*) malloc(40*sizeof(Book)); //Los libros se almacenen en inicializar libro, que tiene una estructura para soportarlos. 
-     //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, que quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO...
-     //RESULTADO DE ESTA OPERACIÓN-> catalogo apunta a un bloque de memoria que puede contener 40 elementos de tipo Book.
+     //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO...
+     //RESULTADO DE ESTA OPERACIÓN-> BOOK apunta a un bloque de memoria (catálogo) que puede contener 40 elementos de tipo Book.
 
     int totalBooks = MAX_DE_LIBROS_PERMITIDOS; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
@@ -241,16 +245,17 @@ int main(int argc, char*argv[]){
                 printf("Ingrese el ID del libro a reabastecer: ");
                 scanf(" %d", &encontrar_ID); //Buscamos el ID
 
+                printf("Cantidad a añadir: ");
+                scanf(" %d", &cantidad_nueva);
                 modificar(catalogo, totalBooks, cantidad_nueva, encontrar_ID);
     		break;
 
     		case 4://Mostrar todos los libros de la categoría dada como argumento.
                 char respuesta[20]; //Respuesta del usuario para buscar categoría
-                int buscador_de_cat;
                 printf("Introduzca la categoría (FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO, ENSAYO): ");
                 scanf(" %s", respuesta);
 
-                buscar_Cat(catalogo, totalBooks, respuesta, buscador_de_cat);
+                buscar_Cat(catalogo, totalBooks, respuesta);
             break;
                 
     		case 5:
@@ -287,14 +292,22 @@ int main(int argc, char*argv[]){
                 }
                 else{printf("Por favor, introduzca un ID válido.\n");}
         }
-       /* else if(strcmp(argv[1], "categoria")==0){
-            char[20] respuesta2 = argv[2];
-            buscador_de_cat2 = respuesta2
-            buscar_Cat(catalogo, totalBooks, respuesta2, buscador_de_cat2);
-        }*/
+       else if(strcmp(argv[1], "categoria")==0){
+            char respuesta[20]; 
+            strcpy (respuesta, argv[2]); //Copiamos lo que se ha escrito en el terminal y lo guardamos en respuesta2.
+            buscar_Cat(catalogo, totalBooks, respuesta);
+        }
     }
 
-//CUARTO CASO: CUATRO ARGUMENTOS ->     
+//CUARTO CASO: CUATRO ARGUMENTOS -> ./practica6.2.0.out stock [ID] [quant]
+    else if (argc==4){
+        if(strcmp(argv[1], "stock")==0){
+            int encontrar_ID = atoi(argv[2]);
+            int cantidad_nueva = atoi(argv[3]);
+            modificar(catalogo, totalBooks, cantidad_nueva, encontrar_ID);
+        }
+    }
+
 //DEFAULT-> En el terminal se escribió ./practica6.2.0.out + una caracter cualquiera.
     else{
         printf("Uso de la línea de comandos: \n" 
