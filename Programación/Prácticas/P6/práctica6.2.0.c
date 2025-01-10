@@ -70,7 +70,24 @@
             imprimirLibro(&catalogo[i]);}//Llama al void de imprimirLibro e imprime los datos
     }
 
-//CASE 2 -> buscarID(catalogo, totalBooks);
+//CASE 2-> añadirLibro (catalogo, totalBooks);
+    void anadirLibro( Book ** catalogo, int *totalBooks, int id, char * titulo, char * autor, float precio, generos genero, int stock){
+
+         Book * catalogo2 = (Book*) realloc(*catalogo, (*totalBooks+1)*sizeof(Book));
+
+         if (catalogo2 == NULL){
+            printf("ERROR: no se pudo re-dimensionar. \n");
+            return 1;
+         }
+
+         *catalogo = catalogo2;
+
+         inicializarLibro(&(*catalogo), [*totalBooks], id, titulo, autor, precio, genero, stock);
+         (*totalBooks)++;
+         return 0;
+    }
+
+//CASE 3 -> buscarID(catalogo, totalBooks);
     void buscarID(const Book * catalogo, int totalBooks, int case2){
         if(case2 < 0 || case2>=totalBooks){
             printf("ERROR.\n");}
@@ -85,31 +102,29 @@
         }//Final del else 
     }//Final del Void
 
-//CASE 3 -> modificar(catalogo, totalBooks);
+//CASE 4 -> modificar(catalogo, totalBooks);
     void modificar( Book * catalogo, int totalBooks, int encontrar_ID, int cantidad_nueva){
-            if(encontrar_ID < 0 || encontrar_ID>totalBooks){
-                printf("ERROR: ID no escontrada.\n");
-                return;}//Si no encuentra la ID, sale de la función.
-
-                //La primera parte del bucle nos busca el libro.
-                for (int i = 0; i < totalBooks; i++){
-                    i++;
-                    catalogo[i].id = encontrar_ID;
+         if(encontrar_ID < 0 || encontrar_ID>40){
+            printf("ERROR.\n");}
+        else{
+            for (int i = 0; i < totalBooks; i++){
+                if (catalogo[i].id == encontrar_ID){//Bucle que recorre el catálogo en el ID,
                     printf("Libro encontrado con el ID %d:\n", encontrar_ID);
                     imprimirLibro(&catalogo[i]);
-                }
+                    
+                if (cantidad_nueva<0){
+                    printf("La cantidad ha de ser positiva para poder modificar el stock. \n");
+                }else{
+                catalogo[i].stock = (cantidad_nueva + catalogo[i].stock);
+                printf("Libro + Stock: \n");
+                imprimirLibro(&catalogo[i]);}
+                break;
+            }
+        } //Final de For
+    }//Final de Else
+}//Final del Void
 
-                //La segunda parte del bucle almacena la cantidad nueva e imprime por pantalla los datos de nuevo con la alteración de la cantidad nueva        
-                    if(cantidad_nueva<0){
-                        printf("La cantidad ha de ser positiva. \n");
-                    }else{
-                    catalogo[i].stock = (cantidad_nueva + catalogo[i].stock);
-                    rintf("\n \t Libro + Stock: %d\n", encontrar_ID);
-                    imprimirLibro(&catalogo[i]);}
-
-    }//Final del Void
-
-//CASE 4 -> buscar_Cat(books, totalBooks);
+//CASE 5 -> buscar_Cat(books, totalBooks);
     void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta[20]){
             int buscador_de_cat;
     //El siguiente bloque compara la respuesta con las categorías, dependiendo del resultado, se mete en un género u otro. Si está fuera de los parámetros de género (==!0), entonces nos saca. Si está dentro, entraremos en un bucle que solo imprimirá por pantalla los libros que pertenezcan a esa categoría.
@@ -135,12 +150,12 @@
 
     }//Fin del VOID
 
-//CASE 5 -> mostrar_Autor(books, totalBooks);
-    for (int i = 0; i < catalogo[MAX_DE_LIBROS_PERMITIDOS].autor; i++){
+//CASE 6 -> mostrar_Autor(books, totalBooks);
+    /*for (int i = 0; i < catalogo[MAX_DE_LIBROS_PERMITIDOS].autor; i++){
         catalogo[i].autor =
         i++
         strcmp(autor[i].autor+j, autor a encontrar )//compara todo
-        strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)
+        strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)*/
 
 
 /***************************************************************************/
@@ -163,7 +178,7 @@ int main(int argc, char*argv[]){
      //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO...
      //RESULTADO DE ESTA OPERACIÓN-> BOOK apunta a un bloque de memoria (catálogo) que puede contener 40 elementos de tipo Book.
 
-    int totalBooks = MAX_DE_LIBROS_PERMITIDOS; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
+    int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
         inicializarLibro(&catalogo[1], 2, "1984", "George Orwell", 12.49, FICTION, 5);
         inicializarLibro(&catalogo[2], 3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8);
@@ -213,62 +228,13 @@ int main(int argc, char*argv[]){
 
 //PRIMER CASO: El programa tal cual. UN ARGUMENTO-> ./practica6.2.0.out
     if (argc==1){
-
-    //PANEL DE ELECCIÓN
-        int eleccion;
-            printf("Determine que quiere hacer: \n"
-                   "\t 1. Mostrar todos los libros.\n"
-                   "\t 2. Buscar libro por su ID.\n"
-                   "\t 3. Modificar el stock de un libro.\n"
-                   "\t 4. Mostrar los libros según su categoría.\n"
-                   "\t 5. Mostrar los libros según su autor. \n"
-                   "\t 6. Salir del prgrama. \n"
-                   "Opción: ");
-            scanf("%d", &eleccion);
-
-        switch (eleccion){
-    		case 1: //Mostrar todos los libros.
-                imprimirTodosLosLibros (catalogo, totalBooks);
-    		break;
-
-    		case 2: //Mostrar el libro que coincida con el ID o un mensaje de error.
-                int case2;
-                printf("Introduzca el ID del libro: ");
-                scanf("%d", &case2);
-
-                buscarID(catalogo, totalBooks, case2);
-    		break;
-
-    		case 3://Aumentar el stock del libro ID en la cantidad dada como argumento e imprimir la información pertinente.
-                int cantidad_nueva;
-                int encontrar_ID;
-                printf("Ingrese el ID del libro a reabastecer: ");
-                scanf(" %d", &encontrar_ID); //Buscamos el ID
-
-                printf("Cantidad a añadir: ");
-                scanf(" %d", &cantidad_nueva);
-                modificar(catalogo, totalBooks, cantidad_nueva, encontrar_ID);
-    		break;
-
-    		case 4://Mostrar todos los libros de la categoría dada como argumento.
-                char respuesta[20]; //Respuesta del usuario para buscar categoría
-                printf("Introduzca la categoría (FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO, ENSAYO): ");
-                scanf(" %s", respuesta);
-
-                buscar_Cat(catalogo, totalBooks, respuesta);
-            break;
-                
-    		case 5:
-                //mostrar_Autor(books, totalBooks);
-            break;
-
-    		case 6:
-    			printf("Saliendo del programa.\n");
-    		break;
-
-    		default:
-    			printf("ERROR\n");
-    }
+        printf("Uso de la línea de comandos: \n" 
+                "\t Para mostrar toda la biblioteca: './practica6.2.0.out mostrar'.\n"
+                "\t Para buscar un libro mediante su ID: './practica6.2.0.out mostrar [ID]'.\n"
+                "\t Para aumentar el stock de un libro en concreto: './practica6.2.0.out stock [ID] [Cantidad]'\n"
+                "\t Para mostrar todos los libros de una categoría: './practica6.2.0.out categoria [Categoria]' \n"
+                "\t Para mostrar todos los libros de un autor en concreto: './practica6.2.0.out autor [nombre]'\n"
+                "\t Para añadir un libro nuevo: './practica6.2.0.out añadir'\n");
 
     }//Cerramos el primer if (argc==1)
 
@@ -276,10 +242,6 @@ int main(int argc, char*argv[]){
     else if (argc==2){
         if(strcmp(argv[1], "mostrar")==0){
             imprimirTodosLosLibros (catalogo, totalBooks);
-        }
-        else if(strcmp(argv[1], "añadir")==0){
-            printf("Función no implementada.");
-
         }
     }
 
@@ -304,19 +266,14 @@ int main(int argc, char*argv[]){
         if(strcmp(argv[1], "stock")==0){
             int encontrar_ID = atoi(argv[2]);
             int cantidad_nueva = atoi(argv[3]);
-            modificar(catalogo, totalBooks, cantidad_nueva, encontrar_ID);
+            modificar(catalogo, totalBooks, encontrar_ID, cantidad_nueva);
         }
     }
 
+//QUINTO CASO: SIETE ARGUMENTOS-> ./practica6.2.0.out añadir [ID][NOMBRE][AUTOR][PRECIO][GENERO][STOCK]
 //DEFAULT-> En el terminal se escribió ./practica6.2.0.out + una caracter cualquiera.
     else{
-        printf("Uso de la línea de comandos: \n" 
-                "\t Para mostrar toda la biblioteca: './practica6.2.0.out mostrar'.\n"
-                "\t Para buscar un libro mediante su ID: './practica6.2.0.out mostrar [ID]'.\n"
-                "\t Para aumentar el stock de un libro en concreto: './practica6.2.0.out stock [ID] [Cantidad]'\n"
-                "\t Para mostrar todos los libros de una categoría: './practica6.2.0.out categoria [Categoria]' \n"
-                "\t Para mostrar todos los libros de un autor en concreto: './practica6.2.0.out autor [nombre]'\n"
-                "\t Para añadir un libro nuevo: './practica6.2.0.out añadir'\n");
+      printf("ERROR.\n");  
     }
 
 
