@@ -156,7 +156,8 @@
         i++
         strcmp(autor[i].autor+j, autor a encontrar )//compara todo
         strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)*/
-
+//CASE 7-> Añadir libro
+    // Book * catalogo_N = (Book*) malloc(40*sizeof(Book));
 
 /***************************************************************************/
 /******************************* EL MAIN ***********************************/
