@@ -71,21 +71,43 @@
     }
 
 //CASE 2-> añadirLibro (catalogo, totalBooks);
-    void anadirLibro( Book ** catalogo, int *totalBooks, int id, char * titulo, char * autor, float precio, generos genero, int stock){
+    Book * anadirLibro(Book * catalogo2, const int newBook){
+        int id;
+        char titulo[MAX_TITULO];
+        char autor[MAX_AUTOR];
+        float precio;
+        generos genero;
+        int stock;
+	
+	Book * Library = (Book *)realloc(catalogo2, (totalBooks + newBook) * sizeof(Book));
+	
+	for(int i = totalBooks; i < totalBooks + newBook; i++){
+		printf("Rellene los datos del nuevo libro: \n");
+        printf("\t ID: \n");
+		scanf("%d", &id);
+		printf("\t TÍTULO: \n");
+		scanf("%s", titulo);
+		printf("\t AUTOR: \n");
+		scanf("%s", autor);
+		printf("\t PRECIO: \n");
+		scanf("%f", &precio);
+		printf("\t GENERO: \n");
+		scanf("%u", &genero);
+		printf("\t CANTIDAD: \n");
+		scanf("%d", &stock);
+		
+		InicializarLibro(&Library[i], id, titulo, autor, precio, genero, stock);
+		
+		printf("Has añadido el siguiente libro:\n");
+		ImprimirLibro(&Library[i++]);
 
-         Book * catalogo2 = (Book*) realloc(*catalogo, (*totalBooks+1)*sizeof(Book));
+	}
 
-         if (catalogo2 == NULL){
-            printf("ERROR: no se pudo re-dimensionar. \n");
-            return 1;
-         }
+	totalBooks += newBook;	
 
-         *catalogo = catalogo2;
+	return &Library[0];
+}
 
-         inicializarLibro(&(*catalogo), [*totalBooks], id, titulo, autor, precio, genero, stock);
-         (*totalBooks)++;
-         return 0;
-    }
 
 //CASE 3 -> buscarID(catalogo, totalBooks);
     void buscarID(const Book * catalogo, int totalBooks, int case2){
@@ -122,7 +144,7 @@
             }
         } //Final de For
     }//Final de Else
-}//Final del Void
+    }//Final del Void
 
 //CASE 5 -> buscar_Cat(books, totalBooks);
     void buscar_Cat(const Book * catalogo, int totalBooks, char respuesta[20]){
@@ -156,8 +178,6 @@
         i++
         strcmp(autor[i].autor+j, autor a encontrar )//compara todo
         strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)*/
-//CASE 7-> Añadir libro
-    // Book * catalogo_N = (Book*) malloc(40*sizeof(Book));
 
 /***************************************************************************/
 /******************************* EL MAIN ***********************************/
@@ -244,6 +264,8 @@ int main(int argc, char*argv[]){
         if(strcmp(argv[1], "mostrar")==0){
             imprimirTodosLosLibros (catalogo, totalBooks);
         }
+        else if(strcmp(argv[1],"añadir") == 0){
+			catalogo = anadirLibro(&catalogo[0], 1);
     }
 
 //TERCER CASO: TRES ARGUMENTOS -> ./practica6.2.0.out mostrar [ID] y ./practica6.2.0.out categoria [Category]
