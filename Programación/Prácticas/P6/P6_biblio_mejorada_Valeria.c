@@ -5,6 +5,8 @@
 #define MAX_TITULO 80
 #define MAX_AUTOR 50
 #define MAX_DE_LIBROS_PERMITIDOS 100
+int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
+
 
 //ESTRUCTURA DE DATOS
     typedef enum{
@@ -70,8 +72,8 @@
             imprimirLibro(&catalogo[i]);}//Llama al void de imprimirLibro e imprime los datos
     }
 
-//CASE 2-> añadirLibro (catalogo, totalBooks);
-    Book * anadirLibro(Book * catalogo2, const int newBook){
+//CASE 2-> añadirLibro (catalogo2, newbook);
+    void LIBROS_NUEVOS(Book * catalogo2, const int newBook){
         int id;
         char titulo[MAX_TITULO];
         char autor[MAX_AUTOR];
@@ -80,34 +82,32 @@
         int stock;
 	
 	Book * Library = (Book *)realloc(catalogo2, (totalBooks + newBook) * sizeof(Book));
-	
-	for(int i = totalBooks; i < totalBooks + newBook; i++){
 		printf("Rellene los datos del nuevo libro: \n");
-        printf("\t ID: \n");
+
+        printf("ID: \n");
 		scanf("%d", &id);
-		printf("\t TÍTULO: \n");
+
+
+		printf("TÍTULO: \n");
 		scanf("%s", titulo);
-		printf("\t AUTOR: \n");
+
+		printf("AUTOR: \n");
 		scanf("%s", autor);
-		printf("\t PRECIO: \n");
+
+		printf("PRECIO: \n");
 		scanf("%f", &precio);
-		printf("\t GENERO: \n");
-		scanf("%u", &genero);
-		printf("\t CANTIDAD: \n");
+
+		/*printf("GENERO: \n");
+		scanf("%d", &generos);*/
+
+		printf("CANTIDAD: \n");
 		scanf("%d", &stock);
 		
-		InicializarLibro(&Library[i], id, titulo, autor, precio, genero, stock);
-		
-		printf("Has añadido el siguiente libro:\n");
-		ImprimirLibro(&Library[i++]);
+		printf("Libro nuevo:\n");
+		imprimirLibro;
 
-	}
-
-	totalBooks += newBook;	
-
-	return &Library[0];
-}
-
+	
+ }
 
 //CASE 3 -> buscarID(catalogo, totalBooks);
     void buscarID(const Book * catalogo, int totalBooks, int case2){
@@ -162,8 +162,9 @@
             buscador_de_cat = THEATER;}
         else if(strcmp(respuesta, "ENSAYO") == 0){
             buscador_de_cat = ESSAY;}
-        else if(strcmp(respuesta, "FICCIÓN") || strcmp(respuesta, "NO_FICCIÓN") || strcmp(respuesta, "POESÍA") || strcmp(respuesta, "TEATRO") || strcmp(respuesta, "ENSAYO") != 0){
-            printf("No existe esa categoría.\n");}
+        else {
+            printf("No existe esa categoría.\n");
+        }
         for (int i = 0; i < totalBooks; i++){
                     if (catalogo[i].genero == buscador_de_cat){
                             printf("Libro: %d \n", i+1);
@@ -199,7 +200,6 @@ int main(int argc, char*argv[]){
      //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO...
      //RESULTADO DE ESTA OPERACIÓN-> BOOK apunta a un bloque de memoria (catálogo) que puede contener 40 elementos de tipo Book.
 
-    int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
         inicializarLibro(&catalogo[1], 2, "1984", "George Orwell", 12.49, FICTION, 5);
         inicializarLibro(&catalogo[2], 3, "The Great Gatsby", "F. Scott Fitzgerald", 10.99, FICTION, 8);
@@ -247,28 +247,30 @@ int main(int argc, char*argv[]){
 /***************************************************************************/
 
 
-//PRIMER CASO: El programa tal cual. UN ARGUMENTO-> ./practica6.2.0.out
+//PRIMER CASO: El programa tal cual. UN ARGUMENTO-> ./P6_biblio_mejorada_Valeria.out
     if (argc==1){
         printf("Uso de la línea de comandos: \n" 
-                "\t Para mostrar toda la biblioteca: './practica6.2.0.out mostrar'.\n"
-                "\t Para buscar un libro mediante su ID: './practica6.2.0.out mostrar [ID]'.\n"
-                "\t Para aumentar el stock de un libro en concreto: './practica6.2.0.out stock [ID] [Cantidad]'\n"
-                "\t Para mostrar todos los libros de una categoría: './practica6.2.0.out categoria [Categoria]' \n"
-                "\t Para mostrar todos los libros de un autor en concreto: './practica6.2.0.out autor [nombre]'\n"
-                "\t Para añadir un libro nuevo: './practica6.2.0.out añadir'\n");
+                "\t Para mostrar toda la biblioteca: './P6_biblio_mejorada_Valeria.out mostrar'.\n"
+                "\t Para buscar un libro mediante su ID: './P6_biblio_mejorada_Valeria.out mostrar [ID]'.\n"
+                "\t Para aumentar el stock de un libro en concreto: './P6_biblio_mejorada_Valeria.out stock [ID] [Cantidad]'\n"
+                "\t Para mostrar todos los libros de una categoría: './P6_biblio_mejorada_Valeria.out categoria [Categoria]' \n"
+                "\t Las opciones para categoria son: FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO y ENSAYO.\n"
+                "\t Para mostrar todos los libros de un autor en concreto: './P6_biblio_mejorada_Valeria.out autor [nombre]'\n"
+                "\t Para añadir un libro nuevo: './P6_biblio_mejorada_Valeria.out añadir'\n");
 
     }//Cerramos el primer if (argc==1)
 
-//SEGUNDO CASO: DOS ARGUMENTOS -> ./practica6.2.0.out motrar y ./practica6.2.0.out añadir
+//SEGUNDO CASO: DOS ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out motrar y ./P6_biblio_mejorada_Valeria.out añadir
     else if (argc==2){
         if(strcmp(argv[1], "mostrar")==0){
             imprimirTodosLosLibros (catalogo, totalBooks);
         }
         else if(strcmp(argv[1],"añadir") == 0){
-			catalogo = anadirLibro(&catalogo[0], 1);
+			LIBROS_NUEVOS(catalogo, totalBooks);
     }
+ }
 
-//TERCER CASO: TRES ARGUMENTOS -> ./practica6.2.0.out mostrar [ID] y ./practica6.2.0.out categoria [Category]
+//TERCER CASO: TRES ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out mostrar [ID] y ./P6_biblio_mejorada_Valeria.out categoria [Category]
     else if (argc==3){
         if(strcmp(argv[1], "mostrar")==0){
             int id = atoi(argv[2]); //Usamos el atoi porque el terminal no interpreta números como tal, todo son cadenas de caracteres por lo que el ATOI nos permite transformar esa tercera cadena en un número que asignamos a nuestra variable 'int id'. Despés la comparamos.
@@ -284,7 +286,7 @@ int main(int argc, char*argv[]){
         }
     }
 
-//CUARTO CASO: CUATRO ARGUMENTOS -> ./practica6.2.0.out stock [ID] [quant]
+//CUARTO CASO: CUATRO ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out stock [ID] [quant]
     else if (argc==4){
         if(strcmp(argv[1], "stock")==0){
             int encontrar_ID = atoi(argv[2]);
@@ -293,8 +295,7 @@ int main(int argc, char*argv[]){
         }
     }
 
-//QUINTO CASO: SIETE ARGUMENTOS-> ./practica6.2.0.out añadir [ID][NOMBRE][AUTOR][PRECIO][GENERO][STOCK]
-//DEFAULT-> En el terminal se escribió ./practica6.2.0.out + una caracter cualquiera.
+//DEFAULT-> En el terminal se escribió ./P6_biblio_mejorada_Valeria.out + una caracter cualquiera.
     else{
       printf("ERROR.\n");  
     }
