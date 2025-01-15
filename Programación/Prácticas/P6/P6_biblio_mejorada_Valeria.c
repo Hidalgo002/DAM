@@ -5,8 +5,7 @@
 #define MAX_TITULO 80
 #define MAX_AUTOR 50
 #define MAX_DE_LIBROS_PERMITIDOS 100
-int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simplemente marca que tenemos estos libros de inicio. 
-
+int totalBooks = 40; //Variable global referenciada a lo largo del programa, nuestro array principal ocupaba 40 libros.
 
 //ESTRUCTURA DE DATOS
     typedef enum{
@@ -34,7 +33,8 @@ int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simple
         datos->precio = precio;
         datos->genero = genero;
         datos->stock = stock; 
-        //En nuestra función 'inicializar libro', hemos creado un puntero llamado DATOS, donde generamos espacios para guardar en orden todos nuestros datos. En puntero datos -> espacio de precio, se pueden guardar el precio. Mas adelante, cuando llamamos a la función de forma individual, se guardan los datos de forma ordenada. En el caso de titulo y autor, tenemos que tener en cuenta los parametros de estos datos, son char y por ende necesitan ser guardados de forma especial, esto se hace con strcpy, que copia cadenas tal cual,  la sintaxis es strcpy COPIAR (en nuestro espacio desiganos DATOS->AUTOR , COPIAMOS la cadema almacenada en AUTOR).  
+        //EXPLICACIÓN PUNTEROS:
+        //En nuestra función 'inicializar libro', hemos creado un puntero llamado DATOS, donde generamos espacio para guardar en orden todos nuestros datos. En puntero datos -> espacio de precio, se pueden guardar el precio. Mas adelante, cuando llamamos a la función de forma individual, se guardan los datos de forma ordenada. En el caso de titulo y autor, tenemos que tener en cuenta los parametros de estos datos, son char y por ende necesitan ser guardados de forma especial, esto se hace con strcpy, que copia cadenas tal cual,  la sintaxis es strcpy COPIAR (en nuestro espacio desiganos DATOS->AUTOR , COPIAMOS la cadema almacenada en AUTOR).  
     }
 
 //CASE 1 -> imprimirTodosLosLibros (catalogo, totalBooks);
@@ -72,41 +72,61 @@ int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simple
             imprimirLibro(&catalogo[i]);}//Llama al void de imprimirLibro e imprime los datos
     }
 
-//CASE 2-> añadirLibro (catalogo2, newbook);
-    void LIBROS_NUEVOS(Book * catalogo2, const int newBook){
-        int id;
-        char titulo[MAX_TITULO];
-        char autor[MAX_AUTOR];
-        float precio;
-        generos genero;
-        int stock;
-	
-	Book * Library = (Book *)realloc(catalogo2, (totalBooks + newBook) * sizeof(Book));
-		printf("Rellene los datos del nuevo libro: \n");
+//CASE 2-> añadirLibro (catalogo, totalBooks);
+  void anadirLibro(Book **catalogo, int *totalBooks) {
+    /*Para seguir con lo visto en clase, para poder modificar el catálogo donde tenemos almacenados los libros, no solo basta con tener un puntero que apunte a catálogo, necesitamos un doble puntero. PORQUE NECESITAMOS MODIFICAR CATALOGO A TRAVES DE REFERENCIA.
+    
+    ¿Por qué no sirve utilizar un puntero simple?-> En este programa no solo queremos modificar los datos de catálogo, si no aumentar el espacio que ocupa en la memoria. Por lo que un puntero simple no sirve ya que solo nos permite hacer lo primero. El puntero doble nos permite modificar la dirección de catalogo también. Util para cuando usemos el realloc más adelante.
 
-        printf("ID: \n");
-		scanf("%d", &id);
+    int totalBooks se pasa como puntero para modificar el valor total de totalbooks, que era 40, cuando se ejecuta el programa, se aumenta su valor.*/
+
+    Book nuevoLibro;
+
+    /*Book a nuevoLibro es una variable local de esta función que almacena temporalmente los datos de nuestro nuevo libro. Todos los datos recogidos en el terminal son almacenados en nuevoLibro.[apartado de struct de Book]*/
+
+    printf("Rellene los datos del nuevo libro:\n");
+
+    printf("ID: ");
+    scanf("%d", &nuevoLibro.id);
 
 
-		printf("TÍTULO: \n");
-		scanf("%s", titulo);
+    printf("TÍTULO: ");
+    scanf(" %[^\n]", nuevoLibro.titulo);//[^\n]-> Sirve para leer cadenas con espacios, por ejemplo, aceptará el autor Hermann Hesse
 
-		printf("AUTOR: \n");
-		scanf("%s", autor);
+    printf("AUTOR: ");
+    scanf(" %[^\n]", nuevoLibro.autor);
 
-		printf("PRECIO: \n");
-		scanf("%f", &precio);
+    printf("PRECIO: ");
+    scanf("%f", &nuevoLibro.precio);
 
-		/*printf("GENERO: \n");
-		scanf("%d", &generos);*/
+    printf("GÉNERO (0: FICCIÓN, 1: NO_FICCIÓN, 2: POESÍA, 3: TEATRO, 4: ENSAYO): ");
+    scanf("%d", (int *)&nuevoLibro.genero); //Necesitamos un Cast de tipo Int para guardar el número que nos da el usuario a través del terminal y poder almacenarlo. Más adelante, en la función imprimirLibro se vuelve a transformar en un 
 
-		printf("CANTIDAD: \n");
-		scanf("%d", &stock);
-		
-		printf("Libro nuevo:\n");
-		imprimirLibro;
+    printf("CANTIDAD: ");
+    scanf("%d", &nuevoLibro.stock);
 
-	
+    *catalogo = (Book *)realloc(*catalogo, (*totalBooks + 1) * sizeof(Book));
+    /*Calculamos el espacio de nuestro nuevo Catalogo. 
+    SINTAXIS->
+        - *catalogo: apuntamos al inicio del catálogo actual (40libros). Como catalogo es un doble puntero (Book **catalogo), usamos *catalogo para referirnos a la memoria real que contiene los libros (40). Por lo que al asignarle un realloc, modificamos su tamaño 
+        - (Book*): cast para que el realloc trabaje con datos tipo Book
+        - realloc: reasignamos la memoria al tamaño de lo que está entre paréntesis a continuación
+        -(*catalogo, (*totalBooks + 1) * sizeof(Book))-> pasamos el valor de catálogo, le sumamos el tamaño de totalBooks + 1(el libro nuevo) multiplicado por el tamaño de lo que ocupa un Book 
+    */
+
+    (*catalogo)[*totalBooks] = nuevoLibro;
+    /*SINTAXIS->
+        - (*catalogo) -> Como hemos visto antes, catalogo es un doble puntero (Book**Catalogo) Entoces es REFERNECIA de Book.
+        - [*totalBooks] -> REFERENCIA donde se almacenan los libros
+        - = nuevoLibro -> copia los datos del libro nuevo en su nueva posición 41
+    */
+    (*totalBooks)++;//Añadimos el libro aumentamos la varible de totalBooks
+
+    printf("Libro nuevo agregado:\n");
+    imprimirLibro(&(*catalogo)[*totalBooks - 1]);
+    /*SINTAXIS->
+        -(*catalogo)[*totalBooks - 1]-> Accede al LUGAR, LA DIRECCIÓN donde está almacenado el último libro añadido al catálogo (POR ESO ES IGUAL LA ASIGNACIÓN DE NUEVO LIBRO PERO ESTA VEZ EN LUGAR DE SUMAR, SE RESTA 1). Esto se hace usando el *totalBooks-1, igual que poner 41
+    */
  }
 
 //CASE 3 -> buscarID(catalogo, totalBooks);
@@ -174,11 +194,32 @@ int totalBooks = 40; //Se deja porque lo hemos estado usando hasta ahora. Simple
     }//Fin del VOID
 
 //CASE 6 -> mostrar_Autor(books, totalBooks);
-    /*for (int i = 0; i < catalogo[MAX_DE_LIBROS_PERMITIDOS].autor; i++){
-        catalogo[i].autor =
-        i++
-        strcmp(autor[i].autor+j, autor a encontrar )//compara todo
-        strncmp(str1, str2, nº)//Compara la primera cadena con la segunda y el nº se saca con strlen(auntor a encontar)*/
+    void mostrar_Autor(Book * catalogo, int totalBooks, char * respuesta){
+    for (int i = 0; i <totalBooks; i++, catalogo++) {
+        if (strncmp(catalogo->autor, respuesta , MAX_AUTOR) == 0){
+            printf("LIBRO: \n");
+            imprimirLibro(catalogo);
+        }
+    }
+ }
+     /* SINTAXIS->
+        - Creamos un void llamada mostrar_Autor, en ella, primero colomamos una serie de PARÁMETROS. 
+            -PARAMETRO 1: puntero dirigido al primer elemento del catálogo de Book. Se pasa por REFERENCIA.
+            -PARAMETRO 2: bajamos la variable global de totalBooks
+            -PARAMETRO 3: creamos un puntero tipo cadena de caracteres para almacenar el nombre del autor
+
+        - BUCLE FOR: 
+            -catalogo++: Nos movemos entre los elementos del array. Como catalogo es un puntero a una estructura Book, al incrementarlo, apunta al siguiente libro en memoria.
+
+        -IF:
+            -strncmp(catalogo->autor: catalogo apunta a nuestro array de libros, por lo que con el operador '->' accedemos al apartado de autor.
+            -respuesta: donde se almacena el nombre del autor, con strncmp y ==0, comparamos nuestra el nombre del autor que estamos buscando con todos los autores que tenemos almacenados  
+            -MAX_AUTOR: cerramos que tantos carácteres es capaz de leer el programa.
+
+        -Finalmente, si se encuentra el autor, se imprime el libro, que recapitulando, se imprime con catalogo.
+
+     */
+
 
 /***************************************************************************/
 /******************************* EL MAIN ***********************************/
@@ -197,7 +238,7 @@ int main(int argc, char*argv[]){
 
 //MIS LIBROS:
      Book * catalogo = (Book*) malloc(40*sizeof(Book)); //Los libros se almacenen en inicializar libro, que tiene una estructura para soportarlos. 
-     //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO...
+     //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO... 
      //RESULTADO DE ESTA OPERACIÓN-> BOOK apunta a un bloque de memoria (catálogo) que puede contener 40 elementos de tipo Book.
 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
@@ -249,14 +290,14 @@ int main(int argc, char*argv[]){
 
 //PRIMER CASO: El programa tal cual. UN ARGUMENTO-> ./P6_biblio_mejorada_Valeria.out
     if (argc==1){
-        printf("Uso de la línea de comandos: \n" 
-                "\t Para mostrar toda la biblioteca: './P6_biblio_mejorada_Valeria.out mostrar'.\n"
-                "\t Para buscar un libro mediante su ID: './P6_biblio_mejorada_Valeria.out mostrar [ID]'.\n"
-                "\t Para aumentar el stock de un libro en concreto: './P6_biblio_mejorada_Valeria.out stock [ID] [Cantidad]'\n"
-                "\t Para mostrar todos los libros de una categoría: './P6_biblio_mejorada_Valeria.out categoria [Categoria]' \n"
-                "\t Las opciones para categoria son: FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO y ENSAYO.\n"
-                "\t Para mostrar todos los libros de un autor en concreto: './P6_biblio_mejorada_Valeria.out autor [nombre]'\n"
-                "\t Para añadir un libro nuevo: './P6_biblio_mejorada_Valeria.out añadir'\n");
+        printf("\033[34mUso de la línea de comandos:\033[0m\n");
+            printf("\033[32m\tPara mostrar toda la biblioteca:\033[0m './P6_biblio_mejorada_Valeria.out mostrar'.\n");
+            printf("\033[32m\tPara buscar un libro mediante su ID:\033[0m './P6_biblio_mejorada_Valeria.out mostrar [ID]'.\n");
+            printf("\033[32m\tPara aumentar el stock de un libro en concreto:\033[0m './P6_biblio_mejorada_Valeria.out stock [ID] [Cantidad]'\n");
+            printf("\033[32m\tPara mostrar todos los libros de una categoría:\033[0m './P6_biblio_mejorada_Valeria.out categoria [Categoria]'\n");
+            printf("\033[33m\tLas opciones para categoria son: FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO y ENSAYO.\033[0m\n");
+            printf("\033[32m\tPara mostrar todos los libros de un autor en concreto:\033[0m './P6_biblio_mejorada_Valeria.out autor [nombre]'\n");
+            printf("\033[32m\tPara añadir un libro nuevo:\033[0m './P6_biblio_mejorada_Valeria.out añadir'\n");
 
     }//Cerramos el primer if (argc==1)
 
@@ -266,7 +307,7 @@ int main(int argc, char*argv[]){
             imprimirTodosLosLibros (catalogo, totalBooks);
         }
         else if(strcmp(argv[1],"añadir") == 0){
-			LIBROS_NUEVOS(catalogo, totalBooks);
+			anadirLibro(&catalogo, &totalBooks);// Accedemos/llamamos a la dirección, paso por referencia. Por lo que la función puede modificar las variables originales.
     }
  }
 
@@ -284,6 +325,13 @@ int main(int argc, char*argv[]){
             strcpy (respuesta, argv[2]); //Copiamos lo que se ha escrito en el terminal y lo guardamos en respuesta2.
             buscar_Cat(catalogo, totalBooks, respuesta);
         }
+        else if(strcmp(argv[1], "autor")==0){
+            char respuesta[MAX_AUTOR];
+            strcpy (respuesta, argv[2]);
+            respuesta[MAX_AUTOR-1]='\0';
+            mostrar_Autor(catalogo, totalBooks, respuesta);
+        }
+
     }
 
 //CUARTO CASO: CUATRO ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out stock [ID] [quant]
@@ -295,7 +343,7 @@ int main(int argc, char*argv[]){
         }
     }
 
-//DEFAULT-> En el terminal se escribió ./P6_biblio_mejorada_Valeria.out + una caracter cualquiera.
+//DEFAULT-> En el terminal se escribió ./P6_biblio_mejorada_Valeria.out + un caracter cualquiera.
     else{
       printf("ERROR.\n");  
     }
