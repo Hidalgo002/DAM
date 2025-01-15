@@ -234,11 +234,11 @@ return 0;
 
     printf("ID: ");
     int valor_retorno = scanf("%d", &nuevoLibro.id);
-    if(valor_retorno == 0){
+    /*if(valor_retorno == 0){
         printf("Introduzca un Id válido");
         printf("ID: ");
         scanf("%d", &nuevoLibro.id);
-    }
+    }*/
 
 
     printf("TÍTULO: ");
