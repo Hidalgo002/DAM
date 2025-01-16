@@ -116,8 +116,7 @@ int main(int argc, char*argv[]){
             printf("\033[32m\tPara mostrar todos los libros de un autor en concreto:\033[0m './P6_biblio_mejorada_Valeria.out autor [nombre]'\n");
             printf("\033[32m\tPara añadir un libro nuevo:\033[0m './P6_biblio_mejorada_Valeria.out añadir'\n");
 
-    }//Cerramos el primer if (argc==1)
-
+    }
 //SEGUNDO CASO: DOS ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out motrar y ./P6_biblio_mejorada_Valeria.out añadir
     else if (argc==2){
         if(strcmp(argv[1], "mostrar")==0){
@@ -125,7 +124,8 @@ int main(int argc, char*argv[]){
         }
         else if(strcmp(argv[1],"añadir") == 0){
 			anadirLibro(&catalogo, &totalBooks);// Accedemos/llamamos a la dirección, paso por referencia. Por lo que la función puede modificar las variables originales.
-    }
+        }
+        else{printf("Introduzca un argumento válido.\n");}
  }
 
 //TERCER CASO: TRES ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out mostrar [ID] y ./P6_biblio_mejorada_Valeria.out categoria [Category]
@@ -140,7 +140,10 @@ int main(int argc, char*argv[]){
        else if(strcmp(argv[1], "categoria")==0){
             char respuesta[20]; 
             strcpy (respuesta, argv[2]); //Copiamos lo que se ha escrito en el terminal y lo guardamos en respuesta2.
+                /*if(respuesta!=FICCIÓN ||)
             buscar_Cat(catalogo, totalBooks, respuesta);
+
+                else{printf("Introduzca una categoria válida.\n")}*/
         }
         else if(strcmp(argv[1], "autor")==0){
             char respuesta[MAX_AUTOR];
@@ -148,7 +151,7 @@ int main(int argc, char*argv[]){
             respuesta[MAX_AUTOR-1]='\0';
             mostrar_Autor(catalogo, totalBooks, respuesta);
         }
-
+        else{printf("Introduzca un argumento válido.\n");}
     }
 
 //CUARTO CASO: CUATRO ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out stock [ID] [quant]
@@ -158,6 +161,7 @@ int main(int argc, char*argv[]){
             int cantidad_nueva = atoi(argv[3]);
             modificar(catalogo, totalBooks, encontrar_ID, cantidad_nueva);
         }
+        else{printf("Introduzca un argumento válido.\n");}
     }
 
 //DEFAULT-> En el terminal se escribió ./P6_biblio_mejorada_Valeria.out + un caracter cualquiera.
