@@ -1,0 +1,1 @@
+hardwareSELECT * FROM 6ejercicio.usuario;
