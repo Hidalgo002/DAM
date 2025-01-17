@@ -5,6 +5,7 @@
 #define MAX_TITULO 80
 #define MAX_AUTOR 50
 #define MAX_DE_LIBROS_PERMITIDOS 100
+
 int totalBooks = 40; //Variable global referenciada a lo largo del programa, nuestro array principal ocupaba 40 libros.
 
 //ESTRUCTURA DE DATOS
@@ -60,7 +61,7 @@ int main(int argc, char*argv[]){
      if (catalogo == NULL){
         printf("ERROR CATASTRÓFICO: No se pudo asignar memoria.\n");
         return 0;
-}
+ }
 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
         inicializarLibro(&catalogo[1], 2, "1984", "George Orwell", 12.49, FICTION, 5);
@@ -112,13 +113,13 @@ int main(int argc, char*argv[]){
 //PRIMER CASO: El programa tal cual. UN ARGUMENTO-> ./P6_biblio_mejorada_Valeria.out
     if (argc==1){
         printf("\033[34mUso de la línea de comandos:\033[0m\n");
-            printf("\033[32m\tPara mostrar toda la biblioteca:\033[0m './P6_biblio_mejorada_Valeria.out mostrar'.\n");
-            printf("\033[32m\tPara buscar un libro mediante su ID:\033[0m './P6_biblio_mejorada_Valeria.out mostrar [ID]'.\n");
-            printf("\033[32m\tPara aumentar el stock de un libro en concreto:\033[0m './P6_biblio_mejorada_Valeria.out stock [ID] [Cantidad]'\n");
-            printf("\033[32m\tPara mostrar todos los libros de una categoría:\033[0m './P6_biblio_mejorada_Valeria.out categoria [Categoria]'\n");
+            printf("\033[32m\tPara mostrar toda la biblioteca:\033[0m'%s mostrar'.\n", argv[0]);
+            printf("\033[32m\tPara buscar un libro mediante su ID:\033[0m'%s mostrar [ID]'.\n",argv[0]);
+            printf("\033[32m\tPara aumentar el stock de un libro en concreto:\033[0m '%s stock [ID] [Cantidad]'\n" ,argv[0]);
+            printf("\033[32m\tPara mostrar todos los libros de una categoría:\033[0m '%s categoria [Categoria]'\n" ,argv[0]);
             printf("\033[33m\tLas opciones para categoria son: FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO y ENSAYO.\033[0m\n");
-            printf("\033[32m\tPara mostrar todos los libros de un autor en concreto:\033[0m './P6_biblio_mejorada_Valeria.out autor [nombre]'\n");
-            printf("\033[32m\tPara añadir un libro nuevo:\033[0m './P6_biblio_mejorada_Valeria.out añadir'\n");
+            printf("\033[32m\tPara mostrar todos los libros de un autor en concreto:\033[0m '%s autor [nombre]'\n" ,argv[0]);
+            printf("\033[32m\tPara añadir un libro nuevo:\033[0m '%s añadir'\n" ,argv[0]);
 
     }
 //SEGUNDO CASO: DOS ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out motrar y ./P6_biblio_mejorada_Valeria.out añadir
@@ -129,7 +130,7 @@ int main(int argc, char*argv[]){
         else if(strcmp(argv[1],"añadir") == 0){
 			anadirLibro(&catalogo, &totalBooks);// Accedemos/llamamos a la dirección, paso por referencia. Por lo que la función puede modificar las variables originales.
         }
-        else{printf("Introduzca un argumento válido.\n");}
+        else{printf("Introduzca un argumento válido. \033[32m'%s mostrar'\033[0m para ver todos los libros; y \033[32m'%s añadir'\033[0m para añadir un libro al catálogo. \n", argv[0],argv[0]);}
  }
 
 //TERCER CASO: TRES ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out mostrar [ID] y ./P6_biblio_mejorada_Valeria.out categoria [Category]
@@ -139,15 +140,12 @@ int main(int argc, char*argv[]){
                 if (id > 0 && id<totalBooks) {
                     buscarID(catalogo, totalBooks, id);
                 }
-                else{printf("Por favor, introduzca un ID válido.\n");}
+                else{printf("Debe introducir un ID válido. (Un número entre 1 y %d)\n", totalBooks);}
         }
        else if(strcmp(argv[1], "categoria")==0){
             char respuesta[20]; 
             strcpy (respuesta, argv[2]); //Copiamos lo que se ha escrito en el terminal y lo guardamos en respuesta2.
-                /*if(respuesta!=FICCIÓN ||)
             buscar_Cat(catalogo, totalBooks, respuesta);
-
-                else{printf("Introduzca una categoria válida.\n")}*/
         }
         else if(strcmp(argv[1], "autor")==0){
             char respuesta[MAX_AUTOR];
@@ -155,22 +153,24 @@ int main(int argc, char*argv[]){
             respuesta[MAX_AUTOR-1]='\0';
             mostrar_Autor(catalogo, totalBooks, respuesta);
         }
-        else{printf("Introduzca un argumento válido.\n");}
+        else{printf("Introduzca un argumento válido. ESCRIBA \033[32m'%s'\033[0m PARA MÁS INSTRUCCIONES.\n", argv[0] );}
     }
 
 //CUARTO CASO: CUATRO ARGUMENTOS -> ./P6_biblio_mejorada_Valeria.out stock [ID] [quant]
     else if (argc==4){
+        int encontrar_ID = atoi(argv[2]);
+        int cantidad_nueva = atoi(argv[3]);
         if(strcmp(argv[1], "stock")==0){
-            int encontrar_ID = atoi(argv[2]);
-            int cantidad_nueva = atoi(argv[3]);
-            modificar(catalogo, totalBooks, encontrar_ID, cantidad_nueva);
         }
-        else{printf("Introduzca un argumento válido.\n");}
+        if (encontrar_ID > 0 && encontrar_ID<totalBooks && cantidad_nueva>0 && cantidad_nueva<MAX_DE_LIBROS_PERMITIDOS ){
+                    modificar(catalogo, totalBooks, encontrar_ID, cantidad_nueva);
+                }
+        else{printf("Introduzca un argumento válido. \033[32m'%s stock [Número de ID válido entre 1 y %d][Cantidad expresada en NÚMERO NATURAL. P.EJ->1,2,3...HASTA %d]\033[0m\n",argv[0],  totalBooks, MAX_DE_LIBROS_PERMITIDOS);}
     }
 
 //DEFAULT-> En el terminal se escribió ./P6_biblio_mejorada_Valeria.out + un caracter cualquiera.
     else{
-      printf("ERROR.\n");  
+      printf("ERROR. DEMASIADOS ARGUMENTOS, ESCRIBA \033[32m'%s'\033[0m PARA MÁS INSTRUCCIONES.\n", argv[0] );  
     }
 
 
@@ -240,21 +240,15 @@ return 0;
 
     printf("Rellene los datos del nuevo libro:\n");
 
-    printf("ID: ");
-    int valor_retorno = scanf("%d", &nuevoLibro.id);
-    /*if(valor_retorno == 0){
-        printf("Introduzca un Id válido");
-        printf("ID: ");
-        scanf("%d", &nuevoLibro.id);
-    }*/
-
+    printf("ID: %d.\n", *totalBooks+1);
 
     printf("TÍTULO: ");
     scanf(" %[^\n]", nuevoLibro.titulo);//[^\n]-> Sirve para leer cadenas con espacios, por ejemplo, aceptará el autor Hermann Hesse
 
     printf("AUTOR: ");
     scanf(" %[^\n]", nuevoLibro.autor);
-
+    
+    //FALTA POR ARREGLAR QUE SE INTRODUZCA UN PRECIO, GÉNERO Y CANTIDAD VÁLIDOS
     printf("PRECIO: ");
     scanf("%f", &nuevoLibro.precio);
 
@@ -272,6 +266,8 @@ return 0;
         - realloc: reasignamos la memoria al tamaño de lo que está entre paréntesis a continuación
         -(*catalogo, (*totalBooks + 1) * sizeof(Book))-> pasamos el valor de catálogo, le sumamos el tamaño de totalBooks + 1(el libro nuevo) multiplicado por el tamaño de lo que ocupa un Book 
     */
+    if (catalogo == NULL){
+        printf("ERROR CATASTRÓFICO.\n");}
 
     (*catalogo)[*totalBooks] = nuevoLibro;
     /*SINTAXIS->
@@ -342,7 +338,7 @@ return 0;
         else if(strcmp(respuesta, "ENSAYO") == 0){
             buscador_de_cat = ESSAY;}
         else {
-            printf("No existe esa categoría.\n");
+            printf("No existe esa categoría. LAS CATEGORIAS VÁLIDAS SON:\033[35m FICCIÓN, NO_FICCIÓN, POESÍA, TEATRO y ENSAYO.\033[0m \n");
         }
         for (int i = 0; i < totalBooks; i++){
                     if (catalogo[i].genero == buscador_de_cat){
@@ -354,27 +350,36 @@ return 0;
 
 //CASE 6 -> mostrar_Autor(books, totalBooks);
     void mostrar_Autor(Book * catalogo, int totalBooks, char * respuesta){
-    for (int i = 0; i <totalBooks; i++, catalogo++) {
-        if (strncmp(catalogo->autor, respuesta , MAX_AUTOR) == 0){
-            printf("LIBRO: \n");
-            imprimirLibro(catalogo);
-        }
-    }
+    int i = 0;
+    int verdadero = 0;
+    while (i < totalBooks) {
+        if (strncmp(catalogo[i].autor, respuesta, MAX_AUTOR) == 0) {
+                printf("LIBRO: \n");
+                imprimirLibro(&catalogo[i]);
+                verdadero = 1;
+                }
+                i++;
+                }
+
+        if (verdadero==0) {
+        printf("Ese autor no está disponible dentro de nuestro \33[35m catálogo\33[0m. También, asegurese de introducir los autores entre comillas \"\".\n");}
+    
  }
+
      /* SINTAXIS->
-        - Creamos un void llamada mostrar_Autor, en ella, primero colomamos una serie de PARÁMETROS. 
+        - Creamos un void llamada mostrar_Autor, en ella, primero colocamamos una serie de PARÁMETROS. 
             -PARAMETRO 1: puntero dirigido al primer elemento del catálogo de Book. Se pasa por REFERENCIA.
             -PARAMETRO 2: bajamos la variable global de totalBooks
             -PARAMETRO 3: creamos un puntero tipo cadena de caracteres para almacenar el nombre del autor
-
-        - BUCLE FOR: 
-            -catalogo++: Nos movemos entre los elementos del array. Como catalogo es un puntero a una estructura Book, al incrementarlo, apunta al siguiente libro en memoria.
-
+        
+        -WHILE: recorre nuestro array de hasta mientras i sea menora  totalBooks.
         -IF:
-            -strncmp(catalogo->autor: catalogo apunta a nuestro array de libros, por lo que con el operador '->' accedemos al apartado de autor.
+            -strncmp(catalogo->autor: catalogo apunta a nuestro array de libros, por lo que con el operador '.' accedemos al apartado de autor.
             -respuesta: donde se almacena el nombre del autor, con strncmp y ==0, comparamos nuestra el nombre del autor que estamos buscando con todos los autores que tenemos almacenados  
             -MAX_AUTOR: cerramos que tantos carácteres es capaz de leer el programa.
 
         -Finalmente, si se encuentra el autor, se imprime el libro, que recapitulando, se imprime con catalogo.
+
+        -En nuestro camino 'verdadero', hemos dejado una marca que cambia de valor si es verdad, es decir, hemos encontrado el libro. Sin embargo, si no hemos encontrado el libro, el valor del permanecerá igual, 0, y se imprimirá un mensaje de ayuda.
 
      */
