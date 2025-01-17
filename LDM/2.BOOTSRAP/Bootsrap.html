@@ -1,10 +1,123 @@
 <!DOCTYPE html>
+
 <head>
     <title>EJEMPLO BOOTSTRAP</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"> <!--Para como se va a ver el contenido dentro de la pantalla-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
-<body>
 
+<body>
+    <!-- Colores Básicos
+        bg-primary: Azul (color principal).
+        bg-secondary: Gris oscuro (color secundario).
+        bg-success: Verde (indica éxito).
+        bg-danger: Rojo (indica error).
+        bg-warning: Amarillo (indica advertencia).
+        bg-info: Celeste (indica información).
+        bg-light: Gris claro.
+        bg-dark: Negro.
+        bg-white: Blanco. -->
+
+    <!--PADDING
+    - ARRIBA-> pt-1 (hay niveles de 1 al 5)
+    - ABAJO-> pb-1
+    - ARRIBA Y ABAJO A LA VEZ-> py-1
+    - IZQUIERDA-> pl-1
+    - DERECHA-> pr-1    
+    - IZQUIERDA Y DERECHA A LA VEZ-> px-1 --> 
+
+    <!--MÁRGENES ->
+    - Todos los lados: m-1 (niveles de 0 a 5).
+    - Arriba: mt-1.
+    - Abajo: mb-1.
+    - Izquierda: ml-1.
+    - Derecha: mr-1.
+    - Izquierda y derecha a la vez: mx-1.
+    - Arriba y abajo a la vez: my-1.-->
+
+    <!--BORDES
+    - Sin borde: border-0.
+    -   Borde en todos los lados: border.
+    - Borde solo en un lado:
+        - Arriba: border-top-1
+        - Abajo: border-bottom-1
+        - Izquierda: border-start-1
+        - Derecha: border-end-1
+        
+    - Redondeo de Bordes
+        - Redondeado en general: rounded.
+        - Redondeado en un lado:
+        - Arriba: rounded-top.
+        - Abajo: rounded-bottom.  
+        - Izquierda: rounded-start.
+        - Derecha: rounded-end.
+        - Redondeado total (círculo): rounded-circle.
+    - Sin redondeo: rounded-0.-->
+
+    <div class="container pt-5 bg-primary"> <!--El container es un contenedor que se adapta al ancho de pantalla pero que TIENE MÁRGENES-->
+        Esto es un contenedor con márgenes.
+    </div>
+    <div class="container-fluid pt-5 bg-success"> <!--Es un contenedor que se adatpa al ancho de pantalla, SIN MÁRGENES-->
+        Este es un contenedor sin márgenes.
+    </div>
+    <div class="container py-5 my-5 border border-3 border-black rounded-circle bg-info"> <!--Es un contenedor que se adatpa al ancho de pantalla, SIN MÁRGENES-->
+        Este es un contenedor sin márgenes.
+        <div class="row "> <!--SIEMPRE HAY 12 COLUMNAS, col-n define el número de espacios que ocupa-->
+            <div class="col-md-4 bg-danger">E</div>
+            <div class="col-md-4 bg-warning">S</div>
+            <div class="col-md-4 bg-danger">P</div>
+        </div>
+        <div class="row ">
+            <div class="col-12 col-md-6 bg-white">
+                <p class="h1">Valeria Hidalgo Domínguez</p>
+                <p class="h6">Juan Manuel Grandal</p>
+                <h1 class="display-1">Rubén Díaz Alcalde</h1><!--HAY SEIS NIVELES-->
+            </div>
+            <div class="col-12 col-md-6 bg-danger">
+                <p class="text-start ">Carmelo a la IZQ</p>
+                <p class="text-center ">Carmelo en el CENTRO</p>
+                <p class="text-end ">Carmelo a la DRCH</p>
+                
+            </div>
+            <div class="col-12 col-md-6 bg-danger">
+                <p class="text-lowercase">MINÚSCULAS</p>
+                <p class="text-capitalize">mayúscula</p>
+                <p class="text-decoration-underline">Texto con subrayado.</p>
+                <p class="text-decoration-line-through">Texto tachado.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2 col-md-6 bg-dark"><!--LAS TABLAS-->
+        <table class="table table-striped table-bordered table-hover"> 
+            <!--STRIPED-> SE PINTAN LAS LINEAS-->
+            <!--HOVER-> SE MARCAN LAS FILAS CUANDO PASAS ENCIMA-->
+            <thead class="table-info">
+                <tr> <!--FILA-->
+                <th>ENCABEZADO 1</th>
+                <th>ENCABEZADO 2</th>
+                <th>ENCABEZADO 3</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>A</td> <!--COLUMNA-->
+                    <td>B</td>
+                    <td>C</td>
+                </tr>
+                <tr>
+                    <td>D</td>
+                    <td>E</td>
+                    <td>F</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+     
 </body>
+
 </html>

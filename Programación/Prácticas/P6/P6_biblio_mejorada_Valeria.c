@@ -57,6 +57,10 @@ int main(int argc, char*argv[]){
      Book * catalogo = (Book*) malloc(40*sizeof(Book)); //Los libros se almacenen en inicializar libro, que tiene una estructura para soportarlos. 
      //SINTAXIS-> Creamos un puntero que vaya de Book (NUESTRA ESTRUCTURA DE DATOS) a catálogo, QUE ES EL PUNTERO NUEVO. Catálogo almacena (Book*) es un CASTING, ¿qué quiere decir? pues malloc obligatoriamente es un VOID, pero nosotros estamos trabajando en un puntero BOOK, no un puntero int o char, en un BOOK. Por lo que hacemos un casting que lo que hace es modificar malloc para que todo este trabajando en el mismo modo  + malloc, reserva un espacio de memoria de 40 multiplicado por el sizeof un solo Book, CON TODOS SUS SECCIONES DE ID, PRECIO... 
      //RESULTADO DE ESTA OPERACIÓN-> BOOK apunta a un bloque de memoria (catálogo) que puede contener 40 elementos de tipo Book.
+     if (catalogo == NULL){
+        printf("ERROR CATASTRÓFICO: No se pudo asignar memoria.\n");
+        return 0;
+}
 
         inicializarLibro(&catalogo[0], 1, "To Kill a Mockingbird", "Harper Lee", 15.99, FICTION, 10);
         inicializarLibro(&catalogo[1], 2, "1984", "George Orwell", 12.49, FICTION, 5);
