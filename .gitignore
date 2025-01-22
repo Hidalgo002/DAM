@@ -6,3 +6,6 @@
 
 #vim
 *.swp
+
+#Otros archivos molestos
+*.Identifier
