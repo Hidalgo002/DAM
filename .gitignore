@@ -8,4 +8,4 @@
 *.swp
 
 #Otros archivos molestos
-*.txt:Zone.Identifier
+*.Zone.Identifier
