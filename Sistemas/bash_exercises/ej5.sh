@@ -1,8 +1,5 @@
 #!/bin/bash
 
-for archivo in test5/*
-do
-	if [[ $archivo == *.jpg ]]; then
-		sed "/.jpg$/.old" "$archivo"
-	fi	
+for archivo in test5/*.jpg; do
+    mv "$archivo" "${archivo%.jpg}.old"
 done
