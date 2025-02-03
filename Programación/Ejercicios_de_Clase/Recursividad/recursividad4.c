@@ -5,9 +5,9 @@
 
 void invertirCadena(char *str, int inicio, int fin) {
     if (inicio >= fin) return; // Caso base: nada que intercambiar
-    char temp = str[inicio];
+    char trans = str[inicio];
     str[inicio] = str[fin];
-    str[fin] = temp;
+    str[fin] = trans;
     invertirCadena(str, inicio+1, fin-1);
 }
 
