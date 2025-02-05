@@ -3,32 +3,42 @@
 
 // Función para calcular la sucesión de Fibonacci y guardarla en un array usando punteros
 void fibonacciConPunteros(int n, int *arr) {
-    int a = 0
-    int b = 1
-    int trans;
+    int a = 0;
+    int b = 1;
+    int temp;
 
-    // Guardamos los primeros dos valores, que son 0 y 1. No podemos partir sin ningún valor
-    arr[0] = a;// La primera posición será 0
-    arr[1] = b;// La segunda posición será 1
+    arr[0] = a; // La primera posición será 0
+    arr[1] = b; // La segunda posición será 1
 
-    // Calcular los términos de Fibonacci a partir del tercero
     for (int i = 2; i < n; i++) {
-        trans = a + b;//Se suman los dos valores y se asgina a un valor transicional 
-        a = b; //Actualizamnos el valor de A al valor de B
-        b = trans; // Actualizamos el valor de B al valor transicional
-        arr[i] = b; // Guardamos el resultado en el array a partir de la posisción dos
+        temp = a + b; // Se suman los dos valores y se asigna a un valor tempicional
+        a = b; // Actualizamos el valor de A al valor de B
+        b = temp; // Actualizamos el valor de B al valor tempicional
+        arr[i] = b; // Guardamos el resultado en el array a partir de la posición dos
     }
-    /*Se suma  */
+}
+
+// Función para sumar los valores de un array de Fibonacci
+int sumarFibonacci(int *arr, int n) {
+    int suma = 0;
+    for (int i = 0; i < n; i++) {
+        suma += arr[i];
+    }
+    return suma;
 }
 
 int main() {
     int n;
 
-    // Solicitar al usuario cuántos términos de Fibonacci desea calcular
     printf("Introduce el número de términos de Fibonacci que deseas calcular: ");
     scanf("%d", &n);
 
-    // Usamos memoria dinámica para crear un array de n términos
+    // Validamos que el usuario ingrese un número válido
+    if (n <= 0) {
+        printf("Por favor, introduce un número mayor que 0.\n");
+        return 1;
+    }
+
     int *fibonacciArray = (int *)malloc(n * sizeof(int));
     if (fibonacciArray == NULL) {
         printf("ERROR CATASTRÓFICO. NO SE PUDO ASIGNAR MEMORIA.\n");
@@ -43,6 +53,10 @@ int main() {
     }
     printf("\n");
 
-free(fibonacciArray);// Liberamos la memoria asignada
-return 0;
+    // Llamamos a la nueva función y mostramos la suma
+    int suma = sumarFibonacci(fibonacciArray, n);
+    printf("La suma de los términos de Fibonacci es: %d\n", suma);
+
+    free(fibonacciArray); // Liberamos la memoria asignada
+    return 0;
 }
