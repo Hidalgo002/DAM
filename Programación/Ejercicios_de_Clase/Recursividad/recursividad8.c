@@ -1,28 +1,46 @@
+/*1. **Contar consonantes en una cadena:**
+
+Implementa una función recursiva que cuente cuántas consonantes tiene una cadena (por ejemplo, “Hola” tiene 2 consonantes: ‘H’ y ‘l’).*/
+
 #include <stdio.h>
+#include <stdlib.h>
 
-//6. Búsqueda binaria en un array ordenado
+int buscar_cons(char * palabra, int consonante, int tamano, int contador){
+	if(palabra[contador] == '\0'){
+		return consonante;
+	}
+	if(contador	== tamano){
+		return	consonante;
+	}
+	if (    palabra[contador] =='a'|| palabra[contador] =='A'||
+            palabra[contador] =='e'|| palabra[contador] =='E'||
+            palabra [contador]=='i'|| palabra [contador]=='I'||
+            palabra[contador] =='o'|| palabra[contador] =='O'||
+            palabra[contador] =='u'|| palabra[contador] =='U'){
+    consonante++;}
 
-
-// Busca x en arr[l..r], devuelve la posición o -1 si no se encuentra
-int busquedaBinaria(int arr[], int l, int r, int x) {
-    if (l > r) return -1; // Caso base: no encontrado
-    int m = (l + r) / 2;
-    if (arr[m] == x) return m;
-    else if (x < arr[m])
-        return busquedaBinaria(arr, l, m-1, x);
-    else
-        return busquedaBinaria(arr, m+1, r, x); v
+return buscar_cons(palabra, consonante, tamano, contador+1);
 }
 
-int main() {
-    int arr[] = {1, 3, 5, 7, 9, 11};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int x = 7;
-    int pos = busquedaBinaria(arr, 0, n-1, x);
-    if (pos != -1)
-        printf("Encontrado %d en posicion %d\n", x, pos);
-    else
-        printf("No se encontro %d\n", x);
-    return 0;
-}
 
+int main(){
+	int contador = 0;
+	int consonante = 0;
+
+
+	int tamano;
+	printf("Introduzca el tamaño: ");
+	scanf(" %d", &tamano);
+
+	char * palabra=(char*) malloc ((tamano+1)*sizeof(char));
+
+	printf	("Introduzca la palabra: ");
+	scanf(" %s", palabra);
+
+	int encontrado = buscar_cons (palabra, consonante, tamano, contador);
+	printf("Consonantes: %d\n", encontrado);
+
+
+free(palabra);
+return 0;
+}
