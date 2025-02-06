@@ -12,12 +12,13 @@ int buscar_cons(char * palabra, int consonante, int tamano, int contador){
 	if(contador	== tamano){
 		return	consonante;
 	}
-	if (    palabra[contador] =='a'|| palabra[contador] =='A'||
-            palabra[contador] =='e'|| palabra[contador] =='E'||
-            palabra [contador]=='i'|| palabra [contador]=='I'||
-            palabra[contador] =='o'|| palabra[contador] =='O'||
-            palabra[contador] =='u'|| palabra[contador] =='U'){
+	if (    palabra[contador] !='a'&& palabra[contador] !='A'&&
+            palabra[contador] !='e'&& palabra[contador] !='E'&&
+            palabra[contador] !='i'&& palabra[contador] !='I'&&
+            palabra[contador] !='o'&& palabra[contador] !='O'&&
+            palabra[contador] !='u'&& palabra[contador] !='U'){
     consonante++;}
+	else{return	consonante;}
 
 return buscar_cons(palabra, consonante, tamano, contador+1);
 }
