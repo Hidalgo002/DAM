@@ -18,7 +18,7 @@ int Suma_UltimaCol(int *matriz, int filas, int columnas);
 
 int main(){
 
-	int n; //FILAS
+	int n; //FILAS 
 	int m; //COLUMNAS
 
 	int bandera = 0;
@@ -118,7 +118,7 @@ matriz[i * columnas + j]
 	int Suma_UltimaRow(int *matriz, int filas, int columnas, int m){
 		int suma2 = 0;
 		int inicio = (filas - 1) * columnas; //Índice que empieza en la última fila
-		for (int j = m ; j < columnas; j++) { //Recorre desde la col m hasta la última
+		for (int j = 0; j < columnas; j++) { //Recorre desde la col m hasta la última
 		        suma2 += matriz[inicio + j];
 		    }
 		return suma2;
@@ -138,7 +138,7 @@ matriz[i * columnas + j]
 		int suma4 = 0;
 		for (int i = 0; i < filas; i++) {
 		        suma4 += matriz[i* columnas + (columnas - 1)]; // Suma el último elemento de cada fila (índice + último elementos de la fila)
-		        /*En este caso, no hay "j" porque tenemos que irnos a la última columas e ir sumando las últimas casillas de todas las filas
+		        /*En este caso, no hay "j" porque tenemos que irnos a la última columas e ir sumando las últimas casillas de todas las filas*/
 		    }
 		return suma4;
 	}
