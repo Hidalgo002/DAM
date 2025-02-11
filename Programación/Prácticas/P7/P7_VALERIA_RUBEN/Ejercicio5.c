@@ -128,7 +128,7 @@ matriz[i * columnas + j]
 	int Suma_PrimeraCol(int *matriz, int filas, int columnas){
 		int suma3 = 0;
 		for (int i = 0; i < filas; i++) {//Recorre todas las filas
-		    suma3 += matriz[i* columnas]; //Suma el elemnto de la primera fila. [i*col] calcula el índice del primer elemento de cada fila
+		    suma3 += matriz[i* columnas]; //Suma el elemnto de la primera fila. [i*col] calcula el índice del primer elemento de cada fila de la matrix y lo acumula en suma3
 		    }
 		return suma3;
 	}
