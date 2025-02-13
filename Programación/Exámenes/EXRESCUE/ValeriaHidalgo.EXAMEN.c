@@ -65,7 +65,7 @@ int main() {
             if(tamano1>tamano2){
                 tamanoC = tamano1;
             }
-            else (tamanoC = tamano2);
+            else {tamanoC = tamano2;}
 
         int * Suma_ARR = (int*) malloc (tamanoC * sizeof(int));
             if  (Suma_ARR == NULL){
