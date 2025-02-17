@@ -1,55 +1,52 @@
-/*1.  **Extraer sólo las vocales de una cadena:**
-
-Dada una cadena, crea una función recursiva que imprima una cadena que contenga únicamente las vocales de la original, en el mismo orden. (Puedes imprimir caracter a caracter)
-
-Versión difícil: crea una cadena nueva en la que almacenar las vocales*/
-
-/*1. **Contar consonantes en una cadena:**
-
-Implementa una función recursiva que cuente cuántas consonantes tiene una cadena (por ejemplo, “Hola” tiene 2 consonantes: ‘H’ y ‘l’).*/
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-int buscar_cons(char * palabra, int consonante, int tamano, int contador, char * vocales){
-	if(palabra[contador] == '\0'){
-		return consonante;
-	}
-	if(contador	== tamano){
-		return	consonante;
-	}
-	if (    palabra[contador] =='a'|| palabra[contador] =='A'||
-            palabra[contador] =='e'|| palabra[contador] =='E'||
-            palabra[contador] =='i'|| palabra[contador] =='I'||
-            palabra[contador] =='o'|| palabra[contador] =='O'||
-            palabra[contador] =='u'|| palabra[contador] =='U'){
-    
-    consonante++;}
-	else{return	consonante;}
+// Function to extract vowels recursively and store them in a new string
+void buscar_vocal(char *palabra, char *resultado) {
+    // Base case: end of string
+    if (*palabra == '\0') {
+        *resultado = '\0';  // End the new string
+        return;
+    }
 
-return buscar_cons(palabra, consonante, tamano, contador+1, vocales);
+    // Check if the current character is a vowel
+    char letra = tolower(*palabra);
+    if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
+        *resultado = *palabra;  // Store the vowel in the result string
+        buscar_vocal(palabra + 1, resultado + 1);  // Recursive call for the next character
+    } else {
+        buscar_vocal(palabra + 1, resultado);  // Skip non-vowel characters
+    }
 }
 
+int main() {
+    char *palabra = (char *)malloc(100 * sizeof(char));  // Memory allocation for the input
+    if (palabra == NULL) {
+        printf("Error de memoria\n");
+        return 1;  // Exit if malloc fails
+    }
 
-int main(){
-	int contador = 0;
-	int consonante = 0;
+    printf("Introduzca la palabra: ");
+    scanf("%s", palabra);
 
-	int tamano;
-	printf("Introduzca el tamaño: ");
-	scanf(" %d", &tamano);
+    // Allocate memory for the result string (it could be the same size as input)
+    char *vocales = (char *)malloc(100 * sizeof(char));
+    if (vocales == NULL) {
+        printf("Error de memoria para la cadena de vocales\n");
+        free(palabra);  // Free the previously allocated memory
+        return 1;  // Exit if malloc fails
+    }
 
-	char * palabra=(char*) malloc ((tamano+1)*sizeof(char));
+    // Call the function to extract vowels
+    buscar_vocal(palabra, vocales);
 
-	printf	("Introduzca la palabra: ");
-	scanf(" %s", palabra);
+    // Print the vowels
+    printf("Vocales: %s\n", vocales);
 
-	char * vocales = (char*) malloc ((contador+1)*sizeof(char));
+    // Free the allocated memory
+    free(palabra);
+    free(vocales);
 
-	int encontrado = buscar_cons (palabra, consonante, tamano, contador, vocales);
-	printf("Vocales: %c\n", encontrado);
-
-
-free(palabra);
-return 0;
+    return 0;
 }
