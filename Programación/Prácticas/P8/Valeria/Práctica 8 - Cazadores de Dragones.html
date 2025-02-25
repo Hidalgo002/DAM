@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Práctica 8 - &quot;Cazadores de Dragones&quot;</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1962a5a7-7af9-808d-b887-d98736035345" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1544530228-b1c874da4701?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🐉</span></div><h1 class="page-title">Práctica 8 - <strong>&quot;Cazadores de Dragones&quot;</strong></h1><p class="page-description"></p></header><div class="page-body"><h2 id="1962a5a7-7af9-8004-b0cf-c3e7193000bd" class=""><strong>Descripción</strong></h2><p id="1962a5a7-7af9-80ce-b067-dcf5854bfc0c" class="">Eres el encargado de diseñar un juego basado en un universo de cazadores que luchan contra dragones. Los jugadores podrán seleccionar un cazador y enfrentarse a diversos dragones en un combate por turnos, ganando recompensas en oro si los derrotan. Además, podrán añadir cazadores o dragones especiales para hacer el juego más dinámico y retador.</p><p id="1962a5a7-7af9-808f-9014-fec3736605c2" class="">Esta práctica se realizará en parejas. Cada función debe incluir un comentario indicando si ha sido implementada por un miembro del equipo, el otro, o entre los dos. Algunas funciones deben ser implementadas individualmente.</p><p id="1962a5a7-7af9-80fd-88b3-e84e6824a740" class="">Las restricciones e indicaciones que se ofrecen son guías y mínimos. Si implementas el juego tal cual se propone, no va a ser un superjuego top en ventas. Tienes libertad absoluta para mejorar y reorientar este juego para hacerlo una experiencia jugable. Por ejemplo, ¿hay formas de curarse? ¿Los dragones dejan objetos además de dinero? No te vuelvas loco (porque hay una fecha de entrega a la que llegar), pero disfrútalo.</p><hr id="1962a5a7-7af9-805a-b114-fa216669186e"/><h2 id="1962a5a7-7af9-8093-90bf-e88e48145eae" class=""><strong>Objetivos de la Práctica</strong></h2><ul id="1962a5a7-7af9-8037-a5e1-dc26aec5515a" class="bulleted-list"><li style="list-style-type:disc"><strong>Aplicar programación modular en C</strong>, dividiendo el código en múltiples archivos.</li></ul><ul id="1962a5a7-7af9-80ff-8185-f3c49accc469" class="bulleted-list"><li style="list-style-type:disc"><strong>Practicar estructuras de datos</strong> definiendo estructuras para cazadores y dragones.</li></ul><ul id="1962a5a7-7af9-80ed-83c7-fe37a9ce5e2c" class="bulleted-list"><li style="list-style-type:disc"><strong>Implementar un sistema de combate por turnos</strong>, con ataques aleatorios de los dragones.</li></ul><ul id="1962a5a7-7af9-8032-93d4-f92e7115e6d3" class="bulleted-list"><li style="list-style-type:disc"><strong>Manejar memoria dinámica correctamente</strong>, asegurando su liberación con <code>free()</code>.</li></ul><ul id="1962a5a7-7af9-80e9-aaea-e660221e0cf9" class="bulleted-list"><li style="list-style-type:disc"><strong>Desarrollar un menú interactivo</strong> para gestionar la selección de personajes y combate.</li></ul><hr id="1962a5a7-7af9-801c-addc-f92c25d65c54"/><h2 id="1962a5a7-7af9-806c-b4b9-da59676247da" class=""><strong>Mecánica del Juego</strong></h2><p id="1962a5a7-7af9-80be-befe-e3a5f0967b35" class="">El juego seguirá una estructura de menú donde el jugador podrá realizar diversas acciones antes y después de los combates.</p><h3 id="1962a5a7-7af9-803c-8a4b-ec51abfde8cc" class=""><strong>Flujo del Juego</strong></h3><ol type="1" id="1962a5a7-7af9-80ba-9522-ceda94ed1442" class="numbered-list" start="1"><li><strong>Pantalla de inicio y menú principal</strong><ul id="1962a5a7-7af9-80d8-8ca2-d42266f84c29" class="bulleted-list"><li style="list-style-type:disc">Se muestra un mensaje de bienvenida y las opciones disponibles.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8006-bbb3-e08184f0457b" class="numbered-list" start="2"><li><strong>Selección de cazador</strong><ul id="1962a5a7-7af9-80c8-8b3c-d1a7547120cf" class="bulleted-list"><li style="list-style-type:disc">El jugador elige entre los cazadores disponibles, viendo sus atributos.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80da-9529-c485d8b5c2c5" class="numbered-list" start="3"><li><strong>Selección de dragón enemigo</strong><ul id="1962a5a7-7af9-8073-8a3e-ee8dace1e32a" class="bulleted-list"><li style="list-style-type:disc">Se muestra una lista con los dragones disponibles.</li></ul><ul id="1962a5a7-7af9-8001-99a7-c190672dd671" class="bulleted-list"><li style="list-style-type:disc">Cada dragón tiene un nivel de dificultad y recompensa en oro distinta.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8085-8987-fad9429e7205" class="numbered-list" start="4"><li><strong>Sistema de combate por turnos</strong><ul id="1962a5a7-7af9-80b2-b9c7-ce1e0d5df323" class="bulleted-list"><li style="list-style-type:disc">Todos los cazadores atacan primero, reduciendo la vida del dragón elegido.</li></ul><ul id="1962a5a7-7af9-8033-9ba9-c065c2a70513" class="bulleted-list"><li style="list-style-type:disc">Luego, cada dragón ataca a un cazador aleatorio, reduciendo su vida.</li></ul><ul id="1962a5a7-7af9-803d-aaaa-fbaf07cd6e00" class="bulleted-list"><li style="list-style-type:disc">Se repite el proceso hasta que todos los dragones o cazadores sean eliminados.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-802d-b959-f9f941579d24" class="numbered-list" start="5"><li><strong>Fin del combate</strong><ul id="1962a5a7-7af9-8042-8cf6-f260cb395468" class="bulleted-list"><li style="list-style-type:disc">Se muestran los resultados.</li></ul><ul id="1962a5a7-7af9-8095-a7e0-e5d002dd922d" class="bulleted-list"><li style="list-style-type:disc">Si el cazador ha ganado, obtiene el oro del dragón.</li></ul><ul id="1962a5a7-7af9-8070-935b-c545ea1c7598" class="bulleted-list"><li style="list-style-type:disc">Si el cazador ha perdido, puede elegir otro cazador o salir del juego.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80a3-a5ff-f513d340332a" class="numbered-list" start="6"><li><strong>Opciones después del combate</strong><ul id="1962a5a7-7af9-8035-b598-c2e3b4554011" class="bulleted-list"><li style="list-style-type:disc">Volver al menú principal.</li></ul><ul id="1962a5a7-7af9-8097-b033-f0cf4869bd18" class="bulleted-list"><li style="list-style-type:disc">Elegir otro dragón para luchar.</li></ul><ul id="1962a5a7-7af9-80a4-a9c6-f93fa57bd329" class="bulleted-list"><li style="list-style-type:disc">Agregar nuevos cazadores o dragones.</li></ul><ul id="1962a5a7-7af9-8024-874a-eb628c412574" class="bulleted-list"><li style="list-style-type:disc">Finalizar el juego.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8022-aed6-ce00963eda1c" class="numbered-list" start="7"><li><strong>Condiciones de finalización</strong><ul id="1962a5a7-7af9-80b3-8d73-f7767cba352d" class="bulleted-list"><li style="list-style-type:disc">El juego termina cuando el jugador lo decide o no quedan cazadores disponibles.</li></ul><ul id="1962a5a7-7af9-800d-8be4-d91fefbb69ef" class="bulleted-list"><li style="list-style-type:disc">Gana el cazador que haya acumulado más oro.</li></ul></li></ol><hr id="1962a5a7-7af9-8060-9ac4-c481e57e24fb"/><h2 id="1962a5a7-7af9-8004-89f9-ef2ab3866fe6" class=""><strong>Menú Principal</strong></h2><p id="1962a5a7-7af9-805f-ad8d-fe1fb2fb729b" class="">El menú principal del juego debe permitir al usuario seleccionar entre las siguientes opciones:</p><ol type="1" id="1962a5a7-7af9-80a3-8f3f-d21202b5e8d8" class="numbered-list" start="1"><li><strong>Seleccionar un cazador</strong><ul id="1962a5a7-7af9-80c0-aa28-d68301c2a6c7" class="bulleted-list"><li style="list-style-type:disc">Muestra una lista de los cazadores disponibles con sus atributos.</li></ul><ul id="1962a5a7-7af9-80cf-9a5d-f5d767f7116f" class="bulleted-list"><li style="list-style-type:disc">Permite elegir un cazador para jugar.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8045-b379-e0129ac80611" class="numbered-list" start="2"><li><strong>Luchar contra un dragón</strong><ul id="1962a5a7-7af9-8060-92f4-fefdc0701bdf" class="bulleted-list"><li style="list-style-type:disc">Muestra la lista de dragones disponibles con sus atributos.</li></ul><ul id="1962a5a7-7af9-80c4-8f32-e34cc23863a2" class="bulleted-list"><li style="list-style-type:disc">Permite elegir un dragón para el combate.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80e6-b5dd-ee8797a534da" class="numbered-list" start="3"><li><strong>Añadir un nuevo cazador</strong><ul id="1962a5a7-7af9-80e5-a698-c79a651bd60c" class="bulleted-list"><li style="list-style-type:disc">Permite al usuario introducir un nuevo cazador con sus atributos (nombre, habilidad, vida, oro inicial).</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80c6-8d11-f7e444b6d9ce" class="numbered-list" start="4"><li><strong>Añadir un nuevo dragón</strong><ul id="1962a5a7-7af9-8014-adb8-ca56140959e5" class="bulleted-list"><li style="list-style-type:disc">Permite al usuario introducir un nuevo dragón con sus atributos (nombre, vida, nivel, ataque, oro).</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8038-b3e7-d7bd6b4e5488" class="numbered-list" start="5"><li><strong>Mostrar los resultados finales</strong><ul id="1962a5a7-7af9-80c8-a076-fe2ce2cf9290" class="bulleted-list"><li style="list-style-type:disc">Muestra un ranking de los cazadores según el oro acumulado.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8059-962f-c76379ee7a01" class="numbered-list" start="6"><li><strong>Salir del juego</strong><ul id="1962a5a7-7af9-8098-938b-e5a8f6031726" class="bulleted-list"><li style="list-style-type:disc">Termina la ejecución del programa.</li></ul></li></ol><hr id="1962a5a7-7af9-80bb-88b4-d3357040f6d8"/><h2 id="1962a5a7-7af9-80c7-b8d3-eba084d0b673" class=""><strong>Estructura del Proyecto</strong></h2><p id="1962a5a7-7af9-80d9-97c4-e743095116b1" class="">Para organizar correctamente el código, el juego debe dividirse en varios archivos:</p><ul id="1962a5a7-7af9-8071-a64d-e031fd72e3fb" class="bulleted-list"><li style="list-style-type:disc"><code>main.c</code>: Controla el flujo del juego y el menú principal.</li></ul><ul id="1962a5a7-7af9-8067-b38b-c51ae12b22ae" class="bulleted-list"><li style="list-style-type:disc"><code>cazador.h</code> y <code>cazador.c</code>: Definición e implementación de los cazadores.</li></ul><ul id="1962a5a7-7af9-8022-8e9e-e0f434aa145f" class="bulleted-list"><li style="list-style-type:disc"><code>dragon.h</code> y <code>dragon.c</code>: Definición e implementación de los dragones.</li></ul><ul id="1962a5a7-7af9-8037-a074-dd9818d0a031" class="bulleted-list"><li style="list-style-type:disc"><code>combate.h</code> y <code>combate.c</code>: Implementación del sistema de combate.</li></ul><ul id="1962a5a7-7af9-8043-aa48-e071591d8c46" class="bulleted-list"><li style="list-style-type:disc"><code>utilidades.h</code> y <code>utilidades.c</code>: Funciones auxiliares como validaciones y entrada de datos (si son necesarias).</li></ul><hr id="1962a5a7-7af9-801a-ac0e-e4e25f430965"/><h2 id="1962a5a7-7af9-80f2-8932-fa2cd0e9d233" class=""><strong>Sistema de Combate con Turnos</strong></h2><p id="1962a5a7-7af9-8097-8e89-f1036200e745" class="">El combate se realiza por turnos entre los cazadores y los dragones.</p><ol type="1" id="1962a5a7-7af9-8075-9afb-d9f6d84765b9" class="numbered-list" start="1"><li><strong>Inicio del combate</strong><ul id="1962a5a7-7af9-8038-a6ef-e2b2ef342b1a" class="bulleted-list"><li style="list-style-type:disc">Se muestra un mensaje indicando que el combate ha comenzado.</li></ul><ul id="1962a5a7-7af9-8014-ae6c-ea58fb89a35a" class="bulleted-list"><li style="list-style-type:disc">Se muestran los atributos del cazador y el dragón.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8098-8f21-f3d76646e134" class="numbered-list" start="2"><li><strong>Turno del cazador</strong><ul id="1962a5a7-7af9-80dc-a181-e5204ade2325" class="bulleted-list"><li style="list-style-type:disc">Cada cazador elige a qué dragón atacar.</li></ul><ul id="1962a5a7-7af9-80d8-8242-ffb897c3fc57" class="bulleted-list"><li style="list-style-type:disc">Se calcula el daño del cazador en función de su habilidad.</li></ul><ul id="1962a5a7-7af9-8082-9bb3-d6ebc539f0e5" class="bulleted-list"><li style="list-style-type:disc">Se resta ese valor a la vida del dragón.</li></ul><ul id="1962a5a7-7af9-80cd-9d4e-ca3a250beea9" class="bulleted-list"><li style="list-style-type:disc">Se muestra la cantidad de daño causado.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80cf-9685-c554771e83bb" class="numbered-list" start="3"><li><strong>Turno del dragón</strong><ul id="1962a5a7-7af9-8013-8a33-f4702def4582" class="bulleted-list"><li style="list-style-type:disc">Si el dragón aún tiene vida, ataca a un cazador aleatorio.</li></ul><ul id="1962a5a7-7af9-809f-856f-ed68f1eaa1af" class="bulleted-list"><li style="list-style-type:disc">Se resta su ataque a la vida del cazador elegido.</li></ul><ul id="1962a5a7-7af9-80e1-b0a3-c26e452409b4" class="bulleted-list"><li style="list-style-type:disc">Se muestra el daño recibido.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-80f5-ac35-fca5624ae332" class="numbered-list" start="4"><li><strong>Condiciones de victoria y derrota</strong><ul id="1962a5a7-7af9-80e9-a9af-d274e0b1f8c0" class="bulleted-list"><li style="list-style-type:disc">Si la vida del dragón llega a 0, el cazador gana el combate y obtiene su oro.</li></ul><ul id="1962a5a7-7af9-80ec-9eda-f0b487a644ab" class="bulleted-list"><li style="list-style-type:disc">Si la vida del cazador llega a 0 antes de derrotar al dragón, el jugador pierde y debe elegir otro cazador o salir.</li></ul></li></ol><ol type="1" id="1962a5a7-7af9-8007-b0b7-eaeda0d1501d" class="numbered-list" start="5"><li><strong>Mostrar resultados del combate</strong><ul id="1962a5a7-7af9-8011-95b6-eaeb8c2273fa" class="bulleted-list"><li style="list-style-type:disc">Se muestra un mensaje indicando si el cazador ha ganado o perdido.</li></ul><ul id="1962a5a7-7af9-80a5-b7ef-fc748068e866" class="bulleted-list"><li style="list-style-type:disc">Se actualizan los atributos del cazador (oro y vida).</li></ul><ul id="1962a5a7-7af9-801b-b04b-f5e2149298c0" class="bulleted-list"><li style="list-style-type:disc">Se da la opción de continuar el juego o salir.</li></ul></li></ol><hr id="1962a5a7-7af9-8081-8420-e6888b2681e2"/><h2 id="1962a5a7-7af9-8088-8f76-c52e9135f1a7" class=""><strong>Ejemplo de Combate</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-8051-be4a-ce181f8463d2" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">--- ¡Comienza el combate! ---
+Cazador: Arthur (Vida: 100, Habilidad: 12, Oro: 0)
+Vs.
+Dragón: Smaug (Vida: 80, Nivel: 5, Ataque: 10, Oro: 50)
+
+Turno 1:
+Arthur ataca a Smaug y le causa 12 de daño.
+Smaug ahora tiene 68 de vida.
+
+Smaug ataca a un cazador aleatorio... ¡Gornak recibe 15 de daño!
+Gornak ahora tiene 105 de vida.
+
+...
+
+Turno 7:
+Arthur ataca y derrota a Smaug.
+
+--- ¡Victoria! ---
+Arthur ha derrotado a Smaug y ha ganado 50 de oro.
+
+</code></pre><hr id="1962a5a7-7af9-8035-9bac-ee3e9605e0f6"/><h2 id="1962a5a7-7af9-80ee-bd2d-c5dba90fa907" class=""><strong>Compilación y Uso de Archivos</strong></h2><p id="1962a5a7-7af9-802a-9318-d525234c33b3" class="">Para compilar el programa con múltiples archivos en GCC:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-8089-a964-f7a66f5670e3" class="code"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">gcc main.c cazador.c dragon.c combate.c utilidades.c memoria.c -o cazadores
+</code></pre><p id="1962a5a7-7af9-80e0-a276-c809939f612e" class="">Para ejecutar:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-80b3-86e3-cde7b7f70010" class="code"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">./cazadores</code></pre><h3 id="1962a5a7-7af9-8067-81f7-f8e7c2f87ad8" class=""><strong>Uso de Makefile</strong></h3><p id="1962a5a7-7af9-8014-ad25-de05e07d5270" class="">Para facilitar la compilación, se recomienda un <code>Makefile</code>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-803d-aaf3-fc473bff8c92" class="code"><code class="language-Makefile" style="white-space:pre-wrap;word-break:break-all">CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+OBJ = main.o cazador.o dragon.o combate.o utilidades.o memoria.o
+
+cazadores: $(OBJ)$(CC) $(CFLAGS) -o cazadores $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $&lt;
+
+clean:
+	rm -f *.o cazadores
+
+</code></pre><p id="1962a5a7-7af9-80b0-9870-fc90049d7f6f" class="">Compilar con:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-8079-ad16-d59e5e843b7c" class="code"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">make</code></pre><p id="1962a5a7-7af9-80ce-8332-d617579183af" class="">Eliminar archivos temporales:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1962a5a7-7af9-80c4-93b0-d1aea7385c8c" class="code"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">make clean</code></pre><hr id="1962a5a7-7af9-804b-a431-c6a37f5d6b70"/><h2 id="1962a5a7-7af9-8029-98a4-e7c1c7a513cf" class=""><strong>Entrega Parcial</strong></h2><p id="1962a5a7-7af9-803e-bc7a-cf2394e42ac6" class="">Antes de la fecha final de entrega, se revisará el código para corregir errores y proporcionar feedback.</p><h2 id="1962a5a7-7af9-80c4-b5b2-e78b02cff198" class=""><strong>Evaluación</strong></h2><p id="1962a5a7-7af9-8009-a129-f709901fc613" class="">Se evaluará según los siguientes criterios:</p><ul id="1962a5a7-7af9-802f-923e-d955d74708b4" class="bulleted-list"><li style="list-style-type:disc"><strong>Estructura del código:</strong> Uso de archivos <code>.h</code> y <code>.c</code>, modularidad y encapsulación.</li></ul><ul id="1962a5a7-7af9-8058-8220-e3b4672783e5" class="bulleted-list"><li style="list-style-type:disc"><strong>Corrección del programa:</strong> Funcionamiento sin errores en distintos escenarios.</li></ul><ul id="1962a5a7-7af9-804f-827a-e3205e74d173" class="bulleted-list"><li style="list-style-type:disc"><strong>Gestión de memoria:</strong> Uso correcto de <code>malloc</code>/<code>calloc</code>/<code>free</code>, sin fugas de memoria (verificado con Valgrind).</li></ul><ul id="1962a5a7-7af9-80dd-b8f8-ee0b7ec8b46b" class="bulleted-list"><li style="list-style-type:disc"><strong>Legibilidad del código:</strong> Código limpio, comentado y organizado.</li></ul><ul id="1962a5a7-7af9-8071-8414-cb1e5c8d2416" class="bulleted-list"><li style="list-style-type:disc"><strong>Trabajo en equipo:</strong> Evidencia de contribuciones individuales y en conjunto.</li></ul><ul id="1962a5a7-7af9-80c0-9e90-ffd3d26a9ace" class="bulleted-list"><li style="list-style-type:disc">Se realizará una <strong>defensa pública </strong>de tu solución.</li></ul><hr id="1962a5a7-7af9-80ec-9ea8-e7d0a8368fda"/><h2 id="1962a5a7-7af9-8020-8d7a-de762995fb05" class="">Líneas de mejora (que no suben nota pero molan que flipas)</h2><ul id="1962a5a7-7af9-80e8-a144-ebe6ff281d42" class="bulleted-list"><li style="list-style-type:disc">La terminal de ubuntu acepta colores en los mensajes que se imprimen.</li></ul><ul id="1962a5a7-7af9-80d3-9b39-ce10262f8b8a" class="bulleted-list"><li style="list-style-type:disc">Guardar partida almacenando la información del estado en un archivo.</li></ul><ul id="1962a5a7-7af9-8016-a187-c5fe3ba1e81a" class="bulleted-list"><li style="list-style-type:disc">Desarrollar una inteligencia en el dragón para que intente ganar y sea difícil.</li></ul><h3 id="1962a5a7-7af9-8073-8730-f91a7814b1b0" class=""><strong>¡Buena suerte, cazadores!</strong> 🏹🐉</h3></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
