@@ -1,8 +1,9 @@
-#include "cazador.h"
 #include "utilidades.h"
+#include "cazador.h"
 
 
 extern int totalCazadores;
+extern Cazador CazadorActivo;
 
 //INICIALIZAR CAZADOR  
     void inicializarCazador (Cazador * datos, int ID, const char *nombre, const char *arma, int ataque, int vida, int oro, const char *descripcion){
@@ -220,14 +221,13 @@ extern int totalCazadores;
 
 
     Cazador *REALLOC_TEMP = (Cazador*) realloc(*cazadores, (*totalCazadores + 1) * sizeof(Cazador));
-    if (REALLOC_TEMP == NULL) {
+    if (REALLOC_TEMP != NULL) {
         *cazadores = REALLOC_TEMP;}
     else{
         printf("ERROR CATASTRÓFICO. No se pudo asignar memoria.\n");
         free(*cazadores);
         exit(EXIT_FAILURE);
     }
-    *cazadores = REALLOC_TEMP;
 
     //Accedemos a la posición 4 con este índice (*cazadores)[*totalCazadores] que nos lleva a nuestro array de cazadores en la posición [4]
     (*cazadores)[*totalCazadores] = nuevoCazador;

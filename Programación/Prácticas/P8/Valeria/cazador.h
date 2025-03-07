@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "utilidades.h"
 
 #define MAXNOMBRE 50
 #define MAXARMA 20
@@ -9,6 +10,8 @@
 #define MAXVIDA 100
 #define MAXORO 600
 #define MAXDESCRPCION 200
+
+
 
 
 //STRUCT DATOS CAZADOR;   
@@ -21,6 +24,9 @@
         int oro;
         char descripcion[MAXDESCRPCION + 1];
     } Cazador;
+
+extern Cazador CazadorActivo;
+
 
 void inicializarCazador (Cazador * datos, int ID, const char *nombre, const char *arma, int ataque, int vida, int oro, const char *descripcion);
 
