@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-        /*
+        
        // 1. Escribe un programa de una sola línea que haga que aparezca en la pantalla un alert que diga “Hello World”.
 
         alert('Hello World');
@@ -67,8 +67,8 @@
         }
         else{document.write("<p>Es un número impar</p>");
         }
-        */
-        //9. Escribe un programa que pida una frase y escriba cuantas veces aparece la letra a
+        
+       /* //9. Escribe un programa que pida una frase y escriba cuantas veces aparece la letra a
         let frase=prompt("Escribe una frase: ");
         let contador = 0;
         for (let i = 0; i < frase.length; i++) {
@@ -76,7 +76,7 @@
             if (frase[i].toLowerCase() === 'a') {
                 contador++;  // Incrementar el contador
             }
-        }
+        }*/
     </script>
     </script>
 </head>
