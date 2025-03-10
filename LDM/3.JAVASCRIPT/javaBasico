@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JavaScript Ejemplo 1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        /*
+       // 1. Escribe un programa de una sola línea que haga que aparezca en la pantalla un alert que diga “Hello World”.
+
+        alert('Hello World');
+
+        // 2. Escribe un programa de una sola línea que escriba en la pantalla un texto que diga “Hello World” (document.write).
+        document.write("<h1>Hello World</h1>");
+
+        //3. Escribe un programa de una sola línea que escriba en la pantalla el resultado de sumar 3 + 5.
+        document.write("<p>Resultado de 3 + 5: " + (3 + 5) + "</p>");
+
+        //4. Escribe un programa de dos líneas que pida el nombre del usuario con un prompt y escriba un texto que diga “Hola nombreUsuario”
+        let nombre= prompt("¿Cómo te llamas?");
+        alert ("Bienvenido " +nombre);
+
+        //5. Escribe un programa de tres líneas que pida un número, pida otro número y escriba el resultado de sumar estos dos números.
+        let a1=prompt("Escribe el número1: ");
+        let b1=prompt("Escribe el número2: ");
+        let resultado1=parseInt(a1)+parseInt(b1);
+        document.write("<p>Resultado: " + a1 + " + " + b1 + " = " + resultado1 + "</p>");
+
+        //6. Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.
+        let num1=prompt("Escribe el número1: ");
+        let num2=prompt("Escribe el número2: ");
+
+            // Convertir los valores a enteros
+            num1 = parseInt(num1);
+            num2 = parseInt(num2);
+
+        if(num1>num2){
+           document.write("<p> El número mayor es: " +  num1 + "</p>");
+        }
+        else{
+            document.write("<p> El número mayor es: " +  num2 + "</p>");
+        }
+
+        //7. Escribe un programa que pida 3 números y escriba en la pantalla el mayor de los tres.
+        let n1=prompt("Escribe el número1: ");
+        let n2=prompt("Escribe el número2: ");
+        let n3=prompt("Escribe el número3: ");
+            // Convertir los valores a enteros
+            n1 = parseInt(n1);
+            n2 = parseInt(n2);
+            n3 = parseInt(n3);
+
+        if(n1>=n2 && n1>=n3){
+            document.write("<p> El número mayor es: " +  n1 + "</p>");
+        }
+        else if(n2>=n1 && n2>=n3){
+            document.write("<p> El número mayor es: " +  n2 + "</p>");
+        }
+        else {document.write("<p> El número mayor es: " +  n3 + "</p>");
+        }
+        
+       //8. Escribe un programa que pida un número y diga si es divisible por 2
+       let nuem1=prompt("Escribe un número: ");
+           nuem1=parseInt(nuem1);
+        if(nuem1%2 == 0){
+             document.write("<p>Es un número par</p>");
+        }
+        else{document.write("<p>Es un número impar</p>");
+        }
+        */
+        //9. Escribe un programa que pida una frase y escriba cuantas veces aparece la letra a
+        let frase=prompt("Escribe una frase: ");
+        let contador = 0;
+        for (let i = 0; i < frase.length; i++) {
+            // Comprobar si el carácter es la letra 'a'
+            if (frase[i].toLowerCase() === 'a') {
+                contador++;  // Incrementar el contador
+            }
+        }
+    </script>
+    </script>
+</head>
+<body>
+</body>
+</html>

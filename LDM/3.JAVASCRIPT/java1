@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JavaScript Ejemplo 1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            
+            alert('Hola'); //Ventana emergente
+
+            //Alert devuelve el valor en la variable mensaje
+            let mensaje= prompt("¿Qué edad tienes?", 10);//
+            alert (mensaje); //Este segundo alert(mensaje) guarda lo que el usuario haya introducido en la variable de mensaje y lo muestra por pantalla. El 10 es el predeterminado
+
+            //Confirm devuelve true o false
+            let pregunta=confirm("¿Eres mayor de edad?");
+            alert(pregunta);//Si contenstas 'aceptar' es true, si contestas 'rechazar' es false
+
+            console.log("La edad de la persona es: " +mensaje); //Cuando inspecionamos la pagina y nos metemos en la pestalla de 'consola', aparece el mensaje: La edad de la persona es: 18'
+
+            document.write("<h2> JavaScript </h2>");
+
+            //Siempre toma las variables como cadenas, es decir, el resultado será hola2
+            let a="hola";
+            let b=2;
+            let resultado=a+b;
+            console.log(resultado);
+
+            //Para que tome el a1 como un número, añadimos el parseint
+            let a1=prompt("Dame un número: ");
+            let b1=2;
+            let resultado1=parseInt(a1)+b1;
+            console.log(resultado1);
+
+            //IF-ELSE
+            if(a1 == b1){
+                console.log("Son iguales");
+            }
+            else{
+                console.log("Son diferenctes");
+            }
+
+            //WHILE
+            while(a1>0){
+                console.log(a1);
+                a1--;
+            }
+
+            //FOR
+            for(let i=0; i<3; i++){
+                console.log("Buenas");
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <h1>Hola</h1>
+    </body>
+</html>
