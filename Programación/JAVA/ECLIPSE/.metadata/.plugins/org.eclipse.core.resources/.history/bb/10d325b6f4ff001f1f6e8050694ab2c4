@@ -1,0 +1,27 @@
+
+public class Prueba {
+
+	public static void main(String[] args) {
+		String fragmentoNombreAlumnos = "Victor";
+		String[] nombreAlumnos = {"Antonio", "Marta", "VictorHugo", "David"};
+		
+		int resultado = contarUsuarios (fragmentoNombreAlumnos, nombreAlumnos);
+			System.out.println("Total resultados: " + resultado);
+	}
+		
+		static int contarUsuarios (String fragmentoNombreAlumnos, String[] nombreAlumnos) {
+			boolean encontrado = false;
+			int totalEncontrados = 0;
+			
+			for(String nombreAlumnoActual : nombreAlumnos) {
+				if(nombreAlumnoActual.contains(fragmentoNombreAlumnos)) {
+					encontrado = true;
+				}
+				if(encontrado) {
+					totalEncontrados++;
+				}
+			}
+			
+		return totalEncontrados;
+	}
+}
