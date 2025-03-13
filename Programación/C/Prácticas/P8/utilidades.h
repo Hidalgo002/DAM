@@ -1,3 +1,8 @@
+#ifndef UTILIDADES_H
+#define UTILIDADES_H
+
+#include "cazador.h"
+
 // Colores estándar ANSI
 #define NEGRO     "\033[30m"
 #define ROJO      "\033[31m"
@@ -24,5 +29,23 @@
 #define SALMON    "\033[38;2;250;128;114m"
 #define CHOCOLATE "\033[38;2;210;105;30m"
 
+
+//Cursiva:
+#define CURSIVA "\033[3m"
+
 // Reset (para volver al color original)
 #define SC        "\033[0m"
+
+
+//Librerias
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <time.h>
+
+void BIENVENIDA(void);
+void TIENDA(Cazador *cazador);
+void instrucciones();
+
+#endif
