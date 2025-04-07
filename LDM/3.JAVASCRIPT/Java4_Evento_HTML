@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTOS</title>
+    <script src="Java4_Evento.js"></script>
+</head>
+<body>
+    <h1>EVENTOS.</h1>
+    <h2>1. Accionar un botón.</h2>
+        <button id="button1">Cambiar el color del fondo.</button>
+    
+    <h2>2. Cambiar texto.</h2>
+        <button id="button2">Texto</button>
+
+    <h2>3. Cuadro de texto.</h2>
+        <input id="cuadroTexto" type="text">
+        <div id="textoSalida"></div>
+</body>
+</html>

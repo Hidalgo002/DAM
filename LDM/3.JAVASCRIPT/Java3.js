@@ -16,7 +16,8 @@ function ej1() {
         document.writeln("<h2>Formato correcto --> " + fechaEntrada + " </h2>");
         
         // Separar la fecha con cualquier delimitador: -, /, ,
-        let FechaPorPartes = fechaEntrada.split(/[-/,]/);
+        let FechaPorPartes = fechaEntrada.split(/[-\/,]/);
+
 
         let day = parseInt(FechaPorPartes[0]);
         let month = parseInt(FechaPorPartes[1]);
@@ -44,22 +45,52 @@ function ej1() {
 
 
 
-
 /*2.Introduce mediante un prompt un correo electrónico, si dicho correo electrónico es
 válido devolverá el número de letras que tiene el usuario. Si no determinará que es
 invalido y determinará dónde está el error si en el usuario o el dominio. valeria@gmail.com*/
-function ej2(){
-    let correo = prompt("Introduzca un correo electrónico: ");
+function ej2() {
+    let correo = prompt("Introduzca un correo electrónico:");
 
-    let expReg =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
+    // Expresión regular básica para validar formato de email
+    let expReg = /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if(expReg.test(correo)) {
+    if (expReg.test(correo)) {
         document.writeln("<h2>True --> " + correo + " </h2>");
     } else {
-        document.writeln("<h2>False --> " + correo + "<h2>");
-    }
+        // Dividimos el correo en dos partes: usuario y dominio
+        let partesCorreo = correo.split("@");
 
+        if (partesCorreo.length !== 2) {
+            alert("El correo no tiene el formato correcto con un solo '@'");
+            return;
+        }
+
+        let usuario = partesCorreo[0];
+        let dominio = partesCorreo[1];
+
+        if (!isUserCorrect(usuario) && !isDomainCorrect(dominio)) {
+            alert("Tanto el usuario como el dominio no cumplen los caracteres alfanuméricos requeridos");
+        } else if (!isUserCorrect(usuario)) {
+            alert("El usuario es incorrecto, no tiene letras y números: " + usuario);
+        } else if (!isDomainCorrect(dominio)) {
+            alert("El dominio es incorrecto: " + dominio);
+        } else {
+            alert("Formato inválido, pero no se pudo determinar si fue por usuario o dominio.");
+        }
+    }
 }
+
+function isUserCorrect(user) {
+    // Solo letras, números, puntos o guiones bajos
+    return /^[a-zA-Z0-9._]+$/.test(user);
+}
+
+function isDomainCorrect(domain) {
+    // Dominio debe tener letras, números, puntos o guiones
+    return /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(domain);
+}
+
+
 
 /*3. Introduce mediante el método prompt un teléfono de la siguiente forma 91-234-12-23-23 y 
 determinará si el teléfono es válido, si el teléfono es válido se mostrará de dónde viene la llamada 
@@ -87,7 +118,7 @@ function ej3(){
         } else if(prefijo==31){
             document.writeln("<h2>El teléfono-> " + telefono + " llama desde: PAÍSES BAJOS.<h2>");
         } else if(prefijo==32){
-            document.writeln("<h2>El teléfono-> " + telefono + " llama desde: PORTUGAL.<h2>");
+            document.writeln("<h2>El teléfono-> " + telefono + " llama desde: BÉLGICA.<h2>");
         } else {
             document.writeln("<h2>El teléfono-> " + telefono + " tiene un prefijo desconocido.<h2>");
         } 
@@ -149,7 +180,7 @@ function ej6() {
         document.writeln("<h2>Contraseña inválida. La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número.</h2>");
     }
 }
-
+ 
 
 function load() {
     // ASERCIONES
@@ -161,3 +192,4 @@ function load() {
     ej6();
 }
 window.addEventListener("DOMContentLoaded", load, false);
+
