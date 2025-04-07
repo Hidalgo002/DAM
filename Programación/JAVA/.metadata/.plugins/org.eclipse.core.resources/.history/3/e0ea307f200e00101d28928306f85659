@@ -1,0 +1,13 @@
+import java.util.Scanner;
+
+public class EjerciciosIniciacion {
+/*1. Leer una cantidad ‘N’ y luego introducir ‘N’ números enteros. Se pide imprimir 
+el mayor y el menor JAVA y las veces que aparece cada uno. */
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Cantidad de números: ");
+		int totalNumeros=entrada.nextInt();
+		entrada.nextLine();
+	}	
+}

@@ -1,0 +1,36 @@
+/*Leer una cantidad 'N' y luego introducir 'N' numeros enteros. Se pide imprimir el mayor y el menot y las veces que aparece cada uno*/
+import java.util.Scanner;
+
+public class Numeros {
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Cantidad de números a ordenar: ");
+		int totalNumeros=entrada.nextInt();
+		entrada.nextLine();
+		
+		int[] numeros = new int[totalNumeros*2];
+		
+		for(int i=0; i<totalNumeros; i++) {
+				System.out.println("Numero: ");
+				numeros[i]=entrada.nextInt();
+				entrada.nextLine();
+		}
+		entrada.close();
+		
+		for(int i=0; i<totalNumeros; i++) {
+			for(int j=0; j<totalNumeros; j++) {
+				 if (numeros[j] > numeros[j + 1]) {
+						int temp; 
+						temp = numeros[j]; 
+						numeros[j] = numeros[j + 1];
+						numeros[j + 1] = temp;
+				 }
+			}
+		}
+		
+		
+			System.out.println("Números ordenado: " +numeros[1]);
+		
+	}
+}

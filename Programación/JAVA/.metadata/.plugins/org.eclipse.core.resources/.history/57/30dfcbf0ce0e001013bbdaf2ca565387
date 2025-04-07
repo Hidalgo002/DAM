@@ -1,0 +1,9 @@
+package P1;
+
+public class coche {
+	//Siendo PRIVATE, solo es accesible desde esta clase
+	private String marca;
+	private String mdoelo;
+	private int potencia;
+
+}

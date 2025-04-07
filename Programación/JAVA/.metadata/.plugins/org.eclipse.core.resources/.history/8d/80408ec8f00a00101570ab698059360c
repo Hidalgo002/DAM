@@ -1,0 +1,33 @@
+/*Leer una cantidad 'N' y luego introducir 'N' numeros enteros. Se pide imprimir el mayor y el menot y las veces que aparece cada uno*/
+import java.util.Scanner;
+
+public class Numeros {
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Introduzca el número de alumnos");
+		int totalNumeros=entrada.nextInt();
+		entrada.nextLine();
+		
+		int[] numeros = new int[totalNumeros];
+		
+		for(int i=0; i<totalNumeros; i++) {
+				System.out.println("Numero: ");
+				numeros[i]=entrada.nextInt();
+				entrada.nextLine();
+		}
+		entrada.close();
+		
+		for(int i=0; i<totalNumeros; i++) {
+			for(int j=0; j<totalNumeros; j++) {
+				 if (numeros[j] > numeros[j + 1]) { //si arr[0] = 3, arr[1] = 2, se ejecuta e intercambia el 2 por el 3 en arr[j] = arr[j + 1]
+						int temp; //guarda el valor temporalmente
+						temp = numeros[j]; //guardamos el valor de arr[j] en intercambio
+						numeros[j] = numeros[j + 1];//movemos el valor de arr[j+1] a arr[j] si se cumple el if
+						numeros[j + 1] = temp;
+			}
+		}
+		
+	}
+	}
+}

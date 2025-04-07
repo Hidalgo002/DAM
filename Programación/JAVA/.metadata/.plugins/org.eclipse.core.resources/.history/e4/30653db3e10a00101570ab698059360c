@@ -1,0 +1,37 @@
+
+import java.util.Scanner;
+
+public class LeerTeclado {
+
+    public static void main(String[] args) {
+        
+    	String[] alumnos;
+    	
+    	Scanner entrada = new Scanner(System.in);
+    	 System.out.println("¿Quiere introducir los datos de un alumno?");
+         String opcion = entrada.next();
+    	
+    	while(opcion.equals("SI")) {
+    	
+        String nombre;    
+        System.out.println("Introduzca su nombre (cadena)");
+        nombre = entrada.next();    // Lee el nombre
+        System.out.println("Hola, " + nombre);
+        
+        System.out.println("Introduzca su edad");
+        int edad;
+        edad = entrada.nextInt(); // Lee la edad
+        entrada.next(); // Limpia el buffer
+        System.out.println("Edad: " + edad);
+        
+        String apellido;    
+        System.out.println("Introduzca su nombre (cadena)");
+        apellido = entrada.next();    // Lee el nombre
+        entrada.next();
+        System.out.println("Apellido: " + apellido);
+        
+        
+    	}
+    	entrada.close(); // Cierra el scanner
+    }
+}

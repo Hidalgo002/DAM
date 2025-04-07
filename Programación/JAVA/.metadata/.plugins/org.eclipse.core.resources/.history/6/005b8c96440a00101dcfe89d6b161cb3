@@ -1,0 +1,27 @@
+
+import java.util.Scanner;
+
+public class LeerTeclado {
+
+    public static void main(String[] args) {
+        
+        String nombre;    
+        System.out.println("Introduzca su nombre (cadena)");
+        
+        Scanner entrada = new Scanner(System.in);
+        nombre = entrada.nextLine();    // Lee el nombre
+        
+        System.out.println("Hola, " + nombre);
+        
+        System.out.println("Introduzca su edad");
+        int edad;
+        edad = entrada.nextInt(); // Lee la edad
+        
+        entrada.nextLine(); // Limpia el buffer para evitar problemas con nextLine() después de nextInt()
+        
+        System.out.println("Edad: " + edad);
+        
+        entrada.close(); // Cierra el scanner
+    }
+}
+

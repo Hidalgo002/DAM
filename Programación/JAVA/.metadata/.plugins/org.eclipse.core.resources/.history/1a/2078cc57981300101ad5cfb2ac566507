@@ -1,0 +1,7 @@
+/*Escribir un programa que pida números enteros hasta que se introduzca un valor menor o igual a
+cero. A continuación debe mostrar la suma total de dichos números. Se deben incluir todos los
+números que hemos ido introduciendo por teclado. No se pueden utilizar Arrays. Entrada: 3, 4, 5,
+6, 8 | Salida: 3+4+5+6+8=26*/
+public class Ejercicio2 {
+
+}
