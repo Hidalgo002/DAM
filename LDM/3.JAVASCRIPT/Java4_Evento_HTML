@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVENTOS</title>
     <script src="Java4_Evento.js"></script>
+    <style>
+        #zona{
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
+    <div>
     <h1>EVENTOS.</h1>
     <h2>1. Accionar un botón.</h2>
         <button id="button1">Cambiar el color del fondo.</button>
@@ -17,5 +27,19 @@
     <h2>3. Cuadro de texto.</h2>
         <input id="cuadroTexto" type="text">
         <div id="textoSalida"></div>
+    
+    <h2>4. Capturar las propiedades de los eventos.</h2>
+        <button id="button4">Generar un evento.</button>
+        <div id="zona">Pasar por aquí el ratón.</div>
+        <div id="coordenadas"></div>
+    
+    <h2>5. Recoger datos de un Formulario.</h2>
+        <form id="formulario">
+            Nombre: <input type="text" id="nombre">
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="resultado">Mostrar</div>
+
+    </div>
 </body>
 </html>

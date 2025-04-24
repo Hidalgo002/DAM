@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTOS</title>
+    <script src="Java5_Ejercicios.js"></script>
+
+</head>
+<body onload="load()">
+    
+    <h1>EJERCICIOS.</h1>
+        <h2>Ejercicio 1.</h2>
+            <button id="numeroAleatorio"> Generar un número aleatorio.</button>
+            <div id="mostrarNumero"></div>
+    
+        <h2>Ejercicio 2.</h2>
+            <form>
+                Numero para la cuenta atrás <input type="number" id="tiempo" value="10">
+                <button id="cuentaAtras"></button>
+            </form>
+
+        <h2>Ejercicio 3.</h2>
+        <h2>Ejercicio 4.</h2>
+        <h2>Ejercicio 5.</h2>
+   
+    
+</body>
+</html>
