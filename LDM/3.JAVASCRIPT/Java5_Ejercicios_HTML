@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVENTOS</title>
     <script src="Java5_Ejercicios.js"></script>
+    <style>
+        #fondo {
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            padding: 20px;
+        }
+    </style>
 
 </head>
 <body onload="load()">
+    <div>
     
     <h1>EJERCICIOS.</h1>
         <h2>Ejercicio 1.</h2>
@@ -15,15 +24,87 @@
             <div id="mostrarNumero"></div>
     
         <h2>Ejercicio 2.</h2>
-            <form>
-                Numero para la cuenta atrás <input type="number" id="tiempo" value="10">
-                <button id="cuentaAtras"></button>
-            </form>
+            
+            Numero para la cuenta atrás <input type="number" id="tiempo" value="10">
+            <button id="cuentaAtras">BOTÓN</button>
+            <div id="contador"></div>
+            
 
         <h2>Ejercicio 3.</h2>
-        <h2>Ejercicio 4.</h2>
-        <h2>Ejercicio 5.</h2>
-   
-    
+        <!-- opción 1 -->
+            <table>
+                <tr>
+                    <td id="1">1</td>
+                    <td id="2">2</td>
+                    <td id="3">2</td>
+                </tr>
+                <tr>
+                    <td id="4">1</td>
+                    <td id="5">2</td>
+                    <td id="6">2</td>
+                </tr>
+                <tr>
+                    <td id="7">1</td>
+                    <td id="8">2</td>
+                    <td id="9">2</td>
+                </tr>
+            </table>
+            <button id="table">Rellenar Tabla</button>
+
+            <!-- opción 2 -->
+            <table id="tablaSegunda" class="tablaSegunda">
+                <tr>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td>x</td>
+                    <td>x</td>
+                </tr>
+            </table>
+            <button id="table2">Rellenar Tabla - Opción 2</button>
+
+        
+            <h2>Ejercicio 4.</h2>
+            <div id="fondo"></div>
+        
+        
+        <h2>Ejercicio 5.</h2> <!--27-->
+            <div id="palabra"> </div>
+            <button class="ejercicio5" id="a" value="a"> A </button>
+            <button class="ejercicio5" id="b" value="b"> B </button>
+            <button class="ejercicio5" id="c" value="c"> C </button>
+            <button class="ejercicio5" id="d" value="d"> D </button>
+            <button class="ejercicio5" id="e" value="e"> E </button>
+            <button class="ejercicio5" id="f" value="f"> F </button>
+            <button class="ejercicio5" id="g" value="g"> G </button>
+            <button class="ejercicio5" id="h" value="h"> H </button>
+            <button class="ejercicio5" id="i" value="i"> I </button>
+            <button class="ejercicio5" id="j" value="j"> J </button>
+            <button class="ejercicio5" id="k" value="k"> K </button>
+            <button class="ejercicio5" id="l" value="l"> L </button>
+            <button class="ejercicio5" id="m" value="m"> M </button>
+            <button class="ejercicio5" id="n" value="n"> N </button>
+            <button class="ejercicio5" id="ñ" value="ñ"> Ñ </button>
+            <button class="ejercicio5" id="o" value="o"> O </button>
+            <button class="ejercicio5" id="p" value="p"> P </button>
+            <button class="ejercicio5" id="q" value="q"> Q </button>
+            <button class="ejercicio5" id="r" value="r"> R </button>
+            <button class="ejercicio5" id="s" value="s"> S </button>
+            <button class="ejercicio5" id="t" value="t"> T </button>
+            <button class="ejercicio5" id="u" value="u"> U </button>
+            <button class="ejercicio5" id="v" value="v"> V </button>
+            <button class="ejercicio5" id="w" value="w"> W </button>
+            <button class="ejercicio5" id="x" value="x"> X </button>
+            <button class="ejercicio5" id="y" value="y"> Y </button>
+            <button class="ejercicio5" id="z" value="z"> Z </button>
+    </div>
 </body>
 </html>
