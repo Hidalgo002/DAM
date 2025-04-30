@@ -50,13 +50,33 @@ botones con cada una de las letras del abecedario. Cuando se pulse el botón de 
 letra que compruebe si esa letra está y si esta que sume uno a un contador. Esa letra
 no se puede volver a utilizar por lo que hay que desactivar el botón. Si hay dos letras
 en la palabra se cuentan las dos*/
-function ahorcado(){
+
+function generarPalabra(){
     let palabras = ["carmelo", "rios", "ferrer", "diaz", "alcalde","grandal"];
-    let palabraSeleccionada = palabras[random(palabras.length)]; // Selecciona una palabra aleatoria del array
-    console.log(event.target.value); // Muestra la palabra seleccionada en la consola para depuración -> podemos elegir si escribir value o textContent, en el primer caso se mostrará el valor del botón (a) y en el segundo el texto que contiene el botón (A)
-
-
+    return palabras[random(palabras.length)];
 }
+
+function ahorcado(event, palabraSeleccionada){
+   
+    let palabraSeleccionada = palabras[random(palabras.length)]; // Selecciona una palabra aleatoria del array
+    let letra=event.target.textContent; // Muestra la palabra seleccionada en la consola para depuración -> podemos elegir si escribir value o textContent, en el primer caso se mostrará el valor del botón (a) y en el segundo el texto que contiene el botón (A)
+    
+    console.log(palabraSeleccionada);
+
+    let contador=0;
+
+    for(let i = 0;i<palabraSeleccionada;i++){
+        if(palabraSeleccionada[i]===letra){
+            
+            contador++;
+            event.target.disabled=true;
+        }
+    }
+
+    document.getElementById("resultado").textContent= `Letras adivinadas: ${contador}`;
+}
+
+
 
 
 function load() {
@@ -73,8 +93,7 @@ function load() {
     botonAtras.addEventListener("click",cuentaAtras);
 
 
-    /* EJERCICIO 3 --> Crea una tabla en HTML e intenta que dando un botón se rellenen todas las celdas
-con números secuenciales.*/
+    /* EJERCICIO 3 --> Crea una tabla en HTML e intenta que dando un botón se rellenen todas las celdas con números secuenciales.*/
     //opcion 1
     document.getElementById("table").addEventListener("click",rellenarTable);
 
@@ -87,7 +106,8 @@ con números secuenciales.*/
 
     //EJERCICIO 5 -->
     let letras = document.querySelectorAll(".ejercicio5"); // Selecciona todos los botones de letras
-    letras.forEach(botonesLetras => botonesLetras.addEventListener("click", ahorcado));
+    let palabraSeleccionada = generarPalabra();
+    letras.forEach(botonesLetras => botonesLetras.addEventListener('click', () => {ahorcado,(palabraSeleccionada)});
 }
 
 window.addEventListener("DOMContentLoaded", load, false);

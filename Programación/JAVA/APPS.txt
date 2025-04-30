@@ -1,0 +1,839 @@
+import java.util.Scanner;
+
+public class AltaAlumnos {
+    
+    public static void main(String[] args){
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Introduzca el número de alumnos: ");
+        int totalAlumnos = entrada.nextInt();
+        entrada.nextLine(); // limpiar salto de línea
+
+        String[] nombres = new String[totalAlumnos];
+        String[] apellidos = new String[totalAlumnos];
+        int[] edades = new int[totalAlumnos];
+        double[] notas = new double[totalAlumnos];
+
+        for (int i = 0; i < totalAlumnos; i++) {
+            System.out.println("Alumno [" + (i + 1) + "]");
+
+            System.out.print("Nombre: ");
+            nombres[i] = entrada.nextLine();
+
+            System.out.print("Apellido: ");
+            apellidos[i] = entrada.nextLine();
+
+            System.out.print("Edad: ");
+            edades[i] = entrada.nextInt();
+            entrada.nextLine(); // limpiar salto
+
+            System.out.print("Nota: ");
+            notas[i] = entrada.nextDouble();
+            entrada.nextLine(); // limpiar salto
+        }
+
+        entrada.close();
+
+        System.out.println("\n--- LISTA DE ALUMNOS ---");
+        for (int i = 0; i < totalAlumnos; i++) {
+            System.out.println("Alumno[" + (i + 1) + "]; Nombre[" + nombres[i] + "]; Apellido[" + apellidos[i] + "]; Edad[" + edades[i] + "]; Nota[" + notas[i] + "]");
+        }
+    }
+}
+
+
+
+------------------------------------------------
+import java.util.Scanner;
+
+public class AprobadosVSSuspensos{
+public static void main(String[] args){
+    int n;
+    int s=0;
+    boolean suspensos;
+    suspensos = false;
+
+    Scanner entrada = new Scanner (System.in);
+ 
+  for (int i=0;i<5;i++){
+     System.out.print("Introduzca nota (de 0 a 10): ");
+      n=entrada.nextInt();
+     
+      if(n<5){
+      suspensos = true;
+      s++;
+      }
+     }
+
+     if(suspensos==true){
+      System.out.println("Hay " +s + " alumnos suspensos.");
+     }
+     else{
+      System.out.println("No hay suspensos");
+     }
+ }
+}---------------------------------------------
+/*Dado un número, determinar cuántos dígitos tiene. No se pueden utilizar ni variables 
+ni funciones de tipo String. */
+
+import java.util.Scanner;
+	
+public class Ejercicio1 {
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.print("Ingrese un número entero positivo: ");
+	        int numero = scanner.nextInt();
+	        
+	        // Asegurarse de que el número sea positivo
+	        if (numero == 0) {
+	            System.out.println("El número tiene 1 dígito.");
+	        } else {
+	            if (numero < 0) {
+	                numero = -numero; // Convertirlo a positivo si es negativo
+	            }
+
+	            int contador = 0;
+	            while (numero > 0) {
+	                numero = numero / 10;
+	                contador++;
+	            }
+	            
+
+	            System.out.println("El número tiene " + contador + " dígito(s).");
+	        }
+	        
+	        scanner.close();
+	      //FUNCIONA EL TOKEN
+	    }
+	    
+	}
+--------------------------------------------------------------
+/*Escribir un programa que pida números enteros hasta que se introduzca un valor menor o igual a
+cero. A continuación debe mostrar la suma total de dichos números. Se deben incluir todos los
+números que hemos ido introduciendo por teclado. No se pueden utilizar Arrays. Entrada: 3, 4, 5,
+6, 8 | Salida: 3+4+5+6+8=26*/
+
+import java.util.Scanner;
+
+public class Ejercicio2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numero;
+        int suma = 0;
+        String expresion = "";
+        boolean primerNumero = true;
+
+        while (true) {
+            System.out.print("Introduce un número entero (<= 0 para salir): ");
+            numero = scanner.nextInt();
+
+            if (numero <= 0) {
+                break;
+            }
+
+            suma += numero;
+
+            // Construir la expresión de suma
+            if (primerNumero) {
+                expresion += numero;
+                primerNumero = false;
+            } else {
+                expresion += "+" + numero;
+            }
+        }
+
+        if (!expresion.isEmpty()) {
+            expresion += "=" + suma;
+            System.out.println("Salida: " + expresion);
+        } else {
+            System.out.println("No se introdujeron números positivos.");
+        }
+        
+        scanner.close();
+        //FUNCIONA EN TOKEN
+    }
+}
+-----------------------------------------------------------
+/*Dada una secuencia de números enteros acabada en 0, obtener la suma de aquellos números tales
+que su número de cifras sea igual a la suma de las mismas. No se pueden utilizar Arrays. Entrada: 1,
+5, 111, 66, 201, 273, 0 | Salida: 1 + 111 + 201 = 313*/
+
+import java.util.Scanner;
+
+public class Ejercicio3 {
+
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int numero;
+        int total = 0;
+        String frase = "";
+
+        System.out.println("Introduce números (termina con 0):");
+
+        do {
+            numero = entrada.nextInt();
+            if (numero == 0) break;
+
+            int sumaDigitos = 0;
+            int contadorDigitos = 0;
+            int temp = numero;
+
+            while (temp > 0) {
+                sumaDigitos += temp % 10;
+                temp /= 10;
+                contadorDigitos++;
+            }
+
+            if (sumaDigitos == contadorDigitos) {
+                total += numero;
+                frase += numero + " + ";
+            }
+
+        } while (numero != 0);
+
+        if (!frase.isEmpty()) {
+            frase = frase.substring(0, frase.length() - 3); // eliminar el último " + "
+            System.out.println(frase + " = " + total);
+        } else {
+            System.out.println("No hay números que cumplan la condición.");
+        }
+        entrada.close();
+    }
+}
+--------------------------------------------------------
+/*Crea un programa que te pida una palabra y escriba las letras separadas por espacios. Ejemplo,
+a partir de "Pepe" escribirá "P e p e ".*/
+
+import java.util.Scanner;
+
+public class Ejercicio4 {
+	
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Introduce una palabra: ");
+		
+		String palabra = entrada.nextLine();
+		
+		for(int i = 0; i<palabra.length();i++) {
+			
+			System.out.print(palabra.charAt(i)+" ");
+		}
+		
+		entrada.close();
+	}
+}
+-----------------------------------------------
+/*Crea un programa en JAVA que reciba 5 palabras y luego nos muestre la que tiene una longitud mayor*/
+
+import java.util.Scanner;
+
+public class Ejercicio5 {
+	 public static void main(String[] args) {
+		 Scanner entrada = new Scanner(System.in);
+		 String palabraMayor="";
+		 int lonMayor=0;
+		 
+		 System.out.println("Introduzca cinco palabras.");
+		 for(int i = 0; i<5;i++) {
+			 System.out.println("Palabra ["+(i+1)+"]: ");
+			 String palabra=entrada.nextLine();
+		 
+			 if(palabra.length()>lonMayor) {
+				 palabraMayor=palabra;
+				 lonMayor=palabra.length();
+			 }
+			 
+		 }
+		 
+		 entrada.close();
+		 
+		 System.out.println("Palabra de mayor longitud: " + palabraMayor);
+		 System.out.println("Tamaño: " + lonMayor);
+	 }
+}
+---------------------------------------------
+/*Crea un programa en JAVA que lea por teclado una cadena de texto e indique la cantidad de 
+palabras que tiene. De la clase String, únicamente se pueden utilizar los métodos charAt(), trim()
+y length(). */
+
+import java.util.Scanner;
+
+public class Ejercicio6 {
+	public static void main(String[] args) {
+		 Scanner entrada = new Scanner(System.in);
+		 
+		 int contador=0;
+		 
+		 System.out.println("Introduzca las palabras.");
+		 String cadena=entrada.nextLine();
+		 cadena=cadena.trim();
+		 
+		 if(cadena.length() == 0){
+			 System.out.println("No hay ninguna palabra");
+		 } else {
+			 for(int i = 0; i<cadena.length();i++) {
+				 
+				 if(cadena.charAt(i) == ' '&& cadena.charAt(i+1)!=' '){
+					 contador++; 
+				 }
+				 
+			 	}
+			 System.out.println("Hay "+(contador+1)+" palabras.");
+			 }
+		 
+		 
+		 
+		 entrada.close();
+	}
+}
+--------------------------------------------------------
+/*Crea un programa en JAVA que lea por teclado una cadena de texto e indique la cantidad de 
+palabras que tiene. De la clase String, únicamente se pueden utilizar los métodos charAt(), trim()
+y length(). */
+
+import java.util.Scanner;
+
+public class Ejercicio6 {
+	public static void main(String[] args) {
+		 Scanner entrada = new Scanner(System.in);
+		 
+		 int contador=0;
+		 
+		 System.out.println("Introduzca las palabras.");
+		 String cadena=entrada.nextLine();
+		 cadena=cadena.trim();
+		 
+		 if(cadena.length() == 0){
+			 System.out.println("No hay ninguna palabra");
+		 } else {
+			 for(int i = 0; i<cadena.length();i++) {
+				 
+				 if(cadena.charAt(i) == ' '&& cadena.charAt(i+1)!=' '){
+					 contador++; 
+				 }
+				 
+			 	}
+			 System.out.println("Hay "+(contador+1)+" palabras.");
+			 }
+		 
+		 
+		 
+		 entrada.close();
+	}
+}
+-----------------------------------------------------------
+/*Crea un programa en JAVA que reciba una palabra por teclado e indique si es un palíndromo. Un
+palíndromo es una palabra que se lee igual de derecha a izquierda, que de izquierda a derecha.
+Ejemplo: RECONOCER*/
+
+import java.util.Scanner;
+
+public class Ejercicio7 {
+    public static void main(String[] args){
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Introduzca una palabra:");
+        String cadena = entrada.nextLine();
+        cadena=cadena.trim();
+        
+        if (isPalin(cadena)) {
+            System.out.println("La palabra ["+cadena+"] es palíndroma.");
+        } else {
+            System.out.println("La palabra ["+cadena+"] no es palíndroma.");
+        }
+        
+        entrada.close();
+    }
+
+    private static boolean isPalin(String cadena) {
+        int longitud = cadena.length() / 2; //Porque comparamos en espejo las dos partes de la palabra
+		  									//RECO N OCER, N es el intermedio y nos da igual, cuando divide entre dos
+											//saca un entero por lo que no la tiene en cuenta
+        
+        for (int i = 0; i < longitud; i++) {
+            if (cadena.charAt(i) != cadena.charAt(cadena.length() - i - 1)) {
+                return false; //Returns nothing
+            }
+        }
+        return true; //returns cadena
+    }
+}
+-------------------------------------------------
+/*Crear un programa en JAVA que dibuje un rectángulo formado por asteriscos(*). Se deben pedir JAVA
+base y altura por teclado. Además, añade código adicional para que dibuje dicho rectángulo sin
+relleno*/
+
+import java.util.Scanner;
+
+public class Ejercicio8 {
+ 
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Introduce la base del rectángulo.");
+		
+		int base = entrada.nextInt();
+		
+		System.out.println("Introduce la altura del rectángulo.");
+		
+		int altura = entrada.nextInt();
+		
+		entrada.close();
+		
+		System.out.println("Rectángulo relleno: ");
+		//RELLENO:
+		for(int i= 0; i<altura; i++) { //
+			for(int j= 0; j<base;j++) {
+					System.out.print("*");
+				}
+			System.out.println();
+		}
+		
+		System.out.println("Rectángulo con espacio: ");
+		//CON ESPACIO
+		for(int i= 0; i<altura; i++) { //
+			for(int j= 0; j<base;j++) {
+				if(i==0|| i==altura-1|| j==0 ||j==base-1) {
+					System.out.print("*");
+				}
+				else{
+					System.out.print(" ");
+					}
+			}
+			System.out.println();
+		}
+	}
+}
+-------------------------------------------------------------
+/*Crea un programa en JAVA que dibuje un triángulo rectángulo formado por asteriscos(*). Se debe
+pedir la altura del triángulo por teclado. Además, añade código adicional para que dibuje dicho
+triángulo sin relleno*/
+
+import java.util.Scanner;
+
+public class Ejercicio9 {
+		public static void main(String[] args) {
+			
+			Scanner entrada = new Scanner(System.in);
+			
+			System.out.println("Introduce la altura del rectángulo.");
+			
+			int altura = entrada.nextInt();
+
+			entrada.close();
+			
+			//TRIÁNGULO MACIZO
+			System.out.println("Triángulo macizo: ");
+			for(int i=0; i<=altura; i++) {
+				for(int j=0; j<i; j++) {
+						System.out.print("*");
+				}
+				System.out.println( );
+			}
+			
+			//TRIÁNGULO VACÍO
+			System.out.println("Triángulo vacío: ");
+			for(int i=1; i<=altura; i++) {
+				for(int j=0; j<i; j++) {
+					if(i==altura|| j==0 ||j==i-1) {
+						System.out.print("*");
+					}
+					else{
+						System.out.print(" ");
+						}
+				}
+				System.out.println( );
+			}
+				
+				
+		}
+}
+	
+	-------------------------------------------------------------
+/*Crea un programa en JAVA que dibuje un triángulo equilátero formado por asteriscos(*). Se debe
+pedir la altura del triángulo por teclado. Además, añade código adicional para que dibuje dicho
+rectángulo sin relleno */
+
+import java.util.Scanner;
+
+public class Ejercicio10 {
+
+	public static void main(String[] args) {
+		
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("Introduce la altura del triángulo.");
+		
+		int altura = entrada.nextInt();
+		
+		entrada.close();
+		
+		//TRIÁNGULO MACIZO
+		System.out.println("Triángulo macizo: ");
+		
+		for(int i=0; i<altura; i++) {
+			for(int j = i; j-altura<=0; j++) {
+					System.out.print("  ");
+			}
+			for(int k = 0; k<=i*2; k++) {
+				System.out.print("* ");
+				}
+			System.out.println( );
+			}
+		}
+		
+		//TRIÁNGULO VACÍO
+		//System.out.println("Triángulo vacío: ");
+
+}
+--------------------------------------------------------------
+package practica;
+
+import java.util.Scanner;
+
+public class Entrega {
+		
+		public static void main(String[] args) { //Función de scanner de entrada
+			Scanner entrada = new Scanner(System.in);
+			MENU(entrada);
+			entrada.close();
+		}
+		
+		
+		public static void MENU(Scanner entrada2) {
+			int bandera=0;
+			
+			do {
+					System.out.println("MENÚ.");
+					System.out.println("Seleccione un tipo de figura (1- Rectángulo; 2-Triángulo Rectángulo; 3-Triángulo Equilatero; 4-Salir del programa.)");
+					boolean comprobacion=entrada2.hasNextInt();
+					if(comprobacion==true) {
+						int opcion = entrada2.nextInt(); 
+						entrada2.nextLine();
+						if(opcion==1) {
+							System.out.println("RECTÁNGULO.");
+							int opcion2=rellOVacio(entrada2);
+							if(opcion2==1) {
+								System.out.println("RELLENO.");
+								rectRelleno(entrada2);
+							}
+							else if (opcion2==2) {
+								System.out.println("VACÍO.");
+								rectVacio(entrada2);
+							}
+						}
+						
+						else if(opcion==2) {
+							System.out.println("TRIÁNGULO RECTÁNGULO.");
+							int opcion2=rellOVacio(entrada2);
+							if(opcion2==1) {
+								System.out.println("RELLENO.");
+								trianguloRecRelleno(entrada2);
+							}
+							else if (opcion2==2) {
+								System.out.println("VACÍO.");
+								trianguloRecVacio(entrada2);
+							}
+						}
+						
+						else if(opcion==3) {
+							System.out.println("TRIÁNGULO EQUILÁTERO.");
+							int opcion2=rellOVacio(entrada2);
+							if(opcion2==1) {
+								System.out.println("RELLENO.");
+								trianguloEqRelleno(entrada2);
+							}
+							/*else if (opcion2==2) {
+								System.out.println("VACÍO.");
+								trianguloEqVacio(entrada2);
+							}*/
+						}
+						else if(opcion==4){
+							System.out.println("Saliendo del programa.");
+							bandera=1;
+						}
+					}else {System.out.println("No es un número");
+					entrada2.nextLine();}
+				}while(bandera!=1);		
+		}
+		
+		public static int  rellOVacio(Scanner entrada2) {
+			System.out.println("Seleccione si la figura aparecerá rellena (1) o vacía (2): ");
+			int opcion2 = entrada2.nextInt();
+			return opcion2; 
+		}
+		
+		public static int base(Scanner entrada2) {
+			System.out.println("Introduce la base de la figura.");
+			int base = entrada2.nextInt(); 
+			return base;
+		}
+		
+		public static int altura(Scanner entrada2) {
+			System.out.println("Introduce la altura de la figura.");
+			int altura = entrada2.nextInt();
+			return altura;
+		}
+
+		
+		//RECTÁNGULO
+				public static void rectRelleno(Scanner entrada2) {
+					int baseL=base(entrada2);
+					int alturaL=altura(entrada2);
+					
+						for(int i= 0; i<alturaL; i++) {
+							for(int j= 0; j<baseL;j++) {
+									System.out.print("*");
+								}
+							System.out.println();
+						}
+				}
+					
+				public static void rectVacio(Scanner entrada2) {	
+					int baseL=base(entrada2);
+					int alturaL=altura(entrada2);
+		
+						for(int i= 0; i<alturaL; i++) {
+							for(int j= 0; j<baseL;j++) {
+								if(i==0|| i==alturaL-1|| j==0 ||j==baseL-1) {
+									System.out.print("*");
+								}
+								else{
+									System.out.print(" ");
+									}
+								}
+								System.out.println();
+								}	
+				}
+				
+				
+		//TRIÁNGULO RECTÁNGULO
+				public static void trianguloRecRelleno (Scanner entrada2) {
+					int alturaL=altura(entrada2);
+					
+					for(int i=0; i<=alturaL; i++) {
+						for(int j=0; j<i; j++) {
+								System.out.print("*");
+						}
+						System.out.println( );
+					}
+				}
+				
+				public static void trianguloRecVacio (Scanner entrada2) {
+					int alturaL=altura(entrada2);
+					
+					for(int i=1; i<=alturaL; i++) {
+						for(int j=0; j<i; j++) {
+							if(i==alturaL|| j==0 ||j==i-1) {
+								System.out.print("*");
+							}
+							else{
+								System.out.print(" ");
+								}
+						}
+						System.out.println( );
+					}
+				}
+				
+				
+		//TRIÁNGULO EQUILÁTERO
+				
+				public static void trianguloEqRelleno (Scanner entrada2) {
+					int alturaL=altura(entrada2);
+					
+					for(int i=0; i<alturaL; i++) {
+						for(int j = i; j-alturaL<=0; j++) {
+								System.out.print("  ");
+						}
+						for(int k = 0; k<=i*2; k++) {
+							System.out.print("* ");
+							}
+						System.out.println( );
+						}
+				}
+				
+				public static void trianguloEqVacio(Scanner entrada2) {
+    int alturaL = altura(entrada2); // Suponiendo que este método ya está definido y devuelve un int
+
+    for (int i = 0; i < alturaL; i++) {
+        // Imprimir espacios en blanco al inicio de la línea
+        for (int j = 0; j < alturaL - i - 1; j++) {
+            System.out.print(" ");
+        }
+
+        // Imprimir borde izquierdo
+        System.out.print("*");
+
+        // Imprimir espacios interiores o el vértice inferior
+        if (i == alturaL - 1) {
+            // Línea inferior: rellenar completamente
+            for (int k = 1; k < 2 * i + 1; k++) {
+                System.out.print("*");
+            }
+        } else if (i > 0) {
+            // Líneas intermedias: espacio en el medio y borde derecho
+            for (int k = 1; k < 2 * i; k++) {
+                System.out.print(" ");
+            }
+            System.out.print("*");
+        }
+
+        System.out.println(); // Salto de línea
+    }
+}
+		
+				
+	}
+-------------------------------------------------------------
+ROMBO RELLENO
+public static void romboRelleno(Scanner entrada2) {
+    int altura = altura(entrada2); // Asegúrate de que sea impar
+    int mitad = altura / 2;
+
+    // Parte superior del rombo
+    for (int i = 0; i <= mitad; i++) {
+        for (int j = 0; j < mitad - i; j++) {
+            System.out.print(" ");
+        }
+        for (int j = 0; j < 2 * i + 1; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+    // Parte inferior del rombo
+    for (int i = mitad - 1; i >= 0; i--) {
+        for (int j = 0; j < mitad - i; j++) {
+            System.out.print(" ");
+        }
+        for (int j = 0; j < 2 * i + 1; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+-----------------------
+ROMBO VACIO
+public static void romboVacio(Scanner entrada2) {
+    int altura = altura(entrada2); // Asegúrate de que sea impar
+    int mitad = altura / 2;
+
+    // Parte superior
+    for (int i = 0; i <= mitad; i++) {
+        for (int j = 0; j < mitad - i; j++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+        if (i > 0) {
+            for (int j = 0; j < 2 * i - 1; j++) {
+                System.out.print(" ");
+            }
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+
+    // Parte inferior
+    for (int i = mitad - 1; i >= 0; i--) {
+        for (int j = 0; j < mitad - i; j++) {
+            System.out.print(" ");
+        }
+        System.out.print("*");
+        if (i > 0) {
+            for (int j = 0; j < 2 * i - 1; j++) {
+                System.out.print(" ");
+            }
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+------------------------------------
+TRIANGULO NUMEROS
+public static void trianguloNumeros(Scanner entrada) {
+    System.out.print("Introduce la altura del triángulo: ");
+    int altura = entrada.nextInt();
+
+    for (int i = 1; i <= altura; i++) {
+        for (int j = 1; j <= i; j++) {
+            System.out.print(j);
+        }
+        System.out.println();
+    }
+}
+-------------------------------------
+LETRA X
+public static void letraX(Scanner entrada) {
+    System.out.print("Introduce el tamaño (impar recomendado): ");
+    int tamaño = entrada.nextInt();
+
+    for (int i = 0; i < tamaño; i++) {
+        for (int j = 0; j < tamaño; j++) {
+            if (j == i || j == tamaño - 1 - i) {
+                System.out.print("*");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+}
+-------------------------------------
+PIRAMIDE INVERTIDA RELLENA
+public static void piramideInvertidaRellena(Scanner entrada) {
+    System.out.print("Introduce la altura: ");
+    int altura = entrada.nextInt();
+
+    for (int i = altura; i >= 1; i--) {
+        for (int j = 0; j < altura - i; j++) {
+            System.out.print(" ");
+        }
+        for (int j = 0; j < 2 * i - 1; j++) {
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
+-------------------------------------------
+PIRAMIDE INVERTIDA VACIA
+public static void piramideInvertidaVacia(Scanner entrada) {
+    System.out.print("Introduce la altura: ");
+    int altura = entrada.nextInt();
+
+    for (int i = 0; i < altura; i++) {
+        for (int j = 0; j < i; j++) {
+            System.out.print(" ");
+        }
+
+        int ancho = 2 * (altura - i) - 1;
+        for (int j = 0; j < ancho; j++) {
+            if (j == 0 || j == ancho - 1 || i == 0) {
+                System.out.print("*");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+}
+---------------------------------------
+CUADRADO NUMEROS CONSECUTIVOS
+public static void cuadradoContador(Scanner entrada) {
+    System.out.print("Introduce el tamaño del cuadrado: ");
+    int tamaño = entrada.nextInt();
+    int contador = 1;
+
+    for (int i = 0; i < tamaño; i++) {
+        for (int j = 0; j < tamaño; j++) {
+            System.out.printf("%2d ", contador++);
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+    

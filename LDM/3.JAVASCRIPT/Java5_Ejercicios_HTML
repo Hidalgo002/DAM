@@ -105,6 +105,7 @@
             <button class="ejercicio5" id="x" value="x"> X </button>
             <button class="ejercicio5" id="y" value="y"> Y </button>
             <button class="ejercicio5" id="z" value="z"> Z </button>
+            <div id="resultado">.</div>
     </div>
 </body>
 </html>
