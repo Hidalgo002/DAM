@@ -77,7 +77,7 @@
         
         
         <h2>Ejercicio 5.</h2> <!--27-->
-            <div id="palabra"> </div>
+            
             <button class="ejercicio5" id="a" value="a"> A </button>
             <button class="ejercicio5" id="b" value="b"> B </button>
             <button class="ejercicio5" id="c" value="c"> C </button>
@@ -105,7 +105,8 @@
             <button class="ejercicio5" id="x" value="x"> X </button>
             <button class="ejercicio5" id="y" value="y"> Y </button>
             <button class="ejercicio5" id="z" value="z"> Z </button>
-            <div id="resultado">.</div>
+            <div id="palabra"></div>
+            <p id="resultado">Letras adivinadas: 0</p>
     </div>
 </body>
 </html>

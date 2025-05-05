@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAMEN PRUEBA</title>
+    <link rel="stylesheet" href="Java6_estilos.css">
+    <script src="Java6_Evento2.js"></script>
+</head>
+
+<body>
+    <h1>SUDOKU</h1>
+
+    <table>
+        <!--FILA 1-->
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+
+         <!--FILA 2-->
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+
+         <!--FILA 3-->
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+
+       
+
+    </table>
+</body>
+
+</html>

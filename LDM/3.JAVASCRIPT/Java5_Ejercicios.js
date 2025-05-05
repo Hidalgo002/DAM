@@ -50,32 +50,39 @@ botones con cada una de las letras del abecedario. Cuando se pulse el botón de 
 letra que compruebe si esa letra está y si esta que sume uno a un contador. Esa letra
 no se puede volver a utilizar por lo que hay que desactivar el botón. Si hay dos letras
 en la palabra se cuentan las dos*/
+const palabras = ["carmelo", "rios", "ferrer", "diaz", "alcalde", "grandal"];
+let palabraSeleccionada = "";
+let palabraMostrada = [];
+let contador = 0;
 
-function generarPalabra(){
-    let palabras = ["carmelo", "rios", "ferrer", "diaz", "alcalde","grandal"];
-    return palabras[random(palabras.length)];
-}
+function ahorcado(event) {
+    const letra = event.target.textContent;
+    let aciertos = 0;
 
-function ahorcado(event, palabraSeleccionada){
-   
-    let palabraSeleccionada = palabras[random(palabras.length)]; // Selecciona una palabra aleatoria del array
-    let letra=event.target.textContent; // Muestra la palabra seleccionada en la consola para depuración -> podemos elegir si escribir value o textContent, en el primer caso se mostrará el valor del botón (a) y en el segundo el texto que contiene el botón (A)
-    
-    console.log(palabraSeleccionada);
-
-    let contador=0;
-
-    for(let i = 0;i<palabraSeleccionada;i++){
-        if(palabraSeleccionada[i]===letra){
-            
-            contador++;
-            event.target.disabled=true;
+    // Comparar letra con la palabra
+    for (let i = 0; i < palabraSeleccionada.length; i++) {
+        if (palabraSeleccionada[i] === letra) {
+            palabraMostrada[i] = letra;
+            aciertos++;
         }
     }
 
-    document.getElementById("resultado").textContent= `Letras adivinadas: ${contador}`;
-}
+    contador += aciertos;
+    document.getElementById("palabra").value = palabraMostrada.join(" ");
+    document.getElementById("resultado").value = `Letras adivinadas: ${contador}`;
 
+    event.target.disabled = true;
+
+    if (aciertos > 0) {
+        alert(`¡Letra acertada! (${aciertos})`);
+    } else {
+        alert("Letra incorrecta.");
+    }
+
+    if (!palabraMostrada.includes("_")) {
+        alert("¡Ganaste! Has adivinado la palabra.");
+    }
+}
 
 
 
@@ -105,9 +112,23 @@ function load() {
     document.getElementById("fondo").addEventListener("mouseover", cambiarFondo);
 
     //EJERCICIO 5 -->
-    let letras = document.querySelectorAll(".ejercicio5"); // Selecciona todos los botones de letras
-    let palabraSeleccionada = generarPalabra();
-    letras.forEach(botonesLetras => botonesLetras.addEventListener('click', () => {ahorcado,(palabraSeleccionada)});
+    // Selecciona palabra aleatoria
+
+     palabraSeleccionada = palabras[Math.floor(Math.random() * palabras.length)];
+     palabraMostrada = Array(palabraSeleccionada.length).fill("_");
+     contador = 0;
+ 
+     // Muestra los guiones bajos para la palabra
+     document.getElementById("palabra").value = palabraMostrada.join(" ");
+     document.getElementById("resultado").value = `Letras adivinadas: 0`;
+ 
+     // Asocia los botones del abecedario con la función ahorcado
+     const botones = document.querySelectorAll(".ejercicio5");
+     botones.forEach((boton) => {
+         boton.addEventListener("click", ahorcado);
+     });
+ 
+     console.log("Palabra seleccionada:", palabraSeleccionada); // Depuración
 }
 
 window.addEventListener("DOMContentLoaded", load, false);
