@@ -1,0 +1,13 @@
+1. Crea un método que obtenga la cantidad de dígitos de un número N mayor que cero. Se
+debe pasar como parámetro el número N.
+2. Crea un método que obtenga el resultado de elevar un número a otro. Ambos números se
+deben pasar como parámetros. Los números deben ser positivos.
+3. Crea un método que dado un número positivo, lo imprima invertido por pantalla.
+4. Crea un método que compruebe si un número es binario. Un número binario está
+formado únicamente por ceros y unos.
+5. Crea un método que obtenga el número binario de un número N pasado como
+parámetro.
+6. Crea un método que compruebe si una palabra está ordenada alfabéticamente.
+7. Crea un método que obtenga la suma de los números naturales desde 1hasta N. Se debe
+pasar como parámetro el número N, debe ser mayor que cero. Se debe imprimir toda la
+cadena por consola. Por ejemplo, para N=4 →( 1+2+3+4 =10).
