@@ -24,125 +24,125 @@
             </div>
             
             <table>
-                <tr> <!--FILA 1-->
-                    <td class="celdaT1" id="00" contenteditable="true"></td>
-                    <td class="celdaT1" id="01" contenteditable="true"></td>
-                    <td class="celdaT1" id="02" contenteditable="true"></td>
-                    <td class="celdaT1" id="03" contenteditable="true"></td>
-                    <td class="celdaT1" id="04" contenteditable="true"></td>
-                    <td class="celdaT1" id="05" contenteditable="true"></td>
-                    <td class="celdaT1" id="06" contenteditable="true"></td>
-                    <td class="celdaT1" id="07" contenteditable="true"></td>
-                    <td class="celdaT1" id="08" contenteditable="true"></td>
-                    <td class="celdaT1" id="09" contenteditable="true"></td>
+                <tr>
+                    <td id="u00"><input type="text" name="u00" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u01"><input type="text" name="u01" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u02"><input type="text" name="u02" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u03"><input type="text" name="u03" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u04"><input type="text" name="u04" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u05"><input type="text" name="u05" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u06"><input type="text" name="u06" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u07"><input type="text" name="u07" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u08"><input type="text" name="u08" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u09"><input type="text" name="u09" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 2-->
-                    <td class="celdaT1" id="10" contenteditable="true"></td>
-                    <td class="celdaT1" id="11" contenteditable="true"></td>
-                    <td class="celdaT1" id="12" contenteditable="true"></td>
-                    <td class="celdaT1" id="13" contenteditable="true"></td>
-                    <td class="celdaT1" id="14" contenteditable="true"></td>
-                    <td class="celdaT1" id="15" contenteditable="true"></td>
-                    <td class="celdaT1" id="16" contenteditable="true"></td>
-                    <td class="celdaT1" id="17" contenteditable="true"></td>
-                    <td class="celdaT1" id="18" contenteditable="true"></td>
-                    <td class="celdaT1" id="19" contenteditable="true"></td>
+                <tr>
+                    <td id="u10"><input type="text" name="u10" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u11"><input type="text" name="u11" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u12"><input type="text" name="u12" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u13"><input type="text" name="u13" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u14"><input type="text" name="u14" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u15"><input type="text" name="u15" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u16"><input type="text" name="u16" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u17"><input type="text" name="u17" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u18"><input type="text" name="u18" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u19"><input type="text" name="u19" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 3-->
-                    <td class="celdaT1" id="20" contenteditable="true"></td>
-                    <td class="celdaT1" id="21" contenteditable="true"></td>
-                    <td class="celdaT1" id="22" contenteditable="true"></td>
-                    <td class="celdaT1" id="23" contenteditable="true"></td>
-                    <td class="celdaT1" id="24" contenteditable="true"></td>
-                    <td class="celdaT1" id="25" contenteditable="true"></td>
-                    <td class="celdaT1" id="26" contenteditable="true"></td>
-                    <td class="celdaT1" id="27" contenteditable="true"></td>
-                    <td class="celdaT1" id="28" contenteditable="true"></td>
-                    <td class="celdaT1" id="29" contenteditable="true"></td>
+                <tr>
+                    <td id="u20"><input type="text" name="u20" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u21"><input type="text" name="u21" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u22"><input type="text" name="u22" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u23"><input type="text" name="u23" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u24"><input type="text" name="u24" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u25"><input type="text" name="u25" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u26"><input type="text" name="u26" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u27"><input type="text" name="u27" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u28"><input type="text" name="u28" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u29"><input type="text" name="u29" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 4-->
-                    <td class="celdaT1" id="30" contenteditable="true"></td>
-                    <td class="celdaT1" id="31" contenteditable="true"></td>
-                    <td class="celdaT1" id="32" contenteditable="true"></td>
-                    <td class="celdaT1" id="33" contenteditable="true"></td>
-                    <td class="celdaT1" id="34" contenteditable="true"></td>
-                    <td class="celdaT1" id="35" contenteditable="true"></td>
-                    <td class="celdaT1" id="36" contenteditable="true"></td>
-                    <td class="celdaT1" id="37" contenteditable="true"></td>
-                    <td class="celdaT1" id="38" contenteditable="true"></td>
-                    <td class="celdaT1" id="39" contenteditable="true"></td>
+                <tr>
+                    <td id="u30"><input type="text" name="u30" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u31"><input type="text" name="u31" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u32"><input type="text" name="u32" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u33"><input type="text" name="u33" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u34"><input type="text" name="u34" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u35"><input type="text" name="u35" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u36"><input type="text" name="u36" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u37"><input type="text" name="u37" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u38"><input type="text" name="u38" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u39"><input type="text" name="u39" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 5-->
-                    <td class="celdaT1" id="40" contenteditable="true"></td>
-                    <td class="celdaT1" id="41" contenteditable="true"></td>
-                    <td class="celdaT1" id="42" contenteditable="true"></td>
-                    <td class="celdaT1" id="43" contenteditable="true"></td>
-                    <td class="celdaT1" id="44" contenteditable="true"></td>
-                    <td class="celdaT1" id="45" contenteditable="true"></td>
-                    <td class="celdaT1" id="46" contenteditable="true"></td>
-                    <td class="celdaT1" id="47" contenteditable="true"></td>
-                    <td class="celdaT1" id="48" contenteditable="true"></td>
-                    <td class="celdaT1" id="49" contenteditable="true"></td>
+                <tr>
+                    <td id="u40"><input type="text" name="u40" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u41"><input type="text" name="u41" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u42"><input type="text" name="u42" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u43"><input type="text" name="u43" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u44"><input type="text" name="u44" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u45"><input type="text" name="u45" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u46"><input type="text" name="u46" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u47"><input type="text" name="u47" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u48"><input type="text" name="u48" class="celda" minlength="1" maxlength="1"size="4"></td>
+                    <td id="u49"><input type="text" name="u49" class="celda" minlength="1" maxlength="1"size="4"></td>
                 </tr>
-                <tr> <!--FILA 6-->
-                    <td class="celdaT1" id="50" contenteditable="true"></td>
-                    <td class="celdaT1" id="51" contenteditable="true"></td>
-                    <td class="celdaT1" id="52" contenteditable="true"></td>
-                    <td class="celdaT1" id="53" contenteditable="true"></td>
-                    <td class="celdaT1" id="54" contenteditable="true"></td>
-                    <td class="celdaT1" id="55" contenteditable="true"></td>
-                    <td class="celdaT1" id="56" contenteditable="true"></td>
-                    <td class="celdaT1" id="57" contenteditable="true"></td>
-                    <td class="celdaT1" id="58" contenteditable="true"></td>
-                    <td class="celdaT1" id="59" contenteditable="true"></td>
+                <tr>
+                    <td id="u50"><input type="text" name="u50" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u51"><input type="text" name="u51" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u52"><input type="text" name="u52" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u53"><input type="text" name="u53" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u54"><input type="text" name="u54" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u55"><input type="text" name="u55" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u56"><input type="text" name="u56" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u57"><input type="text" name="u57" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u58"><input type="text" name="u58" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u59"><input type="text" name="u59" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 7-->
-                    <td class="celdaT1" id="60" contenteditable="true"></td>
-                    <td class="celdaT1" id="61" contenteditable="true"></td>
-                    <td class="celdaT1" id="62" contenteditable="true"></td>
-                    <td class="celdaT1" id="63" contenteditable="true"></td>
-                    <td class="celdaT1" id="64" contenteditable="true"></td>
-                    <td class="celdaT1" id="65" contenteditable="true"></td>
-                    <td class="celdaT1" id="66" contenteditable="true"></td>
-                    <td class="celdaT1" id="67" contenteditable="true"></td>
-                    <td class="celdaT1" id="68" contenteditable="true"></td>
-                    <td class="celdaT1" id="69" contenteditable="true"></td>
+                <tr>
+                    <td id="u60"><input type="text" name="u60" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u61"><input type="text" name="u61" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u62"><input type="text" name="u62" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u63"><input type="text" name="u63" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u64"><input type="text" name="u64" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u65"><input type="text" name="u65" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u66"><input type="text" name="u66" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u67"><input type="text" name="u67" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u68"><input type="text" name="u68" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u69"><input type="text" name="u69" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 8-->
-                    <td class="celdaT1" id="70" contenteditable="true"></td>
-                    <td class="celdaT1" id="71" contenteditable="true"></td>
-                    <td class="celdaT1" id="72" contenteditable="true"></td>
-                    <td class="celdaT1" id="73" contenteditable="true"></td>
-                    <td class="celdaT1" id="74" contenteditable="true"></td>
-                    <td class="celdaT1" id="75" contenteditable="true"></td>
-                    <td class="celdaT1" id="76" contenteditable="true"></td>
-                    <td class="celdaT1" id="77" contenteditable="true"></td>
-                    <td class="celdaT1" id="78" contenteditable="true"></td>
-                    <td class="celdaT1" id="79" contenteditable="true"></td>
+                <tr>
+                    <td id="u70"><input type="text" name="u70" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u71"><input type="text" name="u71" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u72"><input type="text" name="u72" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u73"><input type="text" name="u73" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u74"><input type="text" name="u74" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u75"><input type="text" name="u75" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u76"><input type="text" name="u76" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u77"><input type="text" name="u77" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u78"><input type="text" name="u78" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u79"><input type="text" name="u79" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 9-->
-                    <td class="celdaT1" id="80" contenteditable="true"></td>
-                    <td class="celdaT1" id="81" contenteditable="true"></td>
-                    <td class="celdaT1" id="82" contenteditable="true"></td>
-                    <td class="celdaT1" id="83" contenteditable="true"></td>
-                    <td class="celdaT1" id="84" contenteditable="true"></td>
-                    <td class="celdaT1" id="85" contenteditable="true"></td>
-                    <td class="celdaT1" id="86" contenteditable="true"></td>
-                    <td class="celdaT1" id="87" contenteditable="true"></td>
-                    <td class="celdaT1" id="88" contenteditable="true"></td>
-                    <td class="celdaT1" id="89" contenteditable="true"></td>
+                <tr>
+                    <td id="u80"><input type="text" name="u80" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u81"><input type="text" name="u81" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u82"><input type="text" name="u82" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u83"><input type="text" name="u83" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u84"><input type="text" name="u84" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u85"><input type="text" name="u85" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u86"><input type="text" name="u86" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u87"><input type="text" name="u87" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u88"><input type="text" name="u88" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u89"><input type="text" name="u89" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
-                <tr> <!--FILA 10-->
-                    <td class="celdaT1" id="90" contenteditable="true"></td>
-                    <td class="celdaT1" id="91" contenteditable="true"></td>
-                    <td class="celdaT1" id="92" contenteditable="true"></td>
-                    <td class="celdaT1" id="93" contenteditable="true"></td>
-                    <td class="celdaT1" id="94" contenteditable="true"></td>
-                    <td class="celdaT1" id="95" contenteditable="true"></td>
-                    <td class="celdaT1" id="96" contenteditable="true"></td>
-                    <td class="celdaT1" id="97" contenteditable="true"></td>
-                    <td class="celdaT1" id="98" contenteditable="true"></td>
-                    <td class="celdaT1" id="99" contenteditable="true"></td>
+                <tr>
+                    <td id="u90"><input type="text" name="u90" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u91"><input type="text" name="u91" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u92"><input type="text" name="u92" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u93"><input type="text" name="u93" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u94"><input type="text" name="u94" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u95"><input type="text" name="u95" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u96"><input type="text" name="u96" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u97"><input type="text" name="u97" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u98"><input type="text" name="u98" class="celda" minlength="1" maxlength="1" size="4"></td>
+                    <td id="u99"><input type="text" name="u99" class="celda" minlength="1" maxlength="1" size="4"></td>
                 </tr>
             </table>
             
