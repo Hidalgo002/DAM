@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXAMEN</title>
+    <script src="ValeriaHidalgoDominguez_EXJSP1.js"></script>
+</head>
+<body>
+    <h1>EJERCICIO 1</h1>
+
+    <form id="repostaje">
+        <p for="matricula">Matrícula del coche (3 letras y 4 números):</p>
+        <input type="text" id="matricula" name="matricula" placeholder="Matrícula. Ej: 5225DFT">
+        
+        <p for="litros">Litros de combustible:</p>
+        <input type="number" id="litros" placeholder="Litros">
+
+        <input type="button" id="0" value="Calcular Precio">
+    </form>
+
+    <h1>EJERCICIO 2</h1>
+    <h3>Elija la posible posición de la bola: </h3>
+    <div>
+        <input type="button" id="1" value="1">
+        <input type="button" id="2" value="2">
+        <input type="button" id="3" value="3">
+    </div>
+
+</body>
+</html>
