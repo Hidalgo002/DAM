@@ -27,5 +27,14 @@
         <input type="button" id="3" value="3">
     </div>
 
+    <h2>Haz clic en la letra correcta</h2>
+
+    <table id="tabla">
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+    </table>
+
+    <div id="message"></div>
 </body>
 </html>
