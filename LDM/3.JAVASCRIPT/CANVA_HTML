@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANVAS</title>
+    <style>
+        .canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        function pintar() {
+            let canvas = document.getElementById("canvas");
+            if (canvas.getContext) {
+                let a = canvas.getContext("2d");
+                a.fillStyle = "rgb(255,0,0)";
+                a.fillRect(100, 10, 50, 50);
+                a.fillRect(200, 20, 100, 100);
+                a.strokeStyle = "rgb(0,255,0)";
+                a.strokeRect(400, 150, 90, 80);
+            }
+        }
+
+        // Call the function when the page has finished loading
+        window.onload = pintar;
+    </script>
+</head>
+<body>
+    <canvas id="canvas" class="canvas" width="500" height="500"></canvas>
+</body>
+</html>
